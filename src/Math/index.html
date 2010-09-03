@@ -1,0 +1,63 @@
+<html>
+<head>
+<title>Javascript Test Page</title>
+
+<!--
+TODO: Concatenate all into one file
+TODO: Minify concatenatd Javascript file
+-->
+
+<script type="text/javascript" language="javascript" src="MathHelper.js" ></script>
+<script type="text/javascript" language="javascript" src="Vector3.js" ></script>
+<script type="text/javascript" language="javascript" src="Vector4.js" ></script>
+<script type="text/javascript" language="javascript" src="Matrix4x4.js" ></script>
+
+</head>
+<body>
+
+<script type="text/javascript" language="javascript">
+
+    function test() {
+        testVector3();
+        testVector4();
+        testMatrix4x4();
+    }
+
+    function testVector3() {
+
+        var v = new Vector3(1, 2, 3);
+        var length = v.length();
+        var lengthSquared = v.lengthSquared();
+        var vnorm = v.normalize();
+        var vadd = v.add(v);
+        var vsub = v.subtract(new Vector3(3, 2, 1));
+        var vdot = vadd.dot(vsub);
+        var vcross = vadd.cross(vsub);
+        var vstring = v.toString();
+        var veq = v.equals(v);
+
+        alert(v + length + lengthSquared + vnorm + vadd + vsub + vdot + vcross + vstring + veq);
+    }
+
+    function testVector4() {
+
+        var v = new Vector4(1, 2, 3, 4);
+        var v1 = v.normalize();
+        var v2 = v.length();
+        var v3 = v.dot(v1);
+        var v4 = v.toString();
+        alert(v1 + v2 + v3 + v4);
+    }
+
+    function testMatrix4x4() {
+
+        var m = Matrix4x4.createScale(1, 2, 3);
+        var mx = Matrix4x4.rotateX(0.123);
+        alert(m.toString() + mx.toString() + m.determinant());
+    }
+
+    test();
+
+</script>
+</body>
+</html>
