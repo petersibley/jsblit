@@ -1,3 +1,4 @@
+
 function Matrix4x4(m11, m12, m13, m14,
                    m21, m22, m23, m24,
                    m31, m32, m33, m34,
@@ -137,3 +138,4 @@ Matrix4x4.prototype =
                this.m41 + ", " + this.m42 + ", " + this.m43 + ", " + this.m44 + "\n";
     }
 }
+
