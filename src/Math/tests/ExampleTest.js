@@ -1,14 +1,12 @@
-test("a basic test example", function() {
-  ok( true, "this test is fine" );
-  var value = "hello";
-  equals( "hello", value, "We expect value to be hello" );
-});
-module("Module A");
-
-test("first test within module", function() {
-  ok( true, "all pass" );
+module("Math");
+test("Rotation Test", function() {
+        var m = Matrix4x4.createScale(1, 2, 3);
+        var mx = Matrix4x4.rotateX(0.123);
+	expect(1);
+	equals(mx.determinant(),1.0,"determinate should be one");
 });
 
+/*
 test("second test within module", function() {
   ok( true, "all pass" );
 });
@@ -20,3 +18,4 @@ test("some other test", function() {
   equals( true, false, "failing test" );
   equals( true, true, "passing test" );
 });
+*/
