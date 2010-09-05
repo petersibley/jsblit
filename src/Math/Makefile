@@ -9,19 +9,16 @@ all: compile
 concatenate : $(SRC) 
 	rm -f $(MERGEDFILE)
 	cat $(SRC) >> $(MERGEDFILE)
+
 clean:
 	rm -f $(MERGEDFILE) $(OUTFILE)
-lint: $(SRC)
-	for f in $(SRC); do\
-		echo -------------------;\
-		echo running lint on $$f;\
-		echo -------------------;\
-		$(JAVA) -jar $(RHINOJAR)  $(JSLINT) $$f;\
-		echo -------------------;\
-	done
+
+lint: $(MERGEDFILE)
+	$(JAVA) -jar $(RHINOJAR)  $(JSLINT) $<
 
 compile: lint concatenate
 	$(JAVA) -jar $(COMPILERJAR) --js $(MERGEDFILE)  --js_output_file $(OUTFILE)
-test: all
-	open index.html
+
+test: concatenate
+	open tests/index.html
 
