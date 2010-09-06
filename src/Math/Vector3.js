@@ -57,9 +57,9 @@ Vector3.prototype =
     },
 
     equals: function (v) {
-        return this.x == v.x &&
-               this.y == v.y &&
-               this.z == v.z;
+        return this.x === v.x &&
+               this.y === v.y &&
+               this.z === v.z;
     },
     
     toString: function () {

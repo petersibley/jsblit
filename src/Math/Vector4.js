@@ -56,10 +56,10 @@ Vector4.prototype =
     },
 
     equals: function (v) {
-        return this.x == v.x &&
-               this.y == v.y &&
-               this.z == v.z &&
-               this.w == v.w;
+        return this.x === v.x &&
+               this.y === v.y &&
+               this.z === v.z &&
+               this.w === v.w;
     },
 
     toString: function () {
