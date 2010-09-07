@@ -18,7 +18,7 @@ clean:
 lint: $(MERGEDFILE)
 	$(JAVA) -jar $(RHINOJAR)  $(JSLINT) $<
 
-compile: lint concatenate
+compile: concatenate lint
 	$(JAVA) -jar $(COMPILERJAR) --js $(MERGEDFILE)  --js_output_file $(OUTFILE)
 
 test: concatenate
