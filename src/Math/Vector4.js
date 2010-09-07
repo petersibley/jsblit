@@ -19,7 +19,7 @@ Vector4.prototype =
     /**
     * Calculates the dot product between the calling vector and parameter v
     * @param {Vector4} v input vector
-    * @type Number
+    * @return {Number}
     */
     dot: function (v) {
         return this.x * v.x + this.y * v.y + this.z * v.z + this.w * v.w;
@@ -27,7 +27,7 @@ Vector4.prototype =
 
     /**
     * Creates a unit length version of the vector, which still points in the same direction as the original vector
-    * @type Vector4
+    * @return {Vector4}
     */
     normalize: function () {
         var length, inverseLength;
@@ -46,7 +46,7 @@ Vector4.prototype =
 
     /**
     * Calculates the length of the vector
-    * @type Number
+    * @return {Number}
     */
     length: function () {
         return MathHelper.sqrt(this.x * this.x + this.y * this.y + this.z * this.z + this.w * this.w);
@@ -55,6 +55,7 @@ Vector4.prototype =
     /**
     * Calculates the length of the vector squared.  Useful if only a relative length
     * check is required, since this is more performant than the length() method
+    * @return {Vector4}
     */
     lengthSquared: function () {
         return this.x * this.x + this.y * this.y + this.z * this.z + this.w * this.w;
@@ -63,8 +64,7 @@ Vector4.prototype =
     /**
     * Adds vector v to the current vector and returns the result.
     * @param {Vector4} v input vector
-    * @returns A vector containing the addition of the two input vectors
-    * @type Vector4
+    * @return {Vector4} A vector containing the addition of the two input vectors
     */
     add: function (v) {
         return new Vector4(this.x + v.x,
@@ -76,8 +76,7 @@ Vector4.prototype =
     /**
     * Subtracts vector v from the current vector and returns the result.
     * @param {Vector4} v input vector
-    * @returns A vector containing the subtraction of the two input vectors
-    * @type Vector4
+    * @return {Vector4} A vector containing the subtraction of the two input vectors
     */
     subtract: function (v) {
         return new Vector4(this.x - v.x,
@@ -89,7 +88,7 @@ Vector4.prototype =
     /**
     * Multiplies each element of the vector with scalar f and returns the result
     * @param {Number} f a value that will be multiplied with each element of the vector
-    * @type Vector4
+    * @return {Vector4}
     */
     multiplyScalar: function (f) {
         return new Vector4(this.x * f,
@@ -101,8 +100,7 @@ Vector4.prototype =
     /**
     * Checks if the calling vector is equal to parameter vector v
     * @param {Vector4} v input vector
-    * @return A Boolean value, true if each element of the calling vector match input vector v, false otherwise
-    * @type Boolean
+    * @return {Boolean} A Boolean value, true if each element of the calling vector match input vector v, false otherwise
     */
     equals: function (v) {
         return this.x === v.x &&
@@ -113,7 +111,7 @@ Vector4.prototype =
 
     /**
     * Returns a string containing the current state of the vector, useful for debugging purposes
-    * @type String
+    * @return {String}
     */
     toString: function () {
         return '[' + this.x + ', ' + this.y + ', ' + this.z + ', ' + this.w + ']';

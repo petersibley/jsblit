@@ -43,7 +43,7 @@ function Matrix4x4(m11, m12, m13, m14,
 
 /**
 * Returns an identity matrix
-* @type Matrix4x4
+* @return {Matrix4x4}
 */
 Matrix4x4.createIdentity = function () {
     return new Matrix4x4(1, 0, 0, 0,
@@ -57,7 +57,7 @@ Matrix4x4.createIdentity = function () {
 * @param {Number} sx The x scaling factor
 * @param {Number} sy The y scaling factor
 * @param {Number} sz The z scaling factor
-* @type Matrix4x4
+* @return {Matrix4x4}
 */
 Matrix4x4.createScale = function (sx, sy, sz) {
     return new Matrix4x4(sx, 0,  0,  0,
@@ -71,7 +71,7 @@ Matrix4x4.createScale = function (sx, sy, sz) {
 * @param {Number} tx The x translation value
 * @param {Number} ty The y translation value
 * @param {Number} tz The z translation value
-* @type Matrix4x4
+* @return {Matrix4x4}
 */
 Matrix4x4.createTranslate = function (tx, ty, tz) {
     return new Matrix4x4(1, 0, 0, tx,
@@ -84,7 +84,7 @@ Matrix4x4.createTranslate = function (tx, ty, tz) {
 * Returns a matrix that rotates a vector around the x axis, from the origin. The rotation matrix
 * is a right handed rotation, a positive angle will rotate the vector anticlockwise around the x axis
 * @param {Number} angle The angle to rotate in radians
-* @type Matrix4x4
+* @return {Matrix4x4}
 */
 Matrix4x4.rotateX = function (angle) {
     return new Matrix4x4(1, 0, 0, 0,
@@ -97,7 +97,7 @@ Matrix4x4.rotateX = function (angle) {
 * Returns a matrix that rotates a vector around the y axis, from the origin. The rotation matrix
 * is a right handed rotation, a positive angle will rotate the vector anticlockwise around the y axis
 * @param {Number} angle The angle to rotate in radians
-* @type Matrix4x4
+* @return {Matrix4x4}
 */
 Matrix4x4.rotateY = function (angle) {
     return new Matrix4x4(MathHelper.cos(angle), 0, -MathHelper.sin(angle), 0,
@@ -110,7 +110,7 @@ Matrix4x4.rotateY = function (angle) {
 * Returns a matrix that rotates a vector around the z axis, from the origin. The rotation matrix
 * is a right handed rotation, a positive angle will rotate the vector anticlockwise around the z axis
 * @param {Number} angle The angle to rotate in radians
-* @type Matrix4x4
+* @return {Matrix4x4}
 */
 Matrix4x4.rotateZ = function (angle) {
     return new Matrix4x4(MathHelper.cos(angle), -MathHelper.sin(angle), 0, 0,
@@ -124,7 +124,7 @@ Matrix4x4.prototype =
     /**
     * Adds matrix m to to the current matrix and returns the result
     * @param {Matrix4x4} m The matrix which will be added to the calling matrix
-    * @type Matrix4x4
+    * @return {Matrix4x4}
     */
     add: function (m) {
         return new Matrix4x4(this.m11 + m.m11, this.m12 + m.m12, this.m13 + m.m13, this.m14 + m.m14,
@@ -136,7 +136,7 @@ Matrix4x4.prototype =
     /**
     * Adds matrix m to to the current matrix and returns the result
     * @param {Matrix4x4} m The matrix which will be added to the calling matrix
-    * @type Matrix4x4
+    * @return {Matrix4x4}
     */
     subtract: function (m) {
         return new Matrix4x4(this.m11 - m.m11, this.m12 - m.m12, this.m13 - m.m13, this.m14 - m.m14,
@@ -148,7 +148,7 @@ Matrix4x4.prototype =
     /**
     * Multiples the calling matrix by matrix m and returns the result
     * @param {Matrix4x4} m input matrix
-    * @type Matrix4x4
+    * @return {Matrix4x4}
     */
     multiply: function (m) {
         return new Matrix4x4(this.m11 * m.m11 + this.m12 * m.m21 + this.m13 * m.m31 + this.m14 * m.m41,
@@ -175,7 +175,7 @@ Matrix4x4.prototype =
     /**
     * Multiples each element of the matrix by the scalar f and returns the result
     * @param {Number} f input scalar
-    * @type Matrix4x4
+    * @return {Matrix4x4}
     */
     multiplyScalar: function (f) {
         return new Matrix4x4(this.m11 * f, this.m12 * f, this.m13 * f, this.m14 * f,
@@ -186,7 +186,7 @@ Matrix4x4.prototype =
 
     /**
     * Returns the transpose of the calling matrix
-    * @type Matrix4x4
+    * @return {Matrix4x4}
     */
     transpose: function () {
         return new Matrix4x4(this.m11, this.m21, this.m31, this.m41,
@@ -198,7 +198,7 @@ Matrix4x4.prototype =
     /**
     * Multiples the matrix by the column vector v
     * @param {Vector4} v input vector
-    * @type Vector4
+    * @return {Vector4}
     */
     transformVector4: function (v) {
         return new Vector4(this.m11 * v.x + this.m12 * v.y + this.m13 * v.z + this.m14 * v.w,
@@ -211,7 +211,7 @@ Matrix4x4.prototype =
     * Multiples the matrix by the column vector v. It is assumed the Vector3 v value
     * is equivalent to a Vector4 instance with a w value of 0
     * @param {Vector3} v input vector
-    * @type Vector3
+    * @return {Vector3}
     */
     transformVector3: function (v) {
         return new Vector3(this.m11 * v.x + this.m12 * v.y + this.m13 * v.z,
@@ -221,7 +221,7 @@ Matrix4x4.prototype =
     
     /**
     * Returns the determinant of the calling matrix
-    * @type {Number}
+    * @return {Number}
     */
     determinant: function () {
         var a, b, c, d, e, f, g, h, i, j, k, l;
@@ -242,7 +242,7 @@ Matrix4x4.prototype =
 
     /**
     * Returns a string containing the current state of the matrix.  Useful for debugging purposes
-    * @type String
+    * @return {String}
     */
     toString: function () {
         return this.m11 + ", " + this.m12 + ", " + this.m13 + ", " + this.m14 + "\n" +
