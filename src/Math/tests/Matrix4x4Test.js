@@ -319,3 +319,28 @@ test("transformVector3", function() {
     equals(result.y, 16.5, "y transformVector4");
     equals(result.z, -25.629999999999992, "z transformVector4");
 });
+
+test("inverse", function() {
+    var m1 = new Matrix4x4(-1.1,2.2,-3.3,4.5,
+                          5.5,-6.5,7.5,-8.8,
+                          -9.9,10.1,-11.2,12.3,
+                          13.4,-14.5,15.6,-16.7);
+    var mInv = m1.inverse();
+    var m = m1.multiply(mInv);
+    ok(MathHelper.abs(m.m11 - 1.0) < MathHelper.zeroTolerance, "m11 inverse");
+    ok(MathHelper.abs(m.m12) < MathHelper.zeroTolerance, "m12 inverse");
+    ok(MathHelper.abs(m.m13) < MathHelper.zeroTolerance, "m13 inverse");
+    ok(MathHelper.abs(m.m14) < MathHelper.zeroTolerance, "m14 inverse");
+    ok(MathHelper.abs(m.m21) < MathHelper.zeroTolerance, "m21 inverse");
+    ok(MathHelper.abs(m.m22 - 1.0) < MathHelper.zeroTolerance, "m22 inverse");
+    ok(MathHelper.abs(m.m23) < MathHelper.zeroTolerance, "m23 inverse");
+    ok(MathHelper.abs(m.m24) < MathHelper.zeroTolerance, "m24 inverse");
+    ok(MathHelper.abs(m.m31) < MathHelper.zeroTolerance, "m31 inverse");
+    ok(MathHelper.abs(m.m32) < MathHelper.zeroTolerance, "m32 inverse");
+    ok(MathHelper.abs(m.m33 - 1.0) < MathHelper.zeroTolerance, "m33 inverse");
+    ok(MathHelper.abs(m.m34) < MathHelper.zeroTolerance, "m34 inverse");
+    ok(MathHelper.abs(m.m41) < MathHelper.zeroTolerance, "m41 inverse");
+    ok(MathHelper.abs(m.m42) < MathHelper.zeroTolerance, "m42 inverse");
+    ok(MathHelper.abs(m.m43) < MathHelper.zeroTolerance, "m43 inverse");
+    ok(MathHelper.abs(m.m44 - 1.0) < MathHelper.zeroTolerance, "m44 inverse");
+});
