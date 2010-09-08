@@ -5,7 +5,7 @@ RHINOJAR=../../tools/env-js/rhino/js.jar
 JSLINT=../../tools/env-js/misc/jslint.js
 JSDOC=../../tools/jsdoc_toolkit/2.3.2/
 DOCOUTDIR=./docs/
-SRC=MathHelper.js Vector3.js Vector4.js Matrix4x4.js
+SRC=MathHelper.js Vector2.js Vector3.js Vector4.js Matrix4x4.js 
 JAVA=java
 all: compile
 concatenate : $(SRC) 
