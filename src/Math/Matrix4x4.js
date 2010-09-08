@@ -247,7 +247,7 @@ Matrix4x4.prototype =
     */
     inverse: function () {
         var a, b, c, d, e, f, g, h, i, j, k, l, determinant, invD, 
-            m11_, m12_, m13_, m14_, m21_, m22_, m23_, m24_, m31_, m32_, m33_, m34_, m41_, m42_, m43_, m44_;
+            m11, m12, m13, m14, m21, m22, m23, m24, m31, m32, m33, m34, m41, m42, m43, m44;
             
         a = this.m11 * this.m22 - this.m12 * this.m21;
         b = this.m11 * this.m23 - this.m13 * this.m21;
@@ -262,35 +262,35 @@ Matrix4x4.prototype =
         k = this.m32 * this.m44 - this.m34 * this.m42;
         l = this.m33 * this.m44 - this.m34 * this.m43;
         determinant =  a * l - b * k + c * j + d * i - e * h + f * g;
-        if(MathHelper.abs(determinant) < MathHelper.zeroTolerance)
+        if (MathHelper.abs(determinant) < MathHelper.zeroTolerance)
         {
             return Matrix4x4.createIdentity();
         }
         
-        m11_ = this.m22 * l - this.m23 * k + this.m24 * j;
-        m12_ = -this.m12 * l + this.m13 * k - this.m14 * j;
-        m13_ = this.m42 * f - this.m43 * e + this.m44 * d;
-        m14_ = -this.m32 * f + this.m33 * e - this.m34 * d;
+        m11 = this.m22 * l - this.m23 * k + this.m24 * j;
+        m12 = -this.m12 * l + this.m13 * k - this.m14 * j;
+        m13 = this.m42 * f - this.m43 * e + this.m44 * d;
+        m14 = -this.m32 * f + this.m33 * e - this.m34 * d;
         
-        m21_ = -this.m21 * l + this.m23 * i - this.m24 * h;
-        m22_ = this.m11 * l - this.m13 * i + this.m14 * h;
-        m23_ = -this.m41 * f + this.m43 * c - this.m44 * b;
-        m24_ = this.m31 * f - this.m33 * c + this.m34 * b;
+        m21 = -this.m21 * l + this.m23 * i - this.m24 * h;
+        m22 = this.m11 * l - this.m13 * i + this.m14 * h;
+        m23 = -this.m41 * f + this.m43 * c - this.m44 * b;
+        m24 = this.m31 * f - this.m33 * c + this.m34 * b;
         
-        m31_ = this.m21 * k - this.m22 * i + this.m24 * g;
-        m32_ = -this.m11 * k + this.m12 * i - this.m14 * g;
-        m33_ = this.m41 * e - this.m42 * c + this.m44 * a;
-        m34_ = -this.m31 * e + this.m32 * c - this.m34 * a;
+        m31 = this.m21 * k - this.m22 * i + this.m24 * g;
+        m32 = -this.m11 * k + this.m12 * i - this.m14 * g;
+        m33 = this.m41 * e - this.m42 * c + this.m44 * a;
+        m34 = -this.m31 * e + this.m32 * c - this.m34 * a;
         
-        m41_ = -this.m21 * j + this.m22 * h - this.m23 * g;
-        m42_ = this.m11 * j - this.m12 * h + this.m13 * g;
-        m43_ = -this.m41 * d + this.m42 * b - this.m43 * a;
-        m44_ = this.m31 * d - this.m32 * b + this.m33 * a;
+        m41 = -this.m21 * j + this.m22 * h - this.m23 * g;
+        m42 = this.m11 * j - this.m12 * h + this.m13 * g;
+        m43 = -this.m41 * d + this.m42 * b - this.m43 * a;
+        m44 = this.m31 * d - this.m32 * b + this.m33 * a;
         invD = 1.0 / determinant;
-        return new Matrix4x4(m11_ * invD, m12_ * invD, m13_ * invD, m14_ * invD,
-                             m21_ * invD, m22_ * invD, m23_ * invD, m24_ * invD,
-                             m31_ * invD, m32_ * invD, m33_ * invD, m34_ * invD,
-                             m41_ * invD, m42_ * invD, m43_ * invD, m44_ * invD);
+        return new Matrix4x4(m11 * invD, m12 * invD, m13 * invD, m14 * invD,
+                             m21 * invD, m22 * invD, m23 * invD, m24 * invD,
+                             m31 * invD, m32 * invD, m33 * invD, m34 * invD,
+                             m41 * invD, m42 * invD, m43 * invD, m44 * invD);
     },
 
     /**
