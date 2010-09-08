@@ -50,6 +50,31 @@ MathHelper.acos = function (angle) {
     return Math.acos(angle);
 };
 
+/** Returns the tangent of the angle parameter
+* @param {Number} angle in radians
+* @type Number
+*/
+MathHelper.tan = function (angle) {
+	return Math.tan(angle);
+};
+
+/** Returns the arc tangent of the angle parameter
+* @param {Number} angle in radians
+* @type Number
+*/
+MathHelper.atan = function (angle) {
+	return Math.atan(angle);
+};
+
+/** Returns the arc tangent of the quotient of y/x. (angle in radians between x-axis and point (x,y) 
+* @param {Number} y
+* @param {Number} x
+* @type Number
+*/
+MathHelper.atan2 = function (y, x) {
+	return Math.atan2(y, x);
+};
+
 /**
 * Returns the square root of the input parameter
 * @param {Number} v input value

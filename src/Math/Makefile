@@ -14,6 +14,9 @@ concatenate : $(SRC)
 
 clean:
 	rm -f $(MERGEDFILE) $(OUTFILE)
+	rm -rf $(DOCOUTDIR)
+
+$(MERGEDFILE) : concatenate
 
 lint: $(MERGEDFILE)
 	$(JAVA) -jar $(RHINOJAR)  $(JSLINT) $<

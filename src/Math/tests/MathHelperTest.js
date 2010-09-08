@@ -16,6 +16,18 @@ test("acos", function() {
     equals(MathHelper.acos(0.1234567), Math.acos(0.1234567), "acos incorrect");
 });
 
+test("tan", function() {
+    equals(MathHelper.tan(0.1234567), Math.tan(0.1234567), "tan incorrect");
+});
+
+test("atan", function() {
+    equals(MathHelper.atan(0.1234567), Math.atan(0.1234567), "atan incorrect");
+});
+
+test("atan2", function() {
+    equals(MathHelper.atan2(3,3), Math.PI/4.0, "atan2 incorrect");
+});
+
 test("sqrt", function() {
     equals(MathHelper.sqrt(2.1234567), Math.sqrt(2.1234567), "sqrt incorrect");
 });
