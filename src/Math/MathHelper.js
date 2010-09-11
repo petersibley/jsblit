@@ -105,3 +105,26 @@ MathHelper.invSqrt = function (v) {
 MathHelper.abs = function (v) {
     return Math.abs(v);
 };
+
+ /**
+* Returns if the value is finite (i.e., less than POSITIVE_INFINITY and greater than NEGATIVE_INFINITY)
+* @param {Number} v input value
+* @return {Boolean} 
+*/
+MathHelper.isFinite = function (v) {
+	return v > Number.NEGATIVE_INFINITY && v < Number.POSITIVE_INFINITY;
+};
+
+/**
+* Returns the value v , clamped to [min,max] interval (so v > max would be max.)
+* @param {Number} v input value
+* @param {Number} min lower bound (inclusive) that we want to clamp v against.
+* @param {Number} max upper bound (inclusiveP that we want to clamp v against.
+* @return {Number}
+*/
+MathHelper.clamp = function (v, min, max) {
+	return (Math.min(Math.max(v, min), max)); 
+};
+
+
+

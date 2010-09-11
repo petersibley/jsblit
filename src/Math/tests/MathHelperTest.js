@@ -40,3 +40,26 @@ test("abs", function() {
     equals(MathHelper.abs(2.1234567), 2.1234567, "fabs positive incorrect");
     equals(MathHelper.abs(-4.1234567), 4.1234567, "fabs negative incorrect");
 });
+
+test("isFinite", function() {
+    equals(MathHelper.isFinite(0), true, "isFinite should work on 0");
+    equals(MathHelper.isFinite(-10.5), true, "isFinite should work on -10.50");
+    equals(MathHelper.isFinite(10.5), true, "isFinite should work on 10.50");
+    equals(MathHelper.isFinite(0.00001), true, "isFinite should work on 0.000001");
+    equals(MathHelper.isFinite(1.0/0.0), false, "isFinite should not work on 1.0/0.0");
+    equals(MathHelper.isFinite(Number.POSITIVE_INFINITY), false, "isFinite should not work on POSITIVE_INIFINITY");
+    equals(MathHelper.isFinite(Number.NaN), false, "isFinite should not work on NaN");
+});
+
+test("clamp", function() {
+    equals(MathHelper.clamp(0, -1.0, 1.0), 0, "should work in range");
+    equals(MathHelper.clamp(-1.0, 25.0, 35.0), 25.0, "lower bound should clamp");
+    equals(MathHelper.clamp(55, 25.0, 35.0), 35.0, "upper bound should clamp");
+});
+
+
+
+
+
+
+
