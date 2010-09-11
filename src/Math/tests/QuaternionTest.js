@@ -9,7 +9,7 @@ test("Constructor", function() {
 });
 
 test("fromRotationMatrix", function() {
-    var m = Matrix4x4.rotateX(MathHelper.PI / 2);
+    var m = Matrix4x4.createRotationX(MathHelper.PI / 2);
     var q = Quaternion.fromRotationMatrix(m);
     var v = new Vector3(0,1,0);
     var v2 = q.transform(v);
@@ -18,7 +18,7 @@ test("fromRotationMatrix", function() {
     ok(MathHelper.abs(v2.y - 0) <= MathHelper.zeroTolerance, "y1");
     ok(MathHelper.abs(v2.z - 1) <= MathHelper.zeroTolerance, "z1");
     
-    m = Matrix4x4.rotateY(MathHelper.PI / 2);
+    m = Matrix4x4.createRotationY(MathHelper.PI / 2);
     q = Quaternion.fromRotationMatrix(m);
     v = new Vector3(1,0,0);
     v2 = q.transform(v);
@@ -26,7 +26,7 @@ test("fromRotationMatrix", function() {
     ok(MathHelper.abs(v2.y - 0) <= MathHelper.zeroTolerance, "y2");
     ok(MathHelper.abs(v2.z - 1) <= MathHelper.zeroTolerance, "z2");
     
-    m = Matrix4x4.rotateZ(MathHelper.PI / 2);
+    m = Matrix4x4.createRotationZ(MathHelper.PI / 2);
     q = Quaternion.fromRotationMatrix(m);
     v = new Vector3(0,1,0);
     v2 = q.transform(v);

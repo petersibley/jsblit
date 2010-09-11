@@ -64,8 +64,8 @@ test("createScale", function() {
     equals(m.m44, 1.0, "m44 scale");
 });
 
-test("createTranslate", function() {
-    var m = Matrix4x4.createTranslate(4,5,6);
+test("createTranslation", function() {
+    var m = Matrix4x4.createTranslation(4,5,6);
     equals(m.m11, 1.0, "m11 translate");
     equals(m.m12, 0.0, "m12 translate");
     equals(m.m13, 0.0, "m13 translate");
@@ -84,67 +84,67 @@ test("createTranslate", function() {
     equals(m.m44, 1.0, "m44 translate");
 });
 
-test("rotateX", function() {
+test("createRotationX", function() {
     var angle = MathHelper.PI / 3;
-    var m = Matrix4x4.rotateX(angle);
-    equals(m.m11, 1.0, "m11 rotateX");
-    equals(m.m12, 0.0, "m12 rotateX");
-    equals(m.m13, 0.0, "m13 rotateX");
-    equals(m.m14, 0.0, "m14 rotateX");
-    equals(m.m21, 0.0, "m21 rotateX");
-    equals(m.m22, MathHelper.cos(angle), "m22 rotateX");
-    equals(m.m23, -MathHelper.sin(angle), "m23 rotateX");
-    equals(m.m24, 0.0, "m24 rotateX");
-    equals(m.m31, 0.0, "m31 rotateX");
-    equals(m.m32, MathHelper.sin(angle), "m32 rotateX");
-    equals(m.m33, MathHelper.cos(angle), "m33 rotateX");
-    equals(m.m34, 0.0, "m34 rotateX");
-    equals(m.m41, 0.0, "m41 rotateX");
-    equals(m.m42, 0.0, "m42 rotateX");
-    equals(m.m43, 0.0, "m43 rotateX");
-    equals(m.m44, 1.0, "m44 rotateX");
+    var m = Matrix4x4.createRotationX(angle);
+    equals(m.m11, 1.0, "m11 createRotationX");
+    equals(m.m12, 0.0, "m12 createRotationX");
+    equals(m.m13, 0.0, "m13 createRotationX");
+    equals(m.m14, 0.0, "m14 createRotationX");
+    equals(m.m21, 0.0, "m21 createRotationX");
+    equals(m.m22, MathHelper.cos(angle), "m22 createRotationX");
+    equals(m.m23, -MathHelper.sin(angle), "m23 createRotationX");
+    equals(m.m24, 0.0, "m24 createRotationX");
+    equals(m.m31, 0.0, "m31 createRotationX");
+    equals(m.m32, MathHelper.sin(angle), "m32 createRotationX");
+    equals(m.m33, MathHelper.cos(angle), "m33 createRotationX");
+    equals(m.m34, 0.0, "m34 createRotationX");
+    equals(m.m41, 0.0, "m41 createRotationX");
+    equals(m.m42, 0.0, "m42 createRotationX");
+    equals(m.m43, 0.0, "m43 createRotationX");
+    equals(m.m44, 1.0, "m44 createRotationX");
 });
 
-test("rotateY", function() {
+test("createRotationY", function() {
     var angle = MathHelper.PI / 3;
-    var m = Matrix4x4.rotateY(angle);
-    equals(m.m11, MathHelper.cos(angle), "m11 rotateY");
-    equals(m.m12, 0.0, "m12 rotateY");
-    equals(m.m13, -MathHelper.sin(angle), "m13 rotateY");
-    equals(m.m14, 0.0, "m14 rotateY");
-    equals(m.m21, 0.0, "m21 rotateY");
-    equals(m.m22, 1.0, "m22 rotateY");
-    equals(m.m23, 0.0, "m23 rotateY");
-    equals(m.m24, 0.0, "m24 rotateY");
-    equals(m.m31, MathHelper.sin(angle), "m31 rotateY");
-    equals(m.m32, 0.0, "m32 rotateY");
-    equals(m.m33, MathHelper.cos(angle), "m33 rotateY");
-    equals(m.m34, 0.0, "m34 rotateY");
-    equals(m.m41, 0.0, "m41 rotateY");
-    equals(m.m42, 0.0, "m42 rotateY");
-    equals(m.m43, 0.0, "m43 rotateY");
-    equals(m.m44, 1.0, "m44 rotateY");
+    var m = Matrix4x4.createRotationY(angle);
+    equals(m.m11, MathHelper.cos(angle), "m11 createRotationY");
+    equals(m.m12, 0.0, "m12 createRotationY");
+    equals(m.m13, -MathHelper.sin(angle), "m13 createRotationY");
+    equals(m.m14, 0.0, "m14 createRotationY");
+    equals(m.m21, 0.0, "m21 createRotationY");
+    equals(m.m22, 1.0, "m22 createRotationY");
+    equals(m.m23, 0.0, "m23 createRotationY");
+    equals(m.m24, 0.0, "m24 createRotationY");
+    equals(m.m31, MathHelper.sin(angle), "m31 createRotationY");
+    equals(m.m32, 0.0, "m32 createRotationY");
+    equals(m.m33, MathHelper.cos(angle), "m33 createRotationY");
+    equals(m.m34, 0.0, "m34 createRotationY");
+    equals(m.m41, 0.0, "m41 createRotationY");
+    equals(m.m42, 0.0, "m42 createRotationY");
+    equals(m.m43, 0.0, "m43 createRotationY");
+    equals(m.m44, 1.0, "m44 createRotationY");
 });
 
-test("rotateZ", function() {
+test("createRotationZ", function() {
     var angle = MathHelper.PI / 3;
-    var m = Matrix4x4.rotateZ(angle);
-    equals(m.m11, MathHelper.cos(angle), "m11 rotateZ");
-    equals(m.m12, -MathHelper.sin(angle), "m12 rotateZ");
-    equals(m.m13, 0.0, "m13 rotateZ");
-    equals(m.m14, 0.0, "m14 rotateZ");
-    equals(m.m21, MathHelper.sin(angle), "m21 rotateZ");
-    equals(m.m22, MathHelper.cos(angle), "m22 rotateZ");
-    equals(m.m23, 0.0, "m23 rotateZ");
-    equals(m.m24, 0.0, "m24 rotateZ");
-    equals(m.m31, 0.0, "m31 rotateZ");
-    equals(m.m32, 0.0, "m32 rotateZ");
-    equals(m.m33, 1.0, "m33 rotateZ");
-    equals(m.m34, 0.0, "m34 rotateZ");
-    equals(m.m41, 0.0, "m41 rotateZ");
-    equals(m.m42, 0.0, "m42 rotateZ");
-    equals(m.m43, 0.0, "m43 rotateZ");
-    equals(m.m44, 1.0, "m44 rotateZ");
+    var m = Matrix4x4.createRotationZ(angle);
+    equals(m.m11, MathHelper.cos(angle), "m11 createRotationZ");
+    equals(m.m12, -MathHelper.sin(angle), "m12 createRotationZ");
+    equals(m.m13, 0.0, "m13 createRotationZ");
+    equals(m.m14, 0.0, "m14 createRotationZ");
+    equals(m.m21, MathHelper.sin(angle), "m21 createRotationZ");
+    equals(m.m22, MathHelper.cos(angle), "m22 createRotationZ");
+    equals(m.m23, 0.0, "m23 createRotationZ");
+    equals(m.m24, 0.0, "m24 createRotationZ");
+    equals(m.m31, 0.0, "m31 createRotationZ");
+    equals(m.m32, 0.0, "m32 createRotationZ");
+    equals(m.m33, 1.0, "m33 createRotationZ");
+    equals(m.m34, 0.0, "m34 createRotationZ");
+    equals(m.m41, 0.0, "m41 createRotationZ");
+    equals(m.m42, 0.0, "m42 createRotationZ");
+    equals(m.m43, 0.0, "m43 createRotationZ");
+    equals(m.m44, 1.0, "m44 createRotationZ");
 });
 
 test("add", function() {

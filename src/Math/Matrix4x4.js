@@ -73,7 +73,7 @@ Matrix4x4.createScale = function (sx, sy, sz) {
 * @param {Number} tz The z translation value
 * @return {Matrix4x4}
 */
-Matrix4x4.createTranslate = function (tx, ty, tz) {
+Matrix4x4.createTranslation = function (tx, ty, tz) {
     return new Matrix4x4(1, 0, 0, tx,
                          0, 1, 0, ty,
                          0, 0, 1, tz,
@@ -86,7 +86,7 @@ Matrix4x4.createTranslate = function (tx, ty, tz) {
 * @param {Number} angle The angle to rotate in radians
 * @return {Matrix4x4}
 */
-Matrix4x4.rotateX = function (angle) {
+Matrix4x4.createRotationX = function (angle) {
     return new Matrix4x4(1, 0, 0, 0,
                          0, MathHelper.cos(angle), -MathHelper.sin(angle), 0,
                          0, MathHelper.sin(angle), MathHelper.cos(angle), 0,
@@ -99,7 +99,7 @@ Matrix4x4.rotateX = function (angle) {
 * @param {Number} angle The angle to rotate in radians
 * @return {Matrix4x4}
 */
-Matrix4x4.rotateY = function (angle) {
+Matrix4x4.createRotationY = function (angle) {
     return new Matrix4x4(MathHelper.cos(angle), 0, -MathHelper.sin(angle), 0,
                          0, 1, 0, 0,
                          MathHelper.sin(angle), 0, MathHelper.cos(angle), 0,
@@ -112,7 +112,7 @@ Matrix4x4.rotateY = function (angle) {
 * @param {Number} angle The angle to rotate in radians
 * @return {Matrix4x4}
 */
-Matrix4x4.rotateZ = function (angle) {
+Matrix4x4.createRotationZ = function (angle) {
     return new Matrix4x4(MathHelper.cos(angle), -MathHelper.sin(angle), 0, 0,
                          MathHelper.sin(angle), MathHelper.cos(angle), 0, 0,
                          0, 0, 1, 0,

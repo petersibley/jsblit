@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
 		
-		<title>JsDoc Reference - Vector3</title>
+		<title>JsDoc Reference - Quaternion</title>
 
 		<style type="text/css">
 			/* default.css */
@@ -212,7 +212,7 @@ ul.inheritsList
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Class Vector3
+				Class Quaternion
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -229,7 +229,7 @@ ul.inheritsList
 
 <!-- ============================== constructor summary ==================== -->			
 			
-			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class Vector3.">
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class Quaternion.">
 				<caption>Class Summary</caption>
 				<thead>
 					<tr>
@@ -242,9 +242,9 @@ ul.inheritsList
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/Vector3.html#constructor">Vector3</a></b>(x, y, z)
+								<b><a href="../symbols/Quaternion.html#constructor">Quaternion</a></b>(w, x, y, z)
 							</div>
-							<div class="description">A vector class representing three dimensional space</div>
+							<div class="description">Quaternion</div>
 						</td>
 					</tr>
 				</tbody>
@@ -258,7 +258,7 @@ ul.inheritsList
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class Vector3.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class Quaternion.">
 					<caption>Method Summary</caption>
 					<thead>
 						<tr>
@@ -271,90 +271,136 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Vector3.html#add">add</a></b>(v)
+								<div class="fixedFont"><b><a href="../symbols/Quaternion.html#add">add</a></b>(q)
 								</div>
-								<div class="description">Adds vector v to the current vector and returns the result.</div>
+								<div class="description"></div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Vector3.html#cross">cross</a></b>(v)
+								<div class="fixedFont"><b><a href="../symbols/Quaternion.html#conjugate">conjugate</a></b>()
 								</div>
-								<div class="description">Calculates the cross product of the vector and vector parameter v and returns the result</div>
+								<div class="description">Returns the conjugate of the quaternion</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Vector3.html#dot">dot</a></b>(v)
+								<div class="fixedFont"><b><a href="../symbols/Quaternion.html#dot">dot</a></b>(q)
 								</div>
-								<div class="description">Calculates the dot product between the calling vector and parameter v</div>
+								<div class="description">Returns the dot product of two Quaternions</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">Quaternion.<b><a href="../symbols/Quaternion.html#.fromAxisAngle">fromAxisAngle</a></b>(axis, angle)
+								</div>
+								<div class="description">Creates a Quaternion from an axis and an angle</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">Quaternion.<b><a href="../symbols/Quaternion.html#.fromRotationMatrix">fromRotationMatrix</a></b>(m)
+								</div>
+								<div class="description">Creates a Quaternion from a rotation matrix</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Vector3.html#equals">equals</a></b>(v)
+								<div class="fixedFont"><b><a href="../symbols/Quaternion.html#inverse">inverse</a></b>()
 								</div>
-								<div class="description">Checks if the calling vector is equal to parameter vector v</div>
+								<div class="description">Returns the inverse of the calling quaternion</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Vector3.html#length">length</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/Quaternion.html#length">length</a></b>()
 								</div>
-								<div class="description">Calculates the length of the vector</div>
+								<div class="description">Calculates the length of the Quaternion</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Vector3.html#lengthSquared">lengthSquared</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/Quaternion.html#multiply">multiply</a></b>(q)
 								</div>
-								<div class="description">Calculates the length of the vector squared.</div>
+								<div class="description">Returns a Quaternion representing the result of multiplying the calling Quaternion by Quaternion q
+like q2 * q1 where q1 is applied before q2</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Vector3.html#multiplyScalar">multiplyScalar</a></b>(f)
+								<div class="fixedFont"><b><a href="../symbols/Quaternion.html#multiplyScalar">multiplyScalar</a></b>(f)
 								</div>
-								<div class="description">Multiplies each element of the vector with scalar f and returns the result</div>
+								<div class="description">Multiplies each element in the Quaternion by the scalar f</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Vector3.html#normalize">normalize</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/Quaternion.html#normalize">normalize</a></b>()
 								</div>
-								<div class="description">Creates a unit length version of the vector, which still points in the same direction as the original vector</div>
+								<div class="description">Creates a unit length version of the Quaternion</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">Quaternion.<b><a href="../symbols/Quaternion.html#.slerp">slerp</a></b>(t, source, target)
+								</div>
+								<div class="description">Returns a quaternion that has been slerped between source and target by t amount</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Vector3.html#subtract">subtract</a></b>(v)
+								<div class="fixedFont"><b><a href="../symbols/Quaternion.html#toAxisAngle">toAxisAngle</a></b>()
 								</div>
-								<div class="description">Subtracts vector v from the current vector and returns the result.</div>
+								<div class="description">Converts the Quaternion to an axis and an angle</div>
 							</td>
 						</tr>
 					
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Vector3.html#toString">toString</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/Quaternion.html#toRotationMatrix">toRotationMatrix</a></b>()
 								</div>
-								<div class="description">Returns a string containing the current state of the vector, useful for debugging purposes</div>
+								<div class="description">Converts the quaternion to a rotation matrix</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Quaternion.html#toString">toString</a></b>()
+								</div>
+								<div class="description">Returns a string containing the current state of the Quaternion</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Quaternion.html#transform">transform</a></b>(v)
+								</div>
+								<div class="description">Applies the quaternion rotation to the input vector and returns the result</div>
 							</td>
 						</tr>
 					
@@ -375,11 +421,11 @@ ul.inheritsList
 				</div>
 				
 				<div class="fixedFont">
-						<b>Vector3</b>(x, y, z)
+						<b>Quaternion</b>(w, x, y, z)
 				</div>
 				
 				<div class="description">
-					A vector class representing three dimensional space
+					Quaternion
 					
 				</div>
 				
@@ -391,19 +437,25 @@ ul.inheritsList
 						<dt class="heading">Parameters:</dt>
 						
 							<dt>
-								<span class="light fixedFont">{Number}</span>  <b>x</b>
+								 <b>w</b>
 								
 							</dt>
 								<dd></dd>
 						
 							<dt>
-								<span class="light fixedFont">{Number}</span>  <b>y</b>
+								 <b>x</b>
 								
 							</dt>
 								<dd></dd>
 						
 							<dt>
-								<span class="light fixedFont">{Number}</span>  <b>z</b>
+								 <b>y</b>
+								
+							</dt>
+								<dd></dd>
+						
+							<dt>
+								 <b>z</b>
 								
 							</dt>
 								<dd></dd>
@@ -432,12 +484,12 @@ ul.inheritsList
 					<a name="add"> </a>
 					<div class="fixedFont">
 					
-					<span class="light">{<a href="../symbols/Vector3.html">Vector3</a>}</span>
-					<b>add</b>(v)
+					
+					<b>add</b>(q)
 					
 					</div>
 					<div class="description">
-						Adds vector v to the current vector and returns the result.
+						
 						
 						
 					</div>
@@ -449,55 +501,37 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{<a href="../symbols/Vector3.html">Vector3</a>}</span> <b>v</b>
+									<b>q</b>
 									
 								</dt>
-								<dd>input vector</dd>
+								<dd></dd>
 							
 							</dl>
 						
 						
 						
 						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{<a href="../symbols/Vector3.html">Vector3</a>}</span> A vector containing the addition of the two input vectors</dd>
-							
-							</dl>
 						
 						
 						
 
 					<hr />
 				
-					<a name="cross"> </a>
+					<a name="conjugate"> </a>
 					<div class="fixedFont">
 					
-					<span class="light">{<a href="../symbols/Vector3.html">Vector3</a>}</span>
-					<b>cross</b>(v)
+					<span class="light">{<a href="../symbols/Quaternion.html">Quaternion</a>}</span>
+					<b>conjugate</b>()
 					
 					</div>
 					<div class="description">
-						Calculates the cross product of the vector and vector parameter v and returns the result
+						Returns the conjugate of the quaternion
 						
 						
 					</div>
 					
 					
 					
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{<a href="../symbols/Vector3.html">Vector3</a>}</span> <b>v</b>
-									
-								</dt>
-								<dd>input vector</dd>
-							
-							</dl>
 						
 						
 						
@@ -506,7 +540,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{<a href="../symbols/Vector3.html">Vector3</a>}</span> </dd>
+								<dd><span class="light fixedFont">{<a href="../symbols/Quaternion.html">Quaternion</a>}</span> </dd>
 							
 							</dl>
 						
@@ -519,11 +553,11 @@ ul.inheritsList
 					<div class="fixedFont">
 					
 					<span class="light">{Number}</span>
-					<b>dot</b>(v)
+					<b>dot</b>(q)
 					
 					</div>
 					<div class="description">
-						Calculates the dot product between the calling vector and parameter v
+						Returns the dot product of two Quaternions
 						
 						
 					</div>
@@ -535,10 +569,10 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{<a href="../symbols/Vector3.html">Vector3</a>}</span> <b>v</b>
+									<span class="light fixedFont">{<a href="../symbols/Quaternion.html">Quaternion</a>}</span> <b>q</b>
 									
 								</dt>
-								<dd>input vector</dd>
+								<dd>input quaternion</dd>
 							
 							</dl>
 						
@@ -558,15 +592,15 @@ ul.inheritsList
 
 					<hr />
 				
-					<a name="equals"> </a>
-					<div class="fixedFont">
+					<a name=".fromAxisAngle"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
-					<span class="light">{Boolean}</span>
-					<b>equals</b>(v)
+					<span class="light">{<a href="../symbols/Quaternion.html">Quaternion</a>}</span>
+					<span class="light">Quaternion.</span><b>fromAxisAngle</b>(axis, angle)
 					
 					</div>
 					<div class="description">
-						Checks if the calling vector is equal to parameter vector v
+						Creates a Quaternion from an axis and an angle
 						
 						
 					</div>
@@ -578,10 +612,16 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{<a href="../symbols/Vector3.html">Vector3</a>}</span> <b>v</b>
+									<span class="light fixedFont">{<a href="../symbols/Vector3.html">Vector3</a>}</span> <b>axis</b>
 									
 								</dt>
-								<dd>input vector</dd>
+								<dd>The rotation axis, must be a unit vector</dd>
+							
+								<dt>
+									<span class="light fixedFont">{Number}</span> <b>angle</b>
+									
+								</dt>
+								<dd>An angle in radians.  A positive angle will rotate anticlockwise around the axis</dd>
 							
 							</dl>
 						
@@ -592,7 +632,82 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{Boolean}</span> A Boolean value, true if each element of the calling vector match input vector v, false otherwise</dd>
+								<dd><span class="light fixedFont">{<a href="../symbols/Quaternion.html">Quaternion</a>}</span> </dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".fromRotationMatrix"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{<a href="../symbols/Quaternion.html">Quaternion</a>}</span>
+					<span class="light">Quaternion.</span><b>fromRotationMatrix</b>(m)
+					
+					</div>
+					<div class="description">
+						Creates a Quaternion from a rotation matrix
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{Matrix3x3}</span> <b>m</b>
+									
+								</dt>
+								<dd>rotation matrix</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Quaternion.html">Quaternion</a>}</span> </dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="inverse"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/Quaternion.html">Quaternion</a>}</span>
+					<b>inverse</b>()
+					
+					</div>
+					<div class="description">
+						Returns the inverse of the calling quaternion
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Quaternion.html">Quaternion</a>}</span> If the Quaternion cannot be inversed, a Quaternion with x,y,z,w == 0.0 is returned</dd>
 							
 							</dl>
 						
@@ -609,7 +724,7 @@ ul.inheritsList
 					
 					</div>
 					<div class="description">
-						Calculates the length of the vector
+						Calculates the length of the Quaternion
 						
 						
 					</div>
@@ -633,22 +748,33 @@ ul.inheritsList
 
 					<hr />
 				
-					<a name="lengthSquared"> </a>
+					<a name="multiply"> </a>
 					<div class="fixedFont">
 					
-					<span class="light">{Number}</span>
-					<b>lengthSquared</b>()
+					<span class="light">{<a href="../symbols/Quaternion.html">Quaternion</a>}</span>
+					<b>multiply</b>(q)
 					
 					</div>
 					<div class="description">
-						Calculates the length of the vector squared.  Useful if only a relative length
-check is required, since this is more performant than the length() method
+						Returns a Quaternion representing the result of multiplying the calling Quaternion by Quaternion q
+like q2 * q1 where q1 is applied before q2
 						
 						
 					</div>
 					
 					
 					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/Quaternion.html">Quaternion</a>}</span> <b>q</b>
+									
+								</dt>
+								<dd>input quaternion</dd>
+							
+							</dl>
 						
 						
 						
@@ -657,7 +783,7 @@ check is required, since this is more performant than the length() method
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{Number}</span> </dd>
+								<dd><span class="light fixedFont">{<a href="../symbols/Quaternion.html">Quaternion</a>}</span> </dd>
 							
 							</dl>
 						
@@ -669,12 +795,12 @@ check is required, since this is more performant than the length() method
 					<a name="multiplyScalar"> </a>
 					<div class="fixedFont">
 					
-					<span class="light">{<a href="../symbols/Vector3.html">Vector3</a>}</span>
+					<span class="light">{<a href="../symbols/Quaternion.html">Quaternion</a>}</span>
 					<b>multiplyScalar</b>(f)
 					
 					</div>
 					<div class="description">
-						Multiplies each element of the vector with scalar f and returns the result
+						Multiplies each element in the Quaternion by the scalar f
 						
 						
 					</div>
@@ -689,7 +815,7 @@ check is required, since this is more performant than the length() method
 									<span class="light fixedFont">{Number}</span> <b>f</b>
 									
 								</dt>
-								<dd>a value that will be multiplied with each element of the vector</dd>
+								<dd>input scalar</dd>
 							
 							</dl>
 						
@@ -700,7 +826,7 @@ check is required, since this is more performant than the length() method
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{<a href="../symbols/Vector3.html">Vector3</a>}</span> </dd>
+								<dd><span class="light fixedFont">{<a href="../symbols/Quaternion.html">Quaternion</a>}</span> </dd>
 							
 							</dl>
 						
@@ -712,12 +838,12 @@ check is required, since this is more performant than the length() method
 					<a name="normalize"> </a>
 					<div class="fixedFont">
 					
-					<span class="light">{<a href="../symbols/Vector3.html">Vector3</a>}</span>
+					<span class="light">{<a href="../symbols/Quaternion.html">Quaternion</a>}</span>
 					<b>normalize</b>()
 					
 					</div>
 					<div class="description">
-						Creates a unit length version of the vector, which still points in the same direction as the original vector
+						Creates a unit length version of the Quaternion
 						
 						
 					</div>
@@ -732,7 +858,7 @@ check is required, since this is more performant than the length() method
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{<a href="../symbols/Vector3.html">Vector3</a>}</span> </dd>
+								<dd><span class="light fixedFont">{<a href="../symbols/Quaternion.html">Quaternion</a>}</span> </dd>
 							
 							</dl>
 						
@@ -741,15 +867,15 @@ check is required, since this is more performant than the length() method
 
 					<hr />
 				
-					<a name="subtract"> </a>
-					<div class="fixedFont">
+					<a name=".slerp"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
-					<span class="light">{<a href="../symbols/Vector3.html">Vector3</a>}</span>
-					<b>subtract</b>(v)
+					<span class="light">{<a href="../symbols/Quaternion.html">Quaternion</a>}</span>
+					<span class="light">Quaternion.</span><b>slerp</b>(t, source, target)
 					
 					</div>
 					<div class="description">
-						Subtracts vector v from the current vector and returns the result.
+						Returns a quaternion that has been slerped between source and target by t amount
 						
 						
 					</div>
@@ -761,10 +887,22 @@ check is required, since this is more performant than the length() method
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{<a href="../symbols/Vector3.html">Vector3</a>}</span> <b>v</b>
+									<span class="light fixedFont">{Number}</span> <b>t</b>
 									
 								</dt>
-								<dd>input vector</dd>
+								<dd>A value between 0.0 and 1.0 inclusive</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/Quaternion.html">Quaternion</a>}</span> <b>source</b>
+									
+								</dt>
+								<dd>The starting quaternion value</dd>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/Quaternion.html">Quaternion</a>}</span> <b>target</b>
+									
+								</dt>
+								<dd>The target quaternion value</dd>
 							
 							</dl>
 						
@@ -775,7 +913,71 @@ check is required, since this is more performant than the length() method
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{<a href="../symbols/Vector3.html">Vector3</a>}</span> A vector containing the subtraction of the two input vectors</dd>
+								<dd><span class="light fixedFont">{<a href="../symbols/Quaternion.html">Quaternion</a>}</span> </dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="toAxisAngle"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/Vector4.html">Vector4</a>}</span>
+					<b>toAxisAngle</b>()
+					
+					</div>
+					<div class="description">
+						Converts the Quaternion to an axis and an angle
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Vector4.html">Vector4</a>}</span> Containing the values x,y,z,angle where angle is in radians</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="toRotationMatrix"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/Matrix4x4.html">Matrix4x4</a>}</span>
+					<b>toRotationMatrix</b>()
+					
+					</div>
+					<div class="description">
+						Converts the quaternion to a rotation matrix
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Matrix4x4.html">Matrix4x4</a>}</span> </dd>
 							
 							</dl>
 						
@@ -792,7 +994,7 @@ check is required, since this is more performant than the length() method
 					
 					</div>
 					<div class="description">
-						Returns a string containing the current state of the vector, useful for debugging purposes
+						Returns a string containing the current state of the Quaternion
 						
 						
 					</div>
@@ -808,6 +1010,49 @@ check is required, since this is more performant than the length() method
 							<dt class="heading">Returns:</dt>
 							
 								<dd><span class="light fixedFont">{String}</span> </dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="transform"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/Vector3.html">Vector3</a>}</span>
+					<b>transform</b>(v)
+					
+					</div>
+					<div class="description">
+						Applies the quaternion rotation to the input vector and returns the result
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{<a href="../symbols/Vector3.html">Vector3</a>}</span> <b>v</b>
+									
+								</dt>
+								<dd>input vector to be rotated</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Vector3.html">Vector3</a>}</span> The rotated vector</dd>
 							
 							</dl>
 						
