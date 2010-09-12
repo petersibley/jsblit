@@ -1,0 +1,86 @@
+<html>
+<head>
+</head>
+
+<body>
+<canvas id="myCanvas" width="3000" height="2000"></canvas>
+
+<script type="text/javascript">
+
+var img = new Image();
+img.onload = function()
+{
+    //alert(img.width + ',' + img.height);
+    var canvas=document.getElementById('myCanvas');
+    var ctx=canvas.getContext('2d');
+    
+    //ctx.beginPath();
+    //ctx.rect(100,100,800,450);
+    //ctx.clip();
+    //ctx.drawImage(img, 0, 0, 2048,1536,0,0,1024,768);
+    
+    //see: http://dev.w3.org/html5/canvas-api/canvas-2d-api.html#pixel-manipulation
+    ctx.drawImage(img, 0, 0);
+    
+    // get the image data to manipulate 
+    var input = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+    // get an empty slate to put the data into 
+    var output = ctx.createImageData(canvas.width, canvas.height);
+
+    // alias some variables for convenience
+    // notice that we are using input.width and input.height here
+    // as they might not be the same as canvas.width and canvas.height
+    // (in particular, they might be different on high-res displays)
+    var w = input.width, h = input.height;
+    var inputData = input.data;
+    var outputData = output.data;
+
+    // edge detection 
+    for (var y = 1; y < h-1; y += 1) {
+        for (var x = 1; x < w-1; x += 1) {
+            for (var c = 0; c < 3; c += 1) {
+                var i = (y*w + x)*4 + c;
+                       outputData[i] = 127 + -inputData[i - w*4 - 4] -   inputData[i - w*4] - inputData[i - w*4 + 4] +
+                                             -inputData[i - 4]       + 8*inputData[i]       - inputData[i + 4] +
+                                             -inputData[i + w*4 - 4] -   inputData[i + w*4] - inputData[i + w*4 + 4];
+            }
+            outputData[(y*w + x)*4 + 3] = 255; // alpha
+        }
+    }
+
+    // put the image data back after manipulation 
+    ctx.putImageData(output, 0, 0);
+};
+img.src='./escher_2048x1536.jpg';
+
+//var canvas=document.getElementById('myCanvas');
+//var ctx=canvas.getContext('2d');
+//ctx.fillStyle='#FF0000';
+
+//ctx.save();
+//ctx.translate(100, 50);
+//ctx.rotate(Math.PI / 4);
+//ctx.scale(1,1);
+
+//m11 m12 dx
+//m21 m22 dy
+//0   0   1
+
+//ctx.transform(2,0,0,2,100,0);
+//ctx.fillRect(100,100,200, 200);
+
+//ctx.globalCompositeOperation = 'source-atop';
+//ctx.fillStyle='rgba(0,255,0, 0.5)';
+//ctx.fillRect(200,200,200, 200);
+
+//ctx.restore();
+
+//ctx.clip();
+
+
+
+</script>
+
+</body>
+</html>

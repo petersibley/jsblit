@@ -1,0 +1,16 @@
+- Ability to instantiate high level objects (such as cube viewer) from XML/JSON embedded in the page.  User includes our js library and automatically parses the DOM and instantiates an object based on markup in the page, so no JS skills necessary.
+
+High Level Components:
+- Collada parsing
+- Cube viewer
+- Charts
+- Picture Gallery
+- Networking Stack
+- Scene graph (include BSP tree?)
+- GRaphics abstraction
+- Math
+- User input
+- Simple Game Framework
+- Performance tips/tricks
+- Book
+...
