@@ -23,7 +23,6 @@ lint: $(MERGEDFILE)
 compile: $(SRC)
 	$(JAVA) -jar $(COMPILERJAR)  --warning_level=VERBOSE $(patsubst %,--js %,$(SRC)) --js_output_file $(OUTFILE)
 
-
 test: compile 
 	open tests/index.html
 
