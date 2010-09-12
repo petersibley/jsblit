@@ -11,20 +11,36 @@ function Quaternion(w, x, y, z) {
     this.z = z;
 }
 
+//TODO drop in matrix3x3 here
+
 /**
 * Creates a Quaternion from a rotation matrix
-* @param {Matrix3x3} m rotation matrix
-* @return {Quaternion}
+* @param {Matrix4x4} m rotation matrix  
+* @return {Quaternion} 
 */
 Quaternion.fromRotationMatrix = function (m) {
-    var trace, temp, result, largestIndex;
-    
     //See: http://www.euclideanspace.com/maths/geometry/rotations/conversions/matrixToQuaternion/index.htm
+
+	/*jslint onevar: false */
+	//JSLint and I don't agree, as type annotions mean we need multiple vars.
+
+	/** @type {number} */
+    var trace; 
+
+	/** @type {number} */
+	var temp; 
+
+	/** @type {Quaternion} */
+	var result;
+
+	/** @type {number} */
+	var largestIndex;
     
+    
+    result = new Quaternion(0, 0, 0, 0);
     trace = m.m11 + m.m22 + m.m33;
     if (MathHelper.abs(trace) > MathHelper.zeroTolerance)
     {
-        result = new Quaternion(0, 0, 0, 0);
         result.w = MathHelper.sqrt(trace + 1) * 0.5;
         temp = 1.0 / (4 * result.w);
         result.x = (m.m32 - m.m23) * temp;
@@ -46,40 +62,39 @@ Quaternion.fromRotationMatrix = function (m) {
         {
             largestIndex = 2;
         }
-        
-        if (largestIndex === 0)
-        {
-            temp = 1.0 / (4 * this.x);
-            return new Quaternion((m.m32 - m.m23) * temp,
-                                  0.5 * MathHelper.sqrt(m.m11 - m.m22 - m.m33 + 1),
-                                  (m.m12 + m.m21) * temp,
-                                  (m.m13 + m.m31) * temp);
-        }
-        else if (largestIndex === 1)
-        {
-            temp = 1.0 / (4 * this.y);
-            return new Quaternion((m.m13 - m.m31) * temp,
-                                  (m.m12 + m.m21) * temp,
-                                  0.5 * MathHelper.sqrt(m.m22 - m.m11 - m.m33 + 1),
-                                  (m.m23 + m.m32) * temp);
-        }
-        else
-        {
-            temp = 1.0 / (4 * this.z);
-            return new Quaternion((m.m21 - m.m12) * temp,
-                                  (m.m13 + m.m31) * temp,
-                                  (m.m32 + m.m23) * temp,
-                                  0.5 * MathHelper.sqrt(m.m33 - m.m11 - m.m22 + 1));
-        }
+       
+	    switch (largestIndex)
+		{
+		case 0:
+			result.x = 0.5 * MathHelper.sqrt(m.m11 - m.m22 - m.m33 + 1);
+			temp = 1.0 / (4 * result.x);
+			result.w = (m.m32 - m.m23) * temp;
+			result.y = (m.m12 + m.m21) * temp;
+			result.z = (m.m13 + m.m31) * temp;
+			break;
+		case 1:
+			result.y = 0.5 * MathHelper.sqrt(m.m22 - m.m11 - m.m33 + 1);
+			temp = 1.0 / (4 * result.y);
+			result.w = (m.m13 - m.m31) * temp;
+			result.x = (m.m12 + m.m21) * temp;
+			result.z = (m.m23 + m.m32) * temp;
+			break;
+		case 2:
+			result.z = 0.5 * MathHelper.sqrt(m.m33 - m.m11 - m.m22 + 1);
+			temp = 1.0 / (4 * result.z);
+			result.w = (m.m21 - m.m12) * temp;
+			result.x = (m.m13 + m.m31) * temp;
+			result.y = (m.m32 + m.m23) * temp;
+			break;
+		}
     }
-    
     return result;
 };
 
 /**
 * Creates a Quaternion from an axis and an angle
 * @param {Vector3} axis The rotation axis, must be a unit vector
-* @param {Number} angle An angle in radians.  A positive angle will rotate anticlockwise around the axis
+* @param {number} angle An angle in radians.  A positive angle will rotate anticlockwise around the axis
 * @return {Quaternion}
 */
 Quaternion.fromAxisAngle = function (axis, angle) {
@@ -91,7 +106,7 @@ Quaternion.fromAxisAngle = function (axis, angle) {
 
 /**
 * Returns a quaternion that has been slerped between source and target by t amount
-* @param {Number} t A value between 0.0 and 1.0 inclusive
+* @param {number} t A value between 0.0 and 1.0 inclusive
 * @param {Quaternion} source The starting quaternion value
 * @param {Quaternion} target The target quaternion value
 * @return {Quaternion}
@@ -127,7 +142,7 @@ Quaternion.prototype =
     /**
     * Returns the dot product of two Quaternions
     * @param {Quaternion} q input quaternion
-    * @return {Number}
+    * @return {number}
     */
     dot: function (q) {
         return this.w * q.w + this.x * q.x + this.y * q.y + this.z * q.z;
@@ -135,7 +150,7 @@ Quaternion.prototype =
     
     /**
     * Calculates the length of the Quaternion
-    * @return {Number}
+    * @return {number}
     */
     length: function () {
         return MathHelper.sqrt(this.w * this.w + this.x * this.x + this.y * this.y + this.z * this.z);
@@ -223,7 +238,7 @@ Quaternion.prototype =
     
     /**
     * Multiplies each element in the Quaternion by the scalar f
-    * @param {Number} f input scalar
+    * @param {number} f input scalar
     * @return {Quaternion}
     */
     multiplyScalar: function (f) {
@@ -274,7 +289,7 @@ Quaternion.prototype =
     
     /**
     * Returns a string containing the current state of the Quaternion
-    * @return {String}
+    * @return {string}
     */
     toString: function () {
         return '[' + this.w + ', ' + this.x + ', ' + this.y + ', ' + this.z + ']';

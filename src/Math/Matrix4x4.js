@@ -2,22 +2,22 @@
 /**
 * Creates a 4x4 matrix
 * @constructor
-* @param {Number} m11
-* @param {Number} m12
-* @param {Number} m13
-* @param {Number} m14
-* @param {Number} m21
-* @param {Number} m22
-* @param {Number} m23
-* @param {Number} m24
-* @param {Number} m31
-* @param {Number} m32
-* @param {Number} m33
-* @param {Number} m34
-* @param {Number} m41
-* @param {Number} m42
-* @param {Number} m43
-* @param {Number} m44
+* @param {number} m11
+* @param {number} m12
+* @param {number} m13
+* @param {number} m14
+* @param {number} m21
+* @param {number} m22
+* @param {number} m23
+* @param {number} m24
+* @param {number} m31
+* @param {number} m32
+* @param {number} m33
+* @param {number} m34
+* @param {number} m41
+* @param {number} m42
+* @param {number} m43
+* @param {number} m44
 */
 function Matrix4x4(m11, m12, m13, m14,
                    m21, m22, m23, m24,
@@ -54,9 +54,9 @@ Matrix4x4.createIdentity = function () {
 
 /**
 * Returns a scaling matrix
-* @param {Number} sx The x scaling factor
-* @param {Number} sy The y scaling factor
-* @param {Number} sz The z scaling factor
+* @param {number} sx The x scaling factor
+* @param {number} sy The y scaling factor
+* @param {number} sz The z scaling factor
 * @return {Matrix4x4}
 */
 Matrix4x4.createScale = function (sx, sy, sz) {
@@ -68,9 +68,9 @@ Matrix4x4.createScale = function (sx, sy, sz) {
 
 /**
 * Returns a translation matrix to be used with a column vector p = M * v
-* @param {Number} tx The x translation value
-* @param {Number} ty The y translation value
-* @param {Number} tz The z translation value
+* @param {number} tx The x translation value
+* @param {number} ty The y translation value
+* @param {number} tz The z translation value
 * @return {Matrix4x4}
 */
 Matrix4x4.createTranslation = function (tx, ty, tz) {
@@ -83,7 +83,7 @@ Matrix4x4.createTranslation = function (tx, ty, tz) {
 /**
 * Returns a matrix that rotates a vector around the x axis, from the origin. The rotation matrix
 * is a right handed rotation, a positive angle will rotate the vector anticlockwise around the x axis
-* @param {Number} angle The angle to rotate in radians
+* @param {number} angle The angle to rotate in radians
 * @return {Matrix4x4}
 */
 Matrix4x4.createRotationX = function (angle) {
@@ -96,7 +96,7 @@ Matrix4x4.createRotationX = function (angle) {
 /**
 * Returns a matrix that rotates a vector around the y axis, from the origin. The rotation matrix
 * is a right handed rotation, a positive angle will rotate the vector anticlockwise around the y axis
-* @param {Number} angle The angle to rotate in radians
+* @param {number} angle The angle to rotate in radians
 * @return {Matrix4x4}
 */
 Matrix4x4.createRotationY = function (angle) {
@@ -109,7 +109,7 @@ Matrix4x4.createRotationY = function (angle) {
 /**
 * Returns a matrix that rotates a vector around the z axis, from the origin. The rotation matrix
 * is a right handed rotation, a positive angle will rotate the vector anticlockwise around the z axis
-* @param {Number} angle The angle to rotate in radians
+* @param {number} angle The angle to rotate in radians
 * @return {Matrix4x4}
 */
 Matrix4x4.createRotationZ = function (angle) {
@@ -174,7 +174,7 @@ Matrix4x4.prototype =
 
     /**
     * Multiples each element of the matrix by the scalar f and returns the result
-    * @param {Number} f input scalar
+    * @param {number} f input scalar
     * @return {Matrix4x4}
     */
     multiplyScalar: function (f) {
@@ -221,7 +221,7 @@ Matrix4x4.prototype =
     
     /**
     * Returns the determinant of the calling matrix
-    * @return {Number}
+    * @return {number}
     */
     determinant: function () {
         var a, b, c, d, e, f, g, h, i, j, k, l;
@@ -295,7 +295,7 @@ Matrix4x4.prototype =
 
     /**
     * Returns a string containing the current state of the matrix.  Useful for debugging purposes
-    * @return {String}
+    * @return {string}
     */
     toString: function () {
         return this.m11 + ", " + this.m12 + ", " + this.m13 + ", " + this.m14 + "\n" +

@@ -7,8 +7,8 @@ JSDOC=../../tools/jsdoc_toolkit/2.3.2/
 DOCOUTDIR=./docs/
 SRC=MathHelper.js Vector2.js Vector3.js Vector4.js Matrix4x4.js Quaternion.js 
 JAVA=java
-all: compile
-concatenate : $(SRC) 
+all:clean lint compile documentation
+$(MERGEDFILE) : $(SRC) 
 	rm -f $(MERGEDFILE)
 	cat $(SRC) >> $(MERGEDFILE)
 
@@ -16,16 +16,16 @@ clean:
 	rm -f $(MERGEDFILE) $(OUTFILE)
 	rm -rf $(DOCOUTDIR)
 
-$(MERGEDFILE) : concatenate
 
 lint: $(MERGEDFILE)
-	$(JAVA) -jar $(RHINOJAR)  $(JSLINT) $<
+	$(JAVA) -jar $(RHINOJAR)  $(JSLINT) $< 
 
-compile: concatenate lint
-	$(JAVA) -jar $(COMPILERJAR) --js $(MERGEDFILE)  --js_output_file $(OUTFILE)
+compile: $(SRC)
+	$(JAVA) -jar $(COMPILERJAR)  --warning_level=VERBOSE $(patsubst %,--js %,$(SRC)) --js_output_file $(OUTFILE)
 
-test: concatenate
+
+test: compile 
 	open tests/index.html
 
-documentation:	concatenate
+documentation:	$(MERGEDFILE)
 	$(JAVA) -jar $(JSDOC)jsrun.jar $(JSDOC)app/run.js -d=$(DOCOUTDIR) -a -t=$(JSDOC)templates/jsdoc $(MERGEDFILE)

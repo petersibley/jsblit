@@ -1,9 +1,9 @@
 /**
 * A vector class representing three dimensional space
 * @constructor
-* @param {Number} x
-* @param {Number} y
-* @param {Number} z
+* @param {number} x
+* @param {number} y
+* @param {number} z
 */
 function Vector3(x, y, z)
 {
@@ -17,7 +17,7 @@ Vector3.prototype =
     /**
     * Calculates the dot product between the calling vector and parameter v
     * @param {Vector3} v input vector
-    * @return {Number}
+    * @return {number}
     */
     dot: function (v) {
         return this.x * v.x + this.y * v.y + this.z * v.z;
@@ -54,7 +54,7 @@ Vector3.prototype =
 
     /**
     * Calculates the length of the vector
-    * @return {Number}
+    * @return {number}
     */
     length: function () {
         return MathHelper.sqrt(this.x * this.x + this.y * this.y + this.z * this.z);
@@ -63,7 +63,7 @@ Vector3.prototype =
     /**
     * Calculates the length of the vector squared.  Useful if only a relative length
     * check is required, since this is more performant than the length() method
-    * @return {Number}
+    * @return {number}
     */
     lengthSquared: function () {
         return this.x * this.x + this.y * this.y + this.z * this.z;
@@ -93,7 +93,7 @@ Vector3.prototype =
 
     /**
     * Multiplies each element of the vector with scalar f and returns the result
-    * @param {Number} f a value that will be multiplied with each element of the vector
+    * @param {number} f a value that will be multiplied with each element of the vector
     * @return {Vector3}
     */
     multiplyScalar: function (f) {
@@ -105,7 +105,7 @@ Vector3.prototype =
     /**
     * Checks if the calling vector is equal to parameter vector v
     * @param {Vector3} v input vector
-    * @return {Boolean} A Boolean value, true if each element of the calling vector match input vector v, false otherwise
+    * @return {boolean} A Boolean value, true if each element of the calling vector match input vector v, false otherwise
     */
     equals: function (v) {
         return this.x === v.x &&
@@ -115,7 +115,7 @@ Vector3.prototype =
     
     /**
     * Returns a string containing the current state of the vector, useful for debugging purposes
-    * @return {String}
+    * @return {string}
     */
     toString: function () {
         return '[' + this.x + ', ' + this.y + ', ' + this.z + ']';

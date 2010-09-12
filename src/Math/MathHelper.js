@@ -7,21 +7,21 @@ var MathHelper = {};
 /**
 * A small value indicating the maximum precision used for equaliy checks
 * @const
-* @type {Number}
+* @type {number}
 */
 MathHelper.zeroTolerance = 0.000001;
 
 /**
 * PI constant
 * @const
-* @type {Number}
+* @type {number}
 */
 MathHelper.PI = 3.141592653589793238462643383279;
 
 /**
 * Returns the sin of the angle parameter
-* @param {Number} angle in radians
-* @return {Number}
+* @param {number} angle in radians
+* @return {number}
 */
 MathHelper.sin = function (angle) {
     return Math.sin(angle);
@@ -29,8 +29,8 @@ MathHelper.sin = function (angle) {
 
 /**
 * Returns the asin of the angle parameter
-* @param {Number} angle in radians
-* @return {Number}
+* @param {number} angle in radians
+* @return {number}
 */
 MathHelper.asin = function (angle) {
     return Math.asin(angle);
@@ -38,8 +38,8 @@ MathHelper.asin = function (angle) {
 
 /**
 * Returns the cos of the angle parameter
-* @param {Number} angle in radians
-* @return {Number}
+* @param {number} angle in radians
+* @return {number}
 */
 MathHelper.cos = function (angle) {
     return Math.cos(angle);
@@ -47,33 +47,33 @@ MathHelper.cos = function (angle) {
 
 /**
 * Returns the acos of the angle parameter
-* @param {Number} angle in radians
-* @return {Number}
+* @param {number} angle in radians
+* @return {number}
 */
 MathHelper.acos = function (angle) {
     return Math.acos(angle);
 };
 
 /** Returns the tangent of the angle parameter
-* @param {Number} angle in radians
-* @return {Number}
+* @param {number} angle in radians
+* @return {number}
 */
 MathHelper.tan = function (angle) {
 	return Math.tan(angle);
 };
 
 /** Returns the arc tangent of the angle parameter
-* @param {Number} angle in radians
-* @return {Number}
+* @param {number} angle in radians
+* @return {number}
 */
 MathHelper.atan = function (angle) {
 	return Math.atan(angle);
 };
 
 /** Returns the arc tangent of the quotient of y/x. (angle in radians between x-axis and point (x,y) 
-* @param {Number} y
-* @param {Number} x
-* @return {Number}
+* @param {number} y
+* @param {number} x
+* @return {number}
 */
 MathHelper.atan2 = function (y, x) {
 	return Math.atan2(y, x);
@@ -81,8 +81,8 @@ MathHelper.atan2 = function (y, x) {
 
 /**
 * Returns the square root of the input parameter
-* @param {Number} v input value
-* @return {Number}
+* @param {number} v input value
+* @return {number}
 */
 MathHelper.sqrt = function (v) {
     return Math.sqrt(v);
@@ -90,8 +90,8 @@ MathHelper.sqrt = function (v) {
 
 /**
 * Returns the inverse square root of the input parameter
-* @param {Number} v input value
-* @return {Number}
+* @param {number} v input value
+* @return {number}
 */
 MathHelper.invSqrt = function (v) {
     return 1.0 / Math.sqrt(v);
@@ -99,8 +99,8 @@ MathHelper.invSqrt = function (v) {
 
 /**
 * Returns the absolute value of the input parameter
-* @param {Number} v input value
-* @return {Number}
+* @param {number} v input value
+* @return {number}
 */
 MathHelper.abs = function (v) {
     return Math.abs(v);
@@ -108,8 +108,8 @@ MathHelper.abs = function (v) {
 
  /**
 * Returns if the value is finite (i.e., less than POSITIVE_INFINITY and greater than NEGATIVE_INFINITY)
-* @param {Number} v input value
-* @return {Boolean} 
+* @param {number} v input value
+* @return {boolean} 
 */
 MathHelper.isFinite = function (v) {
 	return v > Number.NEGATIVE_INFINITY && v < Number.POSITIVE_INFINITY;
@@ -117,10 +117,10 @@ MathHelper.isFinite = function (v) {
 
 /**
 * Returns the value v , clamped to [min,max] interval (so v > max would be max.)
-* @param {Number} v input value
-* @param {Number} min lower bound (inclusive) that we want to clamp v against.
-* @param {Number} max upper bound (inclusiveP that we want to clamp v against.
-* @return {Number}
+* @param {number} v input value
+* @param {number} min lower bound (inclusive) that we want to clamp v against.
+* @param {number} max upper bound (inclusiveP that we want to clamp v against.
+* @return {number}
 */
 MathHelper.clamp = function (v, min, max) {
 	return (Math.min(Math.max(v, min), max)); 

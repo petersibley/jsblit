@@ -354,6 +354,15 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
+								<div class="fixedFont">MathHelper.<b><a href="../symbols/MathHelper.html#.clamp">clamp</a></b>(v, min, max)
+								</div>
+								<div class="description">Returns the value v , clamped to [min,max] interval (so v > max would be max.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
 								<div class="fixedFont">MathHelper.<b><a href="../symbols/MathHelper.html#.cos">cos</a></b>(angle)
 								</div>
 								<div class="description">Returns the cos of the angle parameter</div>
@@ -366,6 +375,15 @@ ul.inheritsList
 								<div class="fixedFont">MathHelper.<b><a href="../symbols/MathHelper.html#.invSqrt">invSqrt</a></b>(v)
 								</div>
 								<div class="description">Returns the inverse square root of the input parameter</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">MathHelper.<b><a href="../symbols/MathHelper.html#.isFinite">isFinite</a></b>(v)
+								</div>
+								<div class="description">Returns if the value is finite (i.e.</div>
 							</td>
 						</tr>
 					
@@ -496,7 +514,7 @@ ul.inheritsList
 					<a name=".abs"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
-					<span class="light">{Number}</span>
+					<span class="light">{number}</span>
 					<span class="light">MathHelper.</span><b>abs</b>(v)
 					
 					</div>
@@ -513,7 +531,7 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{Number}</span> <b>v</b>
+									<span class="light fixedFont">{number}</span> <b>v</b>
 									
 								</dt>
 								<dd>input value</dd>
@@ -527,7 +545,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{Number}</span> </dd>
+								<dd><span class="light fixedFont">{number}</span> </dd>
 							
 							</dl>
 						
@@ -539,7 +557,7 @@ ul.inheritsList
 					<a name=".acos"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
-					<span class="light">{Number}</span>
+					<span class="light">{number}</span>
 					<span class="light">MathHelper.</span><b>acos</b>(angle)
 					
 					</div>
@@ -556,7 +574,7 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{Number}</span> <b>angle</b>
+									<span class="light fixedFont">{number}</span> <b>angle</b>
 									
 								</dt>
 								<dd>in radians</dd>
@@ -570,7 +588,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{Number}</span> </dd>
+								<dd><span class="light fixedFont">{number}</span> </dd>
 							
 							</dl>
 						
@@ -582,7 +600,7 @@ ul.inheritsList
 					<a name=".asin"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
-					<span class="light">{Number}</span>
+					<span class="light">{number}</span>
 					<span class="light">MathHelper.</span><b>asin</b>(angle)
 					
 					</div>
@@ -599,7 +617,7 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{Number}</span> <b>angle</b>
+									<span class="light fixedFont">{number}</span> <b>angle</b>
 									
 								</dt>
 								<dd>in radians</dd>
@@ -613,7 +631,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{Number}</span> </dd>
+								<dd><span class="light fixedFont">{number}</span> </dd>
 							
 							</dl>
 						
@@ -625,7 +643,7 @@ ul.inheritsList
 					<a name=".atan"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
-					<span class="light">{Number}</span>
+					<span class="light">{number}</span>
 					<span class="light">MathHelper.</span><b>atan</b>(angle)
 					
 					</div>
@@ -642,7 +660,7 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{Number}</span> <b>angle</b>
+									<span class="light fixedFont">{number}</span> <b>angle</b>
 									
 								</dt>
 								<dd>in radians</dd>
@@ -656,7 +674,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{Number}</span> </dd>
+								<dd><span class="light fixedFont">{number}</span> </dd>
 							
 							</dl>
 						
@@ -668,7 +686,7 @@ ul.inheritsList
 					<a name=".atan2"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
-					<span class="light">{Number}</span>
+					<span class="light">{number}</span>
 					<span class="light">MathHelper.</span><b>atan2</b>(y, x)
 					
 					</div>
@@ -685,13 +703,13 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{Number}</span> <b>y</b>
+									<span class="light fixedFont">{number}</span> <b>y</b>
 									
 								</dt>
 								<dd></dd>
 							
 								<dt>
-									<span class="light fixedFont">{Number}</span> <b>x</b>
+									<span class="light fixedFont">{number}</span> <b>x</b>
 									
 								</dt>
 								<dd></dd>
@@ -705,7 +723,62 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{Number}</span> </dd>
+								<dd><span class="light fixedFont">{number}</span> </dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".clamp"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{number}</span>
+					<span class="light">MathHelper.</span><b>clamp</b>(v, min, max)
+					
+					</div>
+					<div class="description">
+						Returns the value v , clamped to [min,max] interval (so v > max would be max.)
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{number}</span> <b>v</b>
+									
+								</dt>
+								<dd>input value</dd>
+							
+								<dt>
+									<span class="light fixedFont">{number}</span> <b>min</b>
+									
+								</dt>
+								<dd>lower bound (inclusive) that we want to clamp v against.</dd>
+							
+								<dt>
+									<span class="light fixedFont">{number}</span> <b>max</b>
+									
+								</dt>
+								<dd>upper bound (inclusiveP that we want to clamp v against.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{number}</span> </dd>
 							
 							</dl>
 						
@@ -717,7 +790,7 @@ ul.inheritsList
 					<a name=".cos"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
-					<span class="light">{Number}</span>
+					<span class="light">{number}</span>
 					<span class="light">MathHelper.</span><b>cos</b>(angle)
 					
 					</div>
@@ -734,7 +807,7 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{Number}</span> <b>angle</b>
+									<span class="light fixedFont">{number}</span> <b>angle</b>
 									
 								</dt>
 								<dd>in radians</dd>
@@ -748,7 +821,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{Number}</span> </dd>
+								<dd><span class="light fixedFont">{number}</span> </dd>
 							
 							</dl>
 						
@@ -760,7 +833,7 @@ ul.inheritsList
 					<a name=".invSqrt"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
-					<span class="light">{Number}</span>
+					<span class="light">{number}</span>
 					<span class="light">MathHelper.</span><b>invSqrt</b>(v)
 					
 					</div>
@@ -777,7 +850,7 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{Number}</span> <b>v</b>
+									<span class="light fixedFont">{number}</span> <b>v</b>
 									
 								</dt>
 								<dd>input value</dd>
@@ -791,7 +864,50 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{Number}</span> </dd>
+								<dd><span class="light fixedFont">{number}</span> </dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".isFinite"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{boolean}</span>
+					<span class="light">MathHelper.</span><b>isFinite</b>(v)
+					
+					</div>
+					<div class="description">
+						Returns if the value is finite (i.e., less than POSITIVE_INFINITY and greater than NEGATIVE_INFINITY)
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<span class="light fixedFont">{number}</span> <b>v</b>
+									
+								</dt>
+								<dd>input value</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{boolean}</span> </dd>
 							
 							</dl>
 						
@@ -803,7 +919,7 @@ ul.inheritsList
 					<a name=".sin"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
-					<span class="light">{Number}</span>
+					<span class="light">{number}</span>
 					<span class="light">MathHelper.</span><b>sin</b>(angle)
 					
 					</div>
@@ -820,7 +936,7 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{Number}</span> <b>angle</b>
+									<span class="light fixedFont">{number}</span> <b>angle</b>
 									
 								</dt>
 								<dd>in radians</dd>
@@ -834,7 +950,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{Number}</span> </dd>
+								<dd><span class="light fixedFont">{number}</span> </dd>
 							
 							</dl>
 						
@@ -846,7 +962,7 @@ ul.inheritsList
 					<a name=".sqrt"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
-					<span class="light">{Number}</span>
+					<span class="light">{number}</span>
 					<span class="light">MathHelper.</span><b>sqrt</b>(v)
 					
 					</div>
@@ -863,7 +979,7 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{Number}</span> <b>v</b>
+									<span class="light fixedFont">{number}</span> <b>v</b>
 									
 								</dt>
 								<dd>input value</dd>
@@ -877,7 +993,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{Number}</span> </dd>
+								<dd><span class="light fixedFont">{number}</span> </dd>
 							
 							</dl>
 						
@@ -889,7 +1005,7 @@ ul.inheritsList
 					<a name=".tan"> </a>
 					<div class="fixedFont">&lt;static&gt; 
 					
-					<span class="light">{Number}</span>
+					<span class="light">{number}</span>
 					<span class="light">MathHelper.</span><b>tan</b>(angle)
 					
 					</div>
@@ -906,7 +1022,7 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{Number}</span> <b>angle</b>
+									<span class="light fixedFont">{number}</span> <b>angle</b>
 									
 								</dt>
 								<dd>in radians</dd>
@@ -920,7 +1036,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{Number}</span> </dd>
+								<dd><span class="light fixedFont">{number}</span> </dd>
 							
 							</dl>
 						
@@ -941,7 +1057,7 @@ ul.inheritsList
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.3.2 on Fri Sep 10 2010 21:55:02 GMT-0700 (PDT)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.3.2 on Sat Sep 11 2010 20:35:25 GMT-0700 (PDT)
 		</div>
 	</body>
 </html>

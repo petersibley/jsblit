@@ -1,8 +1,8 @@
 /**
 * A vector class representing two dimensional space
 * @constructor
-* @param {Number} x
-* @param {Number} y
+* @param {number} x
+* @param {number} y
 */
 function Vector2(x, y)
 {
@@ -15,7 +15,7 @@ Vector2.prototype =
     /**
     * Calculates the dot product between the calling vector and parameter v
     * @param {Vector2} v input vector
-    * @return {Number}
+    * @return {number}
     */
     dot: function (v) {
         return this.x * v.x + this.y * v.y;
@@ -48,7 +48,7 @@ Vector2.prototype =
 
     /**
     * Calculates the length of the vector
-    * @return {Number}
+    * @return {number}
     */
     length: function () {
         return MathHelper.sqrt(this.x * this.x + this.y * this.y);
@@ -57,7 +57,7 @@ Vector2.prototype =
     /**
     * Calculates the length of the vector squared.  Useful if only a relative length
     * check is required, since this is more performant than the length() method
-	* @return {Number}
+	* @return {number}
     */
     lengthSquared: function () {
         return this.x * this.x + this.y * this.y;
@@ -85,7 +85,7 @@ Vector2.prototype =
 
     /**
     * Multiplies each element of the vector with scalar f and returns the result
-    * @param {Number} f a value that will be multiplied with each element of the vector
+    * @param {number} f a value that will be multiplied with each element of the vector
     * @return {Vector2}
     */
     multiplyScalar: function (f) {
@@ -96,7 +96,7 @@ Vector2.prototype =
     /**
     * Checks if the calling vector is equal to parameter vector v
     * @param {Vector2} v input vector
-    * @returns {Boolean} A Boolean value, true if each element of the calling vector match input vector v, false otherwise
+    * @returns {boolean} A Boolean value, true if each element of the calling vector match input vector v, false otherwise
     */
     equals: function (v) {
         return this.x === v.x &&
@@ -105,7 +105,7 @@ Vector2.prototype =
     
     /**
     * Returns a string containing the current state of the vector, useful for debugging purposes
-    * @return {String}
+    * @return {string}
     */
     toString: function () {
         return '[' + this.x + ', ' + this.y + ']';
