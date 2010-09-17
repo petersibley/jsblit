@@ -250,7 +250,7 @@ ul.inheritsList
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/Viewport.html#constructor">Viewport</a></b>(width, height)
+								<b><a href="../symbols/Viewport.html#constructor">Viewport</a></b>(width, height, nearDistance, farDistance)
 							</div>
 							<div class="description">Represents a viewport into the 3D scene</div>
 						</td>
@@ -282,15 +282,6 @@ ul.inheritsList
 								<div class="fixedFont"><b><a href="../symbols/Viewport.html#getAspectRatio">getAspectRatio</a></b>()
 								</div>
 								<div class="description">Returns the aspect ratio of the viewport</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Viewport.html#getCamera">getCamera</a></b>()
-								</div>
-								<div class="description">Returns the camera associated with the viewport</div>
 							</td>
 						</tr>
 					
@@ -330,42 +321,6 @@ ul.inheritsList
 							</td>
 						</tr>
 					
-						<tr>
-							<td class="attributes">&nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Viewport.html#setCamera">setCamera</a></b>(camera)
-								</div>
-								<div class="description">Sets the camera associated with the viewport</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Viewport.html#setCameraDirty">setCameraDirty</a></b>()
-								</div>
-								<div class="description">Marks the associated camera as dirty</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Viewport.html#setFarDistance">setFarDistance</a></b>(far)
-								</div>
-								<div class="description">Sets the far plane distance</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Viewport.html#setNearDistance">setNearDistance</a></b>(near)
-								</div>
-								<div class="description">Sets the near plane distance</div>
-							</td>
-						</tr>
-					
 					</tbody>
 				</table>
 				
@@ -383,7 +338,7 @@ ul.inheritsList
 				</div>
 				
 				<div class="fixedFont">
-						<b>Viewport</b>(width, height)
+						<b>Viewport</b>(width, height, nearDistance, farDistance)
 				</div>
 				
 				<div class="description">
@@ -409,6 +364,18 @@ ul.inheritsList
 								
 							</dt>
 								<dd>The height of the viewport in pixels</dd>
+						
+							<dt>
+								<span class="light fixedFont">{number}</span>  <b>nearDistance</b>
+								
+							</dt>
+								<dd>The distance to the near plane</dd>
+						
+							<dt>
+								<span class="light fixedFont">{number}</span>  <b>farDistance</b>
+								
+							</dt>
+								<dd>The distance to the far plane</dd>
 						
 						</dl>
 					
@@ -455,38 +422,6 @@ ul.inheritsList
 							<dt class="heading">Returns:</dt>
 							
 								<dd><span class="light fixedFont">{number}</span> </dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name="getCamera"> </a>
-					<div class="fixedFont">
-					
-					<span class="light">{<a href="../symbols/PerspectiveCamera.html">PerspectiveCamera</a>}</span>
-					<b>getCamera</b>()
-					
-					</div>
-					<div class="description">
-						Returns the camera associated with the viewport
-						
-						
-					</div>
-					
-					
-					
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{<a href="../symbols/PerspectiveCamera.html">PerspectiveCamera</a>}</span> </dd>
 							
 							</dl>
 						
@@ -621,139 +556,6 @@ ul.inheritsList
 						
 						
 
-					<hr />
-				
-					<a name="setCamera"> </a>
-					<div class="fixedFont">
-					
-					
-					<b>setCamera</b>(camera)
-					
-					</div>
-					<div class="description">
-						Sets the camera associated with the viewport
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{<a href="../symbols/PerspectiveCamera.html">PerspectiveCamera</a>}</span> <b>camera</b>
-									
-								</dt>
-								<dd></dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="setCameraDirty"> </a>
-					<div class="fixedFont">
-					
-					
-					<b>setCameraDirty</b>()
-					
-					</div>
-					<div class="description">
-						Marks the associated camera as dirty
-						
-						
-					</div>
-					
-					
-					
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="setFarDistance"> </a>
-					<div class="fixedFont">
-					
-					
-					<b>setFarDistance</b>(far)
-					
-					</div>
-					<div class="description">
-						Sets the far plane distance
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{number}</span> <b>far</b>
-									
-								</dt>
-								<dd>The distance to the far plane</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="setNearDistance"> </a>
-					<div class="fixedFont">
-					
-					
-					<b>setNearDistance</b>(near)
-					
-					</div>
-					<div class="description">
-						Sets the near plane distance
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
-							
-								<dt>
-									<span class="light fixedFont">{number}</span> <b>near</b>
-									
-								</dt>
-								<dd>The distance to the near plane</dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-						
-						
-
 					
 				
 			
@@ -768,7 +570,7 @@ ul.inheritsList
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.3.2 on Wed Sep 15 2010 23:03:44 GMT-0700 (PDT)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.3.2 on Thu Sep 16 2010 23:30:16 GMT-0700 (PDT)
 		</div>
 	</body>
 </html>

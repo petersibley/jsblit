@@ -1108,266 +1108,261 @@
 <span class='line'>1101</span> </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">GraphicsHelper</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>1102</span> 
 <span class='line'>1103</span> </span><span class="COMM">/**
-<span class='line'>1104</span> * @return {Matrix4x4}
-<span class='line'>1105</span> */</span><span class="WHIT">
-<span class='line'>1106</span> </span><span class="NAME">GraphicsHelper.createLookAt</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">position</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">look</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">up</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1107</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1108</span> 
-<span class='line'>1109</span> </span><span class="COMM">/**
-<span class='line'>1110</span> * @return {Matrix4x4}
-<span class='line'>1111</span> */</span><span class="WHIT">
-<span class='line'>1112</span> </span><span class="NAME">GraphicsHelper.createPerspective</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">verticalFov</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>1113</span> </span><span class="WHIT">                                             </span><span class="NAME">aspectRatio</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>1114</span> </span><span class="WHIT">                                             </span><span class="NAME">nearDistance</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>1115</span> </span><span class="WHIT">                                             </span><span class="NAME">farDistance</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1116</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="COMM">/**
-<span class='line'>1117</span> * A Frame represents a translate and rotation of an orthonormal basis
-<span class='line'>1118</span> * @constructor
-<span class='line'>1119</span> */</span><span class="WHIT">
-<span class='line'>1120</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">Frame</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT">
-<span class='line'>1121</span> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1122</span> </span><span class="WHIT">    </span><span class="NAME">this.Position</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Vector3</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1123</span> </span><span class="WHIT">    </span><span class="NAME">this.Rotation</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Quaternion.createIdentity</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1124</span> </span><span class="PUNC">}</span><span class="COMM">/**
-<span class='line'>1125</span> * Represents a camera that applies perspective distortion to a scene
-<span class='line'>1126</span> * @constructor
-<span class='line'>1127</span> */</span><span class="WHIT">
-<span class='line'>1128</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">PerspectiveCamera</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT">
-<span class='line'>1129</span> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1130</span> </span><span class="WHIT">    </span><span class="NAME">this.viewport</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1131</span> </span><span class="WHIT">    </span><span class="NAME">this.position</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Vector3</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1132</span> </span><span class="WHIT">    
-<span class='line'>1133</span>     </span><span class="COMM">//TODO: What to init these to?</span><span class="WHIT">
-<span class='line'>1134</span> </span><span class="WHIT">    </span><span class="NAME">this.up</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Vector3</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1135</span> </span><span class="WHIT">    </span><span class="NAME">this.look</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Vector3</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1136</span> </span><span class="WHIT">    
-<span class='line'>1137</span>     </span><span class="NAME">this.fieldOfView</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">MathHelper.PI</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="NUMB">2</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1138</span> </span><span class="WHIT">    </span><span class="NAME">this.viewTransform</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Matrix4x4.createIdentity</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1139</span> </span><span class="WHIT">    </span><span class="NAME">this.projectionTransform</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Matrix4x4.createIdentity</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1140</span> </span><span class="WHIT">    </span><span class="NAME">this.isDirty</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1141</span> </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>1142</span> 
-<span class='line'>1143</span> </span><span class="NAME">PerspectiveCamera.prototype</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1144</span> 
-<span class='line'>1145</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>1146</span>     * When called marks the camera as being dirty
-<span class='line'>1147</span>     */</span><span class="WHIT">
-<span class='line'>1148</span> </span><span class="WHIT">    </span><span class="NAME">setDirty</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1149</span> </span><span class="WHIT">        </span><span class="NAME">this.isDirty</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1150</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>1151</span> </span><span class="WHIT">    
-<span class='line'>1152</span>     </span><span class="COMM">/**
-<span class='line'>1153</span>     * Sets the viewport on the camera
-<span class='line'>1154</span>     * @param {Viewport} viewport
-<span class='line'>1155</span>     */</span><span class="WHIT">
-<span class='line'>1156</span> </span><span class="WHIT">    </span><span class="NAME">setViewport</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">viewport</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1157</span> </span><span class="WHIT">        </span><span class="NAME">this.viewport</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">viewport</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1158</span> </span><span class="WHIT">        </span><span class="NAME">this.setDirty</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1159</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>1160</span> </span><span class="WHIT">    
-<span class='line'>1161</span>     </span><span class="COMM">/**
-<span class='line'>1162</span>     * Sets the position of the camera
-<span class='line'>1163</span>     * @param {Vector3} position
-<span class='line'>1164</span>     */</span><span class="WHIT">
-<span class='line'>1165</span> </span><span class="WHIT">    </span><span class="NAME">setPosition</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">position</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1166</span> </span><span class="WHIT">        </span><span class="NAME">this.position</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">position</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1167</span> </span><span class="WHIT">        </span><span class="NAME">this.setDirty</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1168</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>1169</span> </span><span class="WHIT">    
-<span class='line'>1170</span>     </span><span class="COMM">/**
-<span class='line'>1171</span>     * Returns the position of the camera
-<span class='line'>1172</span>     * @return {Vector3}
-<span class='line'>1173</span>     */</span><span class="WHIT">
-<span class='line'>1174</span> </span><span class="WHIT">    </span><span class="NAME">getPosition</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1175</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.position</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1176</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>1177</span> </span><span class="WHIT">    
-<span class='line'>1178</span>     </span><span class="COMM">/**
-<span class='line'>1179</span>     * Sets the vertical field of view of the camera
-<span class='line'>1180</span>     * @param {number} fieldOfView Angle in radians
-<span class='line'>1181</span>     */</span><span class="WHIT">
-<span class='line'>1182</span> </span><span class="WHIT">    </span><span class="NAME">setVerticalFov</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">fieldOfView</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1183</span> </span><span class="WHIT">        </span><span class="NAME">this.fieldOfView</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">fieldOfView</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1184</span> </span><span class="WHIT">        </span><span class="NAME">this.setDirty</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1185</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>1186</span> </span><span class="WHIT">    
-<span class='line'>1187</span>     </span><span class="COMM">/**
-<span class='line'>1188</span>     * Returns the vertical field of view of the camera
-<span class='line'>1189</span>     * @return {number}
-<span class='line'>1190</span>     */</span><span class="WHIT">
-<span class='line'>1191</span> </span><span class="WHIT">    </span><span class="NAME">getVerticalFov</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1192</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.fieldOfView</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1193</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>1194</span> </span><span class="WHIT">    
-<span class='line'>1195</span>     </span><span class="COMM">/**
-<span class='line'>1196</span>     * Sets the look direction of the camera
-<span class='line'>1197</span>     * @param {Vector3} look A unit look vector
-<span class='line'>1198</span>     */</span><span class="WHIT">
-<span class='line'>1199</span> </span><span class="WHIT">    </span><span class="NAME">setLook</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">look</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1200</span> </span><span class="WHIT">        </span><span class="NAME">this.look</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">look</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1201</span> </span><span class="WHIT">        </span><span class="NAME">this.setDirty</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1202</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>1203</span> </span><span class="WHIT">    
-<span class='line'>1204</span>     </span><span class="COMM">/**
-<span class='line'>1205</span>     * Returns the current look vector of the camera
-<span class='line'>1206</span>     */</span><span class="WHIT">
-<span class='line'>1207</span> </span><span class="WHIT">    </span><span class="NAME">getLook</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1208</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.look</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1209</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>1210</span> </span><span class="WHIT">    
-<span class='line'>1211</span>     </span><span class="COMM">/**
-<span class='line'>1212</span>     * Sets the up direction of the camera
-<span class='line'>1213</span>     * @param {Vector3} up
-<span class='line'>1214</span>     */</span><span class="WHIT">
-<span class='line'>1215</span> </span><span class="WHIT">    </span><span class="NAME">setUp</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">up</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1216</span> </span><span class="WHIT">        </span><span class="NAME">this.up</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">up</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1217</span> </span><span class="WHIT">        </span><span class="NAME">this.setDirty</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1218</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>1219</span> </span><span class="WHIT">    
-<span class='line'>1220</span>     </span><span class="COMM">/**
-<span class='line'>1221</span>     * Returns the current up vecotr of the camera
-<span class='line'>1222</span>     * @return {Vector3}
-<span class='line'>1223</span>     */</span><span class="WHIT">
-<span class='line'>1224</span> </span><span class="WHIT">    </span><span class="NAME">getUp</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1225</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.up</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1226</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>1227</span> </span><span class="WHIT">    
-<span class='line'>1228</span>     </span><span class="COMM">/**
-<span class='line'>1229</span>     * Returns the current view transform
-<span class='line'>1230</span>     * @return {Matrix4x4}
-<span class='line'>1231</span>     */</span><span class="WHIT">
-<span class='line'>1232</span> </span><span class="WHIT">    </span><span class="NAME">getViewTransform</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1233</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.isDirty</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1234</span> </span><span class="WHIT">            </span><span class="NAME">this.updateTransforms</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1235</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>1236</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.viewTransform</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1237</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>1238</span> </span><span class="WHIT">    
-<span class='line'>1239</span>     </span><span class="COMM">/**
-<span class='line'>1240</span>     * Returns the current projection transform
-<span class='line'>1241</span>     * @return {Matrix4x4}
-<span class='line'>1242</span>     */</span><span class="WHIT">
-<span class='line'>1243</span> </span><span class="WHIT">    </span><span class="NAME">getProjectionTransform</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1244</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.isDirty</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1245</span> </span><span class="WHIT">            </span><span class="NAME">this.updateTransforms</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1246</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>1247</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.projectionTransform</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1248</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>1249</span> </span><span class="WHIT">    
-<span class='line'>1250</span>     </span><span class="COMM">/**
-<span class='line'>1251</span>     * When called updates the view and projection transforms based on the current state of the system
-<span class='line'>1252</span>     */</span><span class="WHIT">
-<span class='line'>1253</span> </span><span class="WHIT">    </span><span class="NAME">updateTransforms</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1254</span> </span><span class="WHIT">        </span><span class="NAME">this.viewTransform</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">GraphicsHelper.createLookAt</span><span class="PUNC">(</span><span class="NAME">this.position</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.look</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.up</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1255</span> </span><span class="WHIT">        </span><span class="NAME">this.projectionTransform</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">GraphicsHelper.createPerspective</span><span class="PUNC">(</span><span class="NAME">this.fieldOfView</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>1256</span> </span><span class="WHIT">                                                                    </span><span class="NAME">this.viewport.getAspectRatio</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>1257</span> </span><span class="WHIT">                                                                    </span><span class="NAME">this.viewport.getNearDistance</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>1258</span> </span><span class="WHIT">                                                                    </span><span class="NAME">this.viewport.getFarDistance</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1259</span> </span><span class="WHIT">        </span><span class="NAME">this.isDirty</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1260</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>1261</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1262</span> </span><span class="COMM">/**
-<span class='line'>1263</span> * Represents a viewport into the 3D scene
-<span class='line'>1264</span> * @param {number} width The width of the viewport in pixels
-<span class='line'>1265</span> * @param {number} height The height of the viewport in pixels
-<span class='line'>1266</span> * @constructor
-<span class='line'>1267</span> */</span><span class="WHIT">
-<span class='line'>1268</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">Viewport</span><span class="PUNC">(</span><span class="NAME">width</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">height</span><span class="PUNC">)</span><span class="WHIT">
-<span class='line'>1269</span> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1270</span> </span><span class="WHIT">    </span><span class="NAME">this.width</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">width</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1271</span> </span><span class="WHIT">    </span><span class="NAME">this.height</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">height</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1272</span> </span><span class="WHIT">    </span><span class="NAME">this.aspectRatio</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.width</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="NAME">this.height</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1273</span> </span><span class="WHIT">    </span><span class="NAME">this.nearDistance</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">0.001</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1274</span> </span><span class="WHIT">    </span><span class="NAME">this.farDistance</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">1000</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1275</span> </span><span class="WHIT">    </span><span class="NAME">this.camera</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1276</span> </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>1277</span> 
-<span class='line'>1278</span> </span><span class="NAME">Viewport.prototype</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1279</span> 
-<span class='line'>1280</span> </span><span class="COMM">//TODO: What is our convention for private fields, methods, leading underscore?</span><span class="WHIT">
-<span class='line'>1281</span> </span><span class="WHIT">    </span><span class="COMM">/**
-<span class='line'>1282</span>     * Marks the associated camera as dirty
-<span class='line'>1283</span>     */</span><span class="WHIT">
-<span class='line'>1284</span> </span><span class="WHIT">    </span><span class="NAME">setCameraDirty</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1285</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.camera</span><span class="WHIT"> </span><span class="PUNC">!==</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1286</span> </span><span class="WHIT">            </span><span class="NAME">this.camera.setDirty</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1287</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1104</span> * Creates a right handed look at matrix.  This is with +Z coming
+<span class='line'>1105</span> * towards the viewer, +X is to the right and +Y is up
+<span class='line'>1106</span> * @param {Vector3} position The position of the eye
+<span class='line'>1107</span> * @param {Vector3} look The look direction
+<span class='line'>1108</span> * @param {Vector3} up The up direction
+<span class='line'>1109</span> * @return {Matrix4x4}
+<span class='line'>1110</span> */</span><span class="WHIT">
+<span class='line'>1111</span> </span><span class="NAME">GraphicsHelper.createLookAtRH</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">position</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">look</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">up</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1112</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">rotatedPos</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">viewSide</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">viewUp</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">result</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1113</span> </span><span class="WHIT">    
+<span class='line'>1114</span>     </span><span class="NAME">look</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">look.normalize</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1115</span> </span><span class="WHIT">    </span><span class="NAME">up</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">up.normalize</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1116</span> </span><span class="WHIT">    </span><span class="NAME">viewUp</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">up.subtract</span><span class="PUNC">(</span><span class="NAME">look.multiplyScalar</span><span class="PUNC">(</span><span class="NAME">up.dot</span><span class="PUNC">(</span><span class="NAME">look</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">)</span><span class="PUNC">.</span><span class="NAME">normalize</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1117</span> </span><span class="WHIT">    </span><span class="NAME">viewSide</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">look.cross</span><span class="PUNC">(</span><span class="NAME">viewUp</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1118</span> </span><span class="WHIT">    
+<span class='line'>1119</span>     </span><span class="NAME">result</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Matrix4x4.createIdentity</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1120</span> </span><span class="WHIT">    </span><span class="NAME">result.m11</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">viewSide.x</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1121</span> </span><span class="WHIT">    </span><span class="NAME">result.m12</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">viewSide.y</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1122</span> </span><span class="WHIT">    </span><span class="NAME">result.m13</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">viewSide.z</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1123</span> </span><span class="WHIT">    </span><span class="NAME">result.m21</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">viewUp.x</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1124</span> </span><span class="WHIT">    </span><span class="NAME">result.m22</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">viewUp.y</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1125</span> </span><span class="WHIT">    </span><span class="NAME">result.m23</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">viewUp.z</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1126</span> </span><span class="WHIT">    </span><span class="NAME">result.m31</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NAME">look.x</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1127</span> </span><span class="WHIT">    </span><span class="NAME">result.m32</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NAME">look.y</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1128</span> </span><span class="WHIT">    </span><span class="NAME">result.m33</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NAME">look.z</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1129</span> </span><span class="WHIT">    </span><span class="NAME">rotatedPos</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">result.transformVector3</span><span class="PUNC">(</span><span class="NAME">position</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1130</span> </span><span class="WHIT">    </span><span class="NAME">result.m14</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NAME">rotatedPos.x</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1131</span> </span><span class="WHIT">    </span><span class="NAME">result.m24</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NAME">rotatedPos.y</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1132</span> </span><span class="WHIT">    </span><span class="NAME">result.m34</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NAME">rotatedPos.z</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1133</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">result</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1134</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1135</span> 
+<span class='line'>1136</span> </span><span class="COMM">/**
+<span class='line'>1137</span> * Creates a perspective projection matrix for use with column vectors.
+<span class='line'>1138</span> * The near and far planes are mapped to [-1, 1] to match opengl conventions
+<span class='line'>1139</span> * @return {Matrix4x4}
+<span class='line'>1140</span> */</span><span class="WHIT">
+<span class='line'>1141</span> </span><span class="NAME">GraphicsHelper.createPerspective</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">verticalFov</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1142</span> </span><span class="WHIT">                                             </span><span class="NAME">aspectRatio</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1143</span> </span><span class="WHIT">                                             </span><span class="NAME">near</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1144</span> </span><span class="WHIT">                                             </span><span class="NAME">far</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1145</span> </span><span class="WHIT">    </span><span class="KEYW">var</span><span class="WHIT"> </span><span class="NAME">d</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1146</span> </span><span class="WHIT">    </span><span class="NAME">d</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NUMB">1.0</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="NAME">MathHelper.tan</span><span class="PUNC">(</span><span class="NAME">verticalFov</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="NUMB">2.0</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1147</span> </span><span class="WHIT">    </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Matrix4x4</span><span class="PUNC">(</span><span class="NAME">d</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="NAME">aspectRatio</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1148</span> </span><span class="WHIT">                         </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">d</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1149</span> </span><span class="WHIT">                         </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">near</span><span class="WHIT"> </span><span class="PUNC">+</span><span class="WHIT"> </span><span class="NAME">far</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">near</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NAME">far</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NUMB">2</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">near</span><span class="WHIT"> </span><span class="PUNC">*</span><span class="WHIT"> </span><span class="NAME">far</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">near</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="WHIT"> </span><span class="NAME">far</span><span class="PUNC">)</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1150</span> </span><span class="WHIT">                         </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1151</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="COMM">/**
+<span class='line'>1152</span> * A Frame represents a translate and rotation of an orthonormal basis
+<span class='line'>1153</span> * @constructor
+<span class='line'>1154</span> */</span><span class="WHIT">
+<span class='line'>1155</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">Frame</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>1156</span> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1157</span> </span><span class="WHIT">    </span><span class="NAME">this.Position</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Vector3</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1158</span> </span><span class="WHIT">    </span><span class="NAME">this.Rotation</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Quaternion.createIdentity</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1159</span> </span><span class="PUNC">}</span><span class="COMM">/**
+<span class='line'>1160</span> * Represents a camera that applies perspective distortion to a scene
+<span class='line'>1161</span> * @constructor
+<span class='line'>1162</span> */</span><span class="WHIT">
+<span class='line'>1163</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">PerspectiveCamera</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>1164</span> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1165</span> </span><span class="WHIT">    </span><span class="NAME">this.viewport</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">null</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1166</span> </span><span class="WHIT">    </span><span class="NAME">this.position</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Vector3</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1167</span> </span><span class="WHIT">    </span><span class="NAME">this.up</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Vector3</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">1</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1168</span> </span><span class="WHIT">    </span><span class="NAME">this.look</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">new</span><span class="WHIT"> </span><span class="NAME">Vector3</span><span class="PUNC">(</span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NUMB">0</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="PUNC">-</span><span class="NUMB">1</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1169</span> </span><span class="WHIT">    </span><span class="NAME">this.fieldOfView</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">MathHelper.PI</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="NUMB">2</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1170</span> </span><span class="WHIT">    </span><span class="NAME">this.viewTransform</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Matrix4x4.createIdentity</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1171</span> </span><span class="WHIT">    </span><span class="NAME">this.projectionTransform</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">Matrix4x4.createIdentity</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1172</span> </span><span class="WHIT">    </span><span class="NAME">this.isDirty</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1173</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1174</span> 
+<span class='line'>1175</span> </span><span class="NAME">PerspectiveCamera.prototype</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1176</span> 
+<span class='line'>1177</span> </span><span class="WHIT">    </span><span class="COMM">/**
+<span class='line'>1178</span>     * When called marks the camera as being dirty
+<span class='line'>1179</span>     */</span><span class="WHIT">
+<span class='line'>1180</span> </span><span class="WHIT">    </span><span class="NAME">setDirty</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1181</span> </span><span class="WHIT">        </span><span class="NAME">this.isDirty</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">true</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1182</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1183</span> </span><span class="WHIT">    
+<span class='line'>1184</span>     </span><span class="COMM">/**
+<span class='line'>1185</span>     * Sets the viewport on the camera
+<span class='line'>1186</span>     * @param {Viewport} viewport
+<span class='line'>1187</span>     */</span><span class="WHIT">
+<span class='line'>1188</span> </span><span class="WHIT">    </span><span class="NAME">setViewport</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">viewport</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1189</span> </span><span class="WHIT">        </span><span class="NAME">this.viewport</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">viewport</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1190</span> </span><span class="WHIT">        </span><span class="NAME">this.setDirty</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1191</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1192</span> </span><span class="WHIT">    
+<span class='line'>1193</span>     </span><span class="COMM">/**
+<span class='line'>1194</span>     * Returns the viewport associated with the camera
+<span class='line'>1195</span>     * @return {Viewport}
+<span class='line'>1196</span>     */</span><span class="WHIT">
+<span class='line'>1197</span> </span><span class="WHIT">    </span><span class="NAME">getViewport</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1198</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.viewport</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1199</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1200</span> </span><span class="WHIT">    
+<span class='line'>1201</span>     </span><span class="COMM">/**
+<span class='line'>1202</span>     * Sets the position of the camera
+<span class='line'>1203</span>     * @param {Vector3} position
+<span class='line'>1204</span>     */</span><span class="WHIT">
+<span class='line'>1205</span> </span><span class="WHIT">    </span><span class="NAME">setPosition</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">position</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1206</span> </span><span class="WHIT">        </span><span class="NAME">this.position</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">position</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1207</span> </span><span class="WHIT">        </span><span class="NAME">this.setDirty</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1208</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1209</span> </span><span class="WHIT">    
+<span class='line'>1210</span>     </span><span class="COMM">/**
+<span class='line'>1211</span>     * Returns the position of the camera
+<span class='line'>1212</span>     * @return {Vector3}
+<span class='line'>1213</span>     */</span><span class="WHIT">
+<span class='line'>1214</span> </span><span class="WHIT">    </span><span class="NAME">getPosition</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1215</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.position</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1216</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1217</span> </span><span class="WHIT">    
+<span class='line'>1218</span>     </span><span class="COMM">/**
+<span class='line'>1219</span>     * Sets the vertical field of view of the camera
+<span class='line'>1220</span>     * @param {number} fieldOfView Angle in radians
+<span class='line'>1221</span>     */</span><span class="WHIT">
+<span class='line'>1222</span> </span><span class="WHIT">    </span><span class="NAME">setVerticalFov</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">fieldOfView</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1223</span> </span><span class="WHIT">        </span><span class="NAME">this.fieldOfView</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">fieldOfView</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1224</span> </span><span class="WHIT">        </span><span class="NAME">this.setDirty</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1225</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1226</span> </span><span class="WHIT">    
+<span class='line'>1227</span>     </span><span class="COMM">/**
+<span class='line'>1228</span>     * Returns the vertical field of view of the camera
+<span class='line'>1229</span>     * @return {number}
+<span class='line'>1230</span>     */</span><span class="WHIT">
+<span class='line'>1231</span> </span><span class="WHIT">    </span><span class="NAME">getVerticalFov</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1232</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.fieldOfView</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1233</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1234</span> </span><span class="WHIT">    
+<span class='line'>1235</span>     </span><span class="COMM">/**
+<span class='line'>1236</span>     * Sets the look direction of the camera
+<span class='line'>1237</span>     * @param {Vector3} look A unit look vector
+<span class='line'>1238</span>     */</span><span class="WHIT">
+<span class='line'>1239</span> </span><span class="WHIT">    </span><span class="NAME">setLook</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">look</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1240</span> </span><span class="WHIT">        </span><span class="NAME">this.look</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">look</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1241</span> </span><span class="WHIT">        </span><span class="NAME">this.setDirty</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1242</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1243</span> </span><span class="WHIT">    
+<span class='line'>1244</span>     </span><span class="COMM">/**
+<span class='line'>1245</span>     * Returns the current look vector of the camera
+<span class='line'>1246</span>     */</span><span class="WHIT">
+<span class='line'>1247</span> </span><span class="WHIT">    </span><span class="NAME">getLook</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1248</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.look</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1249</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1250</span> </span><span class="WHIT">    
+<span class='line'>1251</span>     </span><span class="COMM">/**
+<span class='line'>1252</span>     * Sets the up direction of the camera
+<span class='line'>1253</span>     * @param {Vector3} up
+<span class='line'>1254</span>     */</span><span class="WHIT">
+<span class='line'>1255</span> </span><span class="WHIT">    </span><span class="NAME">setUp</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">up</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1256</span> </span><span class="WHIT">        </span><span class="NAME">this.up</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">up</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1257</span> </span><span class="WHIT">        </span><span class="NAME">this.setDirty</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1258</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1259</span> </span><span class="WHIT">    
+<span class='line'>1260</span>     </span><span class="COMM">/**
+<span class='line'>1261</span>     * Returns the current up vecotr of the camera
+<span class='line'>1262</span>     * @return {Vector3}
+<span class='line'>1263</span>     */</span><span class="WHIT">
+<span class='line'>1264</span> </span><span class="WHIT">    </span><span class="NAME">getUp</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1265</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.up</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1266</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1267</span> </span><span class="WHIT">    
+<span class='line'>1268</span>     </span><span class="COMM">/**
+<span class='line'>1269</span>     * Returns the current view transform
+<span class='line'>1270</span>     * @return {Matrix4x4}
+<span class='line'>1271</span>     */</span><span class="WHIT">
+<span class='line'>1272</span> </span><span class="WHIT">    </span><span class="NAME">getViewTransform</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1273</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.isDirty</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1274</span> </span><span class="WHIT">            </span><span class="NAME">this.updateTransforms</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1275</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1276</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.viewTransform</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1277</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1278</span> </span><span class="WHIT">    
+<span class='line'>1279</span>     </span><span class="COMM">/**
+<span class='line'>1280</span>     * Returns the current projection transform
+<span class='line'>1281</span>     * @return {Matrix4x4}
+<span class='line'>1282</span>     */</span><span class="WHIT">
+<span class='line'>1283</span> </span><span class="WHIT">    </span><span class="NAME">getProjectionTransform</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1284</span> </span><span class="WHIT">        </span><span class="KEYW">if</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">this.isDirty</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1285</span> </span><span class="WHIT">            </span><span class="NAME">this.updateTransforms</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1286</span> </span><span class="WHIT">        </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1287</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.projectionTransform</span><span class="PUNC">;</span><span class="WHIT">
 <span class='line'>1288</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
 <span class='line'>1289</span> </span><span class="WHIT">    
 <span class='line'>1290</span>     </span><span class="COMM">/**
-<span class='line'>1291</span>     * Returns the width of the viewport
-<span class='line'>1292</span>     * @return {number}
-<span class='line'>1293</span>     */</span><span class="WHIT">
-<span class='line'>1294</span> </span><span class="WHIT">    </span><span class="NAME">getWidth</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1295</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.width</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1296</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>1297</span> </span><span class="WHIT">    
-<span class='line'>1298</span>     </span><span class="COMM">/**
-<span class='line'>1299</span>     * Returns the height of the viewport in pixels
-<span class='line'>1300</span>     * @return {number}
-<span class='line'>1301</span>     */</span><span class="WHIT">
-<span class='line'>1302</span> </span><span class="WHIT">    </span><span class="NAME">getHeight</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1303</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.height</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1304</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>1305</span> </span><span class="WHIT">    
-<span class='line'>1306</span>     </span><span class="COMM">/**
-<span class='line'>1307</span>     * Returns the aspect ratio of the viewport
-<span class='line'>1308</span>     * @return {number}
-<span class='line'>1309</span>     */</span><span class="WHIT">
-<span class='line'>1310</span> </span><span class="WHIT">    </span><span class="NAME">getAspectRatio</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1311</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.aspectRatio</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1312</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>1313</span> </span><span class="WHIT">    
-<span class='line'>1314</span>     </span><span class="COMM">/**
-<span class='line'>1315</span>     * Returns the camera associated with the viewport
-<span class='line'>1316</span>     * @return {PerspectiveCamera}
-<span class='line'>1317</span>     */</span><span class="WHIT">
-<span class='line'>1318</span> </span><span class="WHIT">    </span><span class="NAME">getCamera</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1319</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.camera</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1320</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>1321</span> </span><span class="WHIT">    
-<span class='line'>1322</span>     </span><span class="COMM">/**
-<span class='line'>1323</span>     * Sets the camera associated with the viewport
-<span class='line'>1324</span>     * @param {PerspectiveCamera} camera
-<span class='line'>1325</span>     */</span><span class="WHIT">
-<span class='line'>1326</span> </span><span class="WHIT">    </span><span class="NAME">setCamera</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">camera</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1327</span> </span><span class="WHIT">        </span><span class="NAME">this.camera</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">camera</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1328</span> </span><span class="WHIT">        </span><span class="NAME">this.camera.setViewport</span><span class="PUNC">(</span><span class="KEYW">this</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1329</span> </span><span class="WHIT">        </span><span class="NAME">this.setCameraDirty</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1330</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>1331</span> </span><span class="WHIT">    
-<span class='line'>1332</span>     </span><span class="COMM">/**
-<span class='line'>1333</span>     * Returns the near plane distance
-<span class='line'>1334</span>     * @return {number}
-<span class='line'>1335</span>     */</span><span class="WHIT">
-<span class='line'>1336</span> </span><span class="WHIT">    </span><span class="NAME">getNearDistance</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1337</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.nearDistance</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1338</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>1339</span> </span><span class="WHIT">    
-<span class='line'>1340</span>     </span><span class="COMM">/**
-<span class='line'>1341</span>     * Sets the near plane distance
-<span class='line'>1342</span>     * @param {number} near The distance to the near plane
-<span class='line'>1343</span>     */</span><span class="WHIT">
-<span class='line'>1344</span> </span><span class="WHIT">    </span><span class="NAME">setNearDistance</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">near</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1345</span> </span><span class="WHIT">        </span><span class="NAME">this.nearDistance</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">near</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1346</span> </span><span class="WHIT">        </span><span class="NAME">this.setCameraDirty</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1347</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>1348</span> </span><span class="WHIT">    
-<span class='line'>1349</span>     </span><span class="COMM">/**
-<span class='line'>1350</span>     * Returns the far plane distance
-<span class='line'>1351</span>     * @return {number}
-<span class='line'>1352</span>     */</span><span class="WHIT">
-<span class='line'>1353</span> </span><span class="WHIT">    </span><span class="NAME">getFarDistance</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1354</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.farDistance</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1355</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
-<span class='line'>1356</span> </span><span class="WHIT">    
-<span class='line'>1357</span>     </span><span class="COMM">/**
-<span class='line'>1358</span>     * Sets the far plane distance
-<span class='line'>1359</span>     * @param {number} far The distance to the far plane
-<span class='line'>1360</span>     */</span><span class="WHIT">
-<span class='line'>1361</span> </span><span class="WHIT">    </span><span class="NAME">setFarDistance</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="NAME">far</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
-<span class='line'>1362</span> </span><span class="WHIT">        </span><span class="NAME">this.farDistance</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">far</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1363</span> </span><span class="WHIT">        </span><span class="NAME">this.setCameraDirty</span><span class="PUNC">(</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1364</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
-<span class='line'>1365</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
-<span class='line'>1366</span> </span></pre></body></html>
+<span class='line'>1291</span>     * When called updates the view and projection transforms based on the current state of the system
+<span class='line'>1292</span>     */</span><span class="WHIT">
+<span class='line'>1293</span> </span><span class="WHIT">    </span><span class="NAME">updateTransforms</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1294</span> </span><span class="WHIT">        </span><span class="NAME">this.viewTransform</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">GraphicsHelper.createLookAtRH</span><span class="PUNC">(</span><span class="NAME">this.position</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.look</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">this.up</span><span class="PUNC">)</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1295</span> </span><span class="WHIT">        </span><span class="COMM">//this.projectionTransform = GraphicsHelper.createPerspective(this.fieldOfView,</span><span class="WHIT">
+<span class='line'>1296</span> </span><span class="WHIT">        </span><span class="COMM">//                                                            this.viewport.getAspectRatio(),</span><span class="WHIT">
+<span class='line'>1297</span> </span><span class="WHIT">        </span><span class="COMM">//                                                            this.viewport.getNearDistance(),</span><span class="WHIT">
+<span class='line'>1298</span> </span><span class="WHIT">        </span><span class="COMM">//                                                            this.viewport.getFarDistance());</span><span class="WHIT">
+<span class='line'>1299</span> </span><span class="WHIT">        </span><span class="NAME">this.isDirty</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="KEYW">false</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1300</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1301</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1302</span> </span><span class="COMM">/**
+<span class='line'>1303</span> * Represents a viewport into the 3D scene
+<span class='line'>1304</span> * @param {number} width The width of the viewport in pixels
+<span class='line'>1305</span> * @param {number} height The height of the viewport in pixels
+<span class='line'>1306</span> * @param {number} nearDistance The distance to the near plane
+<span class='line'>1307</span> * @param {number} farDistance The distance to the far plane
+<span class='line'>1308</span> * @constructor
+<span class='line'>1309</span> */</span><span class="WHIT">
+<span class='line'>1310</span> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="NAME">Viewport</span><span class="PUNC">(</span><span class="NAME">width</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">height</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">nearDistance</span><span class="PUNC">,</span><span class="WHIT"> </span><span class="NAME">farDistance</span><span class="PUNC">)</span><span class="WHIT">
+<span class='line'>1311</span> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1312</span> </span><span class="WHIT">    </span><span class="NAME">this.width</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">width</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1313</span> </span><span class="WHIT">    </span><span class="NAME">this.height</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">height</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1314</span> </span><span class="WHIT">    </span><span class="NAME">this.aspectRatio</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">this.width</span><span class="WHIT"> </span><span class="PUNC">/</span><span class="WHIT"> </span><span class="NAME">this.height</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1315</span> </span><span class="WHIT">    </span><span class="NAME">this.nearDistance</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">nearDistance</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1316</span> </span><span class="WHIT">    </span><span class="NAME">this.farDistance</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="NAME">farDistance</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1317</span> </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1318</span> 
+<span class='line'>1319</span> </span><span class="NAME">Viewport.prototype</span><span class="WHIT"> </span><span class="PUNC">=</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1320</span> </span><span class="WHIT">    
+<span class='line'>1321</span>     </span><span class="COMM">/**
+<span class='line'>1322</span>     * Returns the width of the viewport
+<span class='line'>1323</span>     * @return {number}
+<span class='line'>1324</span>     */</span><span class="WHIT">
+<span class='line'>1325</span> </span><span class="WHIT">    </span><span class="NAME">getWidth</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1326</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.width</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1327</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1328</span> </span><span class="WHIT">    
+<span class='line'>1329</span>     </span><span class="COMM">/**
+<span class='line'>1330</span>     * Returns the height of the viewport in pixels
+<span class='line'>1331</span>     * @return {number}
+<span class='line'>1332</span>     */</span><span class="WHIT">
+<span class='line'>1333</span> </span><span class="WHIT">    </span><span class="NAME">getHeight</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1334</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.height</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1335</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1336</span> </span><span class="WHIT">    
+<span class='line'>1337</span>     </span><span class="COMM">/**
+<span class='line'>1338</span>     * Returns the aspect ratio of the viewport
+<span class='line'>1339</span>     * @return {number}
+<span class='line'>1340</span>     */</span><span class="WHIT">
+<span class='line'>1341</span> </span><span class="WHIT">    </span><span class="NAME">getAspectRatio</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1342</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.aspectRatio</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1343</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1344</span> </span><span class="WHIT">    
+<span class='line'>1345</span>     </span><span class="COMM">/**
+<span class='line'>1346</span>     * Returns the near plane distance
+<span class='line'>1347</span>     * @return {number}
+<span class='line'>1348</span>     */</span><span class="WHIT">
+<span class='line'>1349</span> </span><span class="WHIT">    </span><span class="NAME">getNearDistance</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1350</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.nearDistance</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1351</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="PUNC">,</span><span class="WHIT">
+<span class='line'>1352</span> </span><span class="WHIT">    
+<span class='line'>1353</span>     </span><span class="COMM">/**
+<span class='line'>1354</span>     * Returns the far plane distance
+<span class='line'>1355</span>     * @return {number}
+<span class='line'>1356</span>     */</span><span class="WHIT">
+<span class='line'>1357</span> </span><span class="WHIT">    </span><span class="NAME">getFarDistance</span><span class="PUNC">:</span><span class="WHIT"> </span><span class="KEYW">function</span><span class="WHIT"> </span><span class="PUNC">(</span><span class="PUNC">)</span><span class="WHIT"> </span><span class="PUNC">{</span><span class="WHIT">
+<span class='line'>1358</span> </span><span class="WHIT">        </span><span class="KEYW">return</span><span class="WHIT"> </span><span class="NAME">this.farDistance</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1359</span> </span><span class="WHIT">    </span><span class="PUNC">}</span><span class="WHIT">
+<span class='line'>1360</span> </span><span class="PUNC">}</span><span class="PUNC">;</span><span class="WHIT">
+<span class='line'>1361</span> </span></pre></body></html>
