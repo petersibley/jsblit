@@ -7,8 +7,6 @@ test("Constructor", function() {
     same(c.getUp(), new Vector3(0,1,0), "up");
     same(c.getLook(), new Vector3(0,0,-1), "look");
     equals(c.getVerticalFov(), MathHelper.PI / 2, "fov");
-    same(c.getViewTransform(), Matrix4x4.createIdentity(), "vt");
-    same(c.getProjectionTransform(), Matrix4x4.createIdentity(), "pt");
 });
 
 test("setViewport", function() {
@@ -48,7 +46,9 @@ test("setUp", function() {
 });
 
 test("getViewTransform", function() {
+    var v = new Viewport(1200,800, 0.001, 1000);
     var c = new PerspectiveCamera();
+    c.setViewport(v);
     c.setPosition(new Vector3(4,5,6));
     c.setLook((new Vector3(10,11,12)).subtract(new Vector3(4,5,6)));
     c.setUp(new Vector3(0,1,0));
@@ -84,10 +84,6 @@ test("getProjectionTransform", function() {
     var aspectRatio = 1200/800;
     var near = 0.001;
     var far = 1000;
-    var m = new Matrix4x4(d / aspectRatio, 0, 0, 0,
-                          0, d, 0, 0,
-                          0, 0, (near + far) / (near - far), (2 * near * far) / (near - far),
-                          0, 0, -1, 0);
                          
     equals(m.m11, d / aspectRatio, "m11");
     equals(m.m12, 0, "m12");

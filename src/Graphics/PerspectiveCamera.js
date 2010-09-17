@@ -92,7 +92,7 @@ PerspectiveCamera.prototype = {
     
     /**
     * Sets the up direction of the camera
-    * @param {Vector3} up
+    * @param {Vector3} up A unit up vector
     */
     setUp: function (up) {
         this.up = up;
@@ -100,7 +100,7 @@ PerspectiveCamera.prototype = {
     },
     
     /**
-    * Returns the current up vecotr of the camera
+    * Returns the current up vector of the camera
     * @return {Vector3}
     */
     getUp: function () {
@@ -134,10 +134,10 @@ PerspectiveCamera.prototype = {
     */
     updateTransforms: function () {
         this.viewTransform = GraphicsHelper.createLookAtRH(this.position, this.look, this.up);
-        //this.projectionTransform = GraphicsHelper.createPerspective(this.fieldOfView,
-        //                                                            this.viewport.getAspectRatio(),
-        //                                                            this.viewport.getNearDistance(),
-        //                                                            this.viewport.getFarDistance());
+        this.projectionTransform = GraphicsHelper.createPerspective(this.fieldOfView,
+                                                                    this.viewport.getAspectRatio(),
+                                                                    this.viewport.getNearDistance(),
+                                                                    this.viewport.getFarDistance());
         this.isDirty = false;
     }
 };
