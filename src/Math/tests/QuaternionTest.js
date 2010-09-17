@@ -8,6 +8,14 @@ test("Constructor", function() {
     equals(q.z, 4.4, "z");
 });
 
+test("createIdentity", function() {
+    var q = Quaternion.createIdentity();
+    equals(q.w, 1, "w");
+    equals(q.x, 0, "x");
+    equals(q.y, 0, "y");
+    equals(q.z, 0, "z");
+};
+
 test("fromRotationMatrix", function() {
     var m = Matrix4x4.createRotationX(MathHelper.PI / 2);
     var q = Quaternion.fromRotationMatrix(m);

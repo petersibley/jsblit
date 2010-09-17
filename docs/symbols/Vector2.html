@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
 		
-		<title>JsDoc Reference - Vector4</title>
+		<title>JsDoc Reference - Vector2</title>
 
 		<style type="text/css">
 			/* default.css */
@@ -191,9 +191,15 @@ ul.inheritsList
 	
 	<li><i><a href="../symbols/_global_.html">_global_</a></i></li>
 	
+	<li><a href="../symbols/Frame.html">Frame</a></li>
+	
+	<li><a href="../symbols/GraphicsHelper.html">GraphicsHelper</a></li>
+	
 	<li><a href="../symbols/MathHelper.html">MathHelper</a></li>
 	
 	<li><a href="../symbols/Matrix4x4.html">Matrix4x4</a></li>
+	
+	<li><a href="../symbols/PerspectiveCamera.html">PerspectiveCamera</a></li>
 	
 	<li><a href="../symbols/Quaternion.html">Quaternion</a></li>
 	
@@ -202,6 +208,8 @@ ul.inheritsList
 	<li><a href="../symbols/Vector3.html">Vector3</a></li>
 	
 	<li><a href="../symbols/Vector4.html">Vector4</a></li>
+	
+	<li><a href="../symbols/Viewport.html">Viewport</a></li>
 	
 </ul>
 <hr />
@@ -212,7 +220,7 @@ ul.inheritsList
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Class Vector4
+				Class Vector2
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -223,13 +231,13 @@ ul.inheritsList
 				
 				
 				
-					<br /><i>Defined in: </i> <a href="../symbols/src/jsblit.js.html">jsblit.js</a>.
+					<br /><i>Defined in: </i> <a href="../symbols/src/bin_jsblit.js.html">jsblit.js</a>.
 				
 			</p>
 
 <!-- ============================== constructor summary ==================== -->			
 			
-			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class Vector4.">
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class Vector2.">
 				<caption>Class Summary</caption>
 				<thead>
 					<tr>
@@ -242,9 +250,9 @@ ul.inheritsList
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/Vector4.html#constructor">Vector4</a></b>(x, y, z, w)
+								<b><a href="../symbols/Vector2.html#constructor">Vector2</a></b>(x, y)
 							</div>
-							<div class="description">A vector class representing four dimensional space</div>
+							<div class="description">A vector class representing two dimensional space</div>
 						</td>
 					</tr>
 				</tbody>
@@ -258,7 +266,7 @@ ul.inheritsList
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class Vector4.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class Vector2.">
 					<caption>Method Summary</caption>
 					<thead>
 						<tr>
@@ -271,7 +279,7 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Vector4.html#add">add</a></b>(v)
+								<div class="fixedFont"><b><a href="../symbols/Vector2.html#add">add</a></b>(v)
 								</div>
 								<div class="description">Adds vector v to the current vector and returns the result.</div>
 							</td>
@@ -280,7 +288,7 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Vector4.html#dot">dot</a></b>(v)
+								<div class="fixedFont"><b><a href="../symbols/Vector2.html#dot">dot</a></b>(v)
 								</div>
 								<div class="description">Calculates the dot product between the calling vector and parameter v</div>
 							</td>
@@ -289,7 +297,7 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Vector4.html#equals">equals</a></b>(v)
+								<div class="fixedFont"><b><a href="../symbols/Vector2.html#equals">equals</a></b>(v)
 								</div>
 								<div class="description">Checks if the calling vector is equal to parameter vector v</div>
 							</td>
@@ -298,7 +306,7 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Vector4.html#length">length</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/Vector2.html#length">length</a></b>()
 								</div>
 								<div class="description">Calculates the length of the vector</div>
 							</td>
@@ -307,7 +315,7 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Vector4.html#lengthSquared">lengthSquared</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/Vector2.html#lengthSquared">lengthSquared</a></b>()
 								</div>
 								<div class="description">Calculates the length of the vector squared.</div>
 							</td>
@@ -316,7 +324,7 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Vector4.html#multiplyScalar">multiplyScalar</a></b>(f)
+								<div class="fixedFont"><b><a href="../symbols/Vector2.html#multiplyScalar">multiplyScalar</a></b>(f)
 								</div>
 								<div class="description">Multiplies each element of the vector with scalar f and returns the result</div>
 							</td>
@@ -325,7 +333,7 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Vector4.html#normalize">normalize</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/Vector2.html#normalize">normalize</a></b>()
 								</div>
 								<div class="description">Creates a unit length version of the vector, which still points in the same direction as the original vector</div>
 							</td>
@@ -334,7 +342,16 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Vector4.html#subtract">subtract</a></b>(v)
+								<div class="fixedFont"><b><a href="../symbols/Vector2.html#perp">perp</a></b>()
+								</div>
+								<div class="description">Returns a new vector that's perpendicular to this vector</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/Vector2.html#subtract">subtract</a></b>(v)
 								</div>
 								<div class="description">Subtracts vector v from the current vector and returns the result.</div>
 							</td>
@@ -343,7 +360,7 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/Vector4.html#toString">toString</a></b>()
+								<div class="fixedFont"><b><a href="../symbols/Vector2.html#toString">toString</a></b>()
 								</div>
 								<div class="description">Returns a string containing the current state of the vector, useful for debugging purposes</div>
 							</td>
@@ -366,11 +383,11 @@ ul.inheritsList
 				</div>
 				
 				<div class="fixedFont">
-						<b>Vector4</b>(x, y, z, w)
+						<b>Vector2</b>(x, y)
 				</div>
 				
 				<div class="description">
-					A vector class representing four dimensional space
+					A vector class representing two dimensional space
 					
 				</div>
 				
@@ -389,18 +406,6 @@ ul.inheritsList
 						
 							<dt>
 								<span class="light fixedFont">{number}</span>  <b>y</b>
-								
-							</dt>
-								<dd></dd>
-						
-							<dt>
-								<span class="light fixedFont">{number}</span>  <b>z</b>
-								
-							</dt>
-								<dd></dd>
-						
-							<dt>
-								<span class="light fixedFont">{number}</span>  <b>w</b>
 								
 							</dt>
 								<dd></dd>
@@ -429,7 +434,7 @@ ul.inheritsList
 					<a name="add"> </a>
 					<div class="fixedFont">
 					
-					<span class="light">{<a href="../symbols/Vector4.html">Vector4</a>}</span>
+					<span class="light">{<a href="../symbols/Vector2.html">Vector2</a>}</span>
 					<b>add</b>(v)
 					
 					</div>
@@ -446,7 +451,7 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{<a href="../symbols/Vector4.html">Vector4</a>}</span> <b>v</b>
+									<span class="light fixedFont">{<a href="../symbols/Vector2.html">Vector2</a>}</span> <b>v</b>
 									
 								</dt>
 								<dd>input vector</dd>
@@ -460,7 +465,7 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{<a href="../symbols/Vector4.html">Vector4</a>}</span> A vector containing the addition of the two input vectors</dd>
+								<dd><span class="light fixedFont">{<a href="../symbols/Vector2.html">Vector2</a>}</span> A vector containing the addition of the two input vectors</dd>
 							
 							</dl>
 						
@@ -489,7 +494,7 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{<a href="../symbols/Vector4.html">Vector4</a>}</span> <b>v</b>
+									<span class="light fixedFont">{<a href="../symbols/Vector2.html">Vector2</a>}</span> <b>v</b>
 									
 								</dt>
 								<dd>input vector</dd>
@@ -532,7 +537,7 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{<a href="../symbols/Vector4.html">Vector4</a>}</span> <b>v</b>
+									<span class="light fixedFont">{<a href="../symbols/Vector2.html">Vector2</a>}</span> <b>v</b>
 									
 								</dt>
 								<dd>input vector</dd>
@@ -623,7 +628,7 @@ check is required, since this is more performant than the length() method
 					<a name="multiplyScalar"> </a>
 					<div class="fixedFont">
 					
-					<span class="light">{<a href="../symbols/Vector4.html">Vector4</a>}</span>
+					<span class="light">{<a href="../symbols/Vector2.html">Vector2</a>}</span>
 					<b>multiplyScalar</b>(f)
 					
 					</div>
@@ -654,7 +659,7 @@ check is required, since this is more performant than the length() method
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{<a href="../symbols/Vector4.html">Vector4</a>}</span> </dd>
+								<dd><span class="light fixedFont">{<a href="../symbols/Vector2.html">Vector2</a>}</span> </dd>
 							
 							</dl>
 						
@@ -666,7 +671,7 @@ check is required, since this is more performant than the length() method
 					<a name="normalize"> </a>
 					<div class="fixedFont">
 					
-					<span class="light">{<a href="../symbols/Vector4.html">Vector4</a>}</span>
+					<span class="light">{<a href="../symbols/Vector2.html">Vector2</a>}</span>
 					<b>normalize</b>()
 					
 					</div>
@@ -686,7 +691,39 @@ check is required, since this is more performant than the length() method
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{<a href="../symbols/Vector4.html">Vector4</a>}</span> </dd>
+								<dd><span class="light fixedFont">{<a href="../symbols/Vector2.html">Vector2</a>}</span> </dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="perp"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{<a href="../symbols/Vector2.html">Vector2</a>}</span>
+					<b>perp</b>()
+					
+					</div>
+					<div class="description">
+						Returns a new vector that's perpendicular to this vector
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{<a href="../symbols/Vector2.html">Vector2</a>}</span> </dd>
 							
 							</dl>
 						
@@ -698,7 +735,7 @@ check is required, since this is more performant than the length() method
 					<a name="subtract"> </a>
 					<div class="fixedFont">
 					
-					<span class="light">{<a href="../symbols/Vector4.html">Vector4</a>}</span>
+					<span class="light">{<a href="../symbols/Vector2.html">Vector2</a>}</span>
 					<b>subtract</b>(v)
 					
 					</div>
@@ -715,7 +752,7 @@ check is required, since this is more performant than the length() method
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{<a href="../symbols/Vector4.html">Vector4</a>}</span> <b>v</b>
+									<span class="light fixedFont">{<a href="../symbols/Vector2.html">Vector2</a>}</span> <b>v</b>
 									
 								</dt>
 								<dd>input vector</dd>
@@ -729,7 +766,7 @@ check is required, since this is more performant than the length() method
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{<a href="../symbols/Vector4.html">Vector4</a>}</span> A vector containing the subtraction of the two input vectors</dd>
+								<dd><span class="light fixedFont">{<a href="../symbols/Vector2.html">Vector2</a>}</span> A vector containing the subtraction of the two input vectors</dd>
 							
 							</dl>
 						
@@ -782,7 +819,7 @@ check is required, since this is more performant than the length() method
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.3.2 on Sat Sep 11 2010 20:38:53 GMT-0700 (PDT)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.3.2 on Wed Sep 15 2010 23:03:44 GMT-0700 (PDT)
 		</div>
 	</body>
 </html>

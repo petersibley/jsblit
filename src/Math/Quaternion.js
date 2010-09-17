@@ -11,6 +11,14 @@ function Quaternion(w, x, y, z) {
     this.z = z;
 }
 
+/**
+* Returns the identity quaternion.
+* @return {Quaternion}
+*/
+Quaternion.createIdentity = function () {
+    return new Quaternion(1, 0, 0, 0);
+};
+
 //TODO drop in matrix3x3 here
 
 /**
