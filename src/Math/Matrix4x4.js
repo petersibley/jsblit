@@ -262,8 +262,7 @@ Matrix4x4.prototype =
         k = this.m32 * this.m44 - this.m34 * this.m42;
         l = this.m33 * this.m44 - this.m34 * this.m43;
         determinant =  a * l - b * k + c * j + d * i - e * h + f * g;
-        if (MathHelper.abs(determinant) < MathHelper.zeroTolerance)
-        {
+        if (MathHelper.abs(determinant) < MathHelper.zeroTolerance) {
             return Matrix4x4.createIdentity();
         }
         

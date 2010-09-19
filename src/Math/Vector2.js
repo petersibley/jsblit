@@ -4,14 +4,12 @@
 * @param {number} x
 * @param {number} y
 */
-function Vector2(x, y)
-{
+function Vector2(x, y) {
     this.x = x;
     this.y = y;
 }
 
-Vector2.prototype =
-{
+Vector2.prototype = {
     /**
     * Calculates the dot product between the calling vector and parameter v
     * @param {Vector2} v input vector

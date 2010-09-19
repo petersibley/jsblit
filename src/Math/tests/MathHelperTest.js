@@ -1,5 +1,13 @@
 module("Math::MathHelper");
 
+test("radiansToDegrees", function() {
+    equals(MathHelper.radiansToDegrees(MathHelper.PI), 180, "1");
+});
+
+test("degreesToRadians", function() {
+    equals(MathHelper.degreesToRadians(180), MathHelper.PI, "2");
+});
+
 test("sin", function() {
     equals(MathHelper.sin(2.1234567), Math.sin(2.1234567), "sin incorrect");
 });

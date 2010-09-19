@@ -6,8 +6,7 @@
 * @param {number} farDistance The distance to the far plane
 * @constructor
 */
-function Viewport(width, height, nearDistance, farDistance)
-{
+function Viewport(width, height, nearDistance, farDistance) {
     this.width = width;
     this.height = height;
     this.aspectRatio = this.width / this.height;

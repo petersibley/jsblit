@@ -6,16 +6,14 @@
 * @param {number} z
 * @param {number} w
 */
-function Vector4(x, y, z, w)
-{
+function Vector4(x, y, z, w) {
     this.x = x;
     this.y = y;
     this.z = z;
     this.w = w;
 }
 
-Vector4.prototype =
-{
+Vector4.prototype = {
     /**
     * Calculates the dot product between the calling vector and parameter v
     * @param {Vector4} v input vector

@@ -5,15 +5,13 @@
 * @param {number} y
 * @param {number} z
 */
-function Vector3(x, y, z)
-{
+function Vector3(x, y, z) {
     this.x = x;
     this.y = y;
     this.z = z;
 }
 
-Vector3.prototype =
-{
+Vector3.prototype = {
     /**
     * Calculates the dot product between the calling vector and parameter v
     * @param {Vector3} v input vector

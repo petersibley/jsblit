@@ -40,6 +40,10 @@ GraphicsHelper.createLookAtRH = function (position, look, up) {
 /**
 * Creates a perspective projection matrix for use with column vectors.
 * The near and far planes are mapped to [-1, 1] to match opengl conventions
+* @param {number} verticalFov The vertical field of view
+* @param {number} aspectRatio The aspect ratio of the viewport
+* @param {number} near The distance to the near plane
+* @param {number} far The distance to the far plane
 * @return {Matrix4x4}
 */
 GraphicsHelper.createPerspective = function (verticalFov,

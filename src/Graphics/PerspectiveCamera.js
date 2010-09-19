@@ -2,8 +2,7 @@
 * Represents a camera that applies perspective distortion to a scene
 * @constructor
 */
-function PerspectiveCamera()
-{
+function PerspectiveCamera() {
     this.viewport = null;
     this.position = new Vector3(0, 0, 0);
     this.up = new Vector3(0, 1, 0);

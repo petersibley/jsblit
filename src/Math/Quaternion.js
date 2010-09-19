@@ -47,53 +47,47 @@ Quaternion.fromRotationMatrix = function (m) {
     
     result = new Quaternion(0, 0, 0, 0);
     trace = m.m11 + m.m22 + m.m33;
-    if (MathHelper.abs(trace) > MathHelper.zeroTolerance)
-    {
+    if (MathHelper.abs(trace) > MathHelper.zeroTolerance) {
         result.w = MathHelper.sqrt(trace + 1) * 0.5;
         temp = 1.0 / (4 * result.w);
         result.x = (m.m32 - m.m23) * temp;
         result.y = (m.m13 - m.m31) * temp;
         result.z = (m.m21 - m.m12) * temp;
     }
-    else
-    {
+    else {
         largestIndex = 0;
-        if (m.m22 > m.m11)
-        {
+        if (m.m22 > m.m11) {
             largestIndex = 1;
-            if (m.m33 > m.m22)
-            {
+            if (m.m33 > m.m22) {
                 largestIndex = 2;
             }
         }
-        else if (m.m33 > m.m11)
-        {
+        else if (m.m33 > m.m11) {
             largestIndex = 2;
         }
        
-	    switch (largestIndex)
-		{
-		case 0:
-			result.x = 0.5 * MathHelper.sqrt(m.m11 - m.m22 - m.m33 + 1);
-			temp = 1.0 / (4 * result.x);
-			result.w = (m.m32 - m.m23) * temp;
-			result.y = (m.m12 + m.m21) * temp;
-			result.z = (m.m13 + m.m31) * temp;
-			break;
-		case 1:
-			result.y = 0.5 * MathHelper.sqrt(m.m22 - m.m11 - m.m33 + 1);
-			temp = 1.0 / (4 * result.y);
-			result.w = (m.m13 - m.m31) * temp;
-			result.x = (m.m12 + m.m21) * temp;
-			result.z = (m.m23 + m.m32) * temp;
-			break;
-		case 2:
-			result.z = 0.5 * MathHelper.sqrt(m.m33 - m.m11 - m.m22 + 1);
-			temp = 1.0 / (4 * result.z);
-			result.w = (m.m21 - m.m12) * temp;
-			result.x = (m.m13 + m.m31) * temp;
-			result.y = (m.m32 + m.m23) * temp;
-			break;
+	    switch (largestIndex) {
+        case 0:
+            result.x = 0.5 * MathHelper.sqrt(m.m11 - m.m22 - m.m33 + 1);
+            temp = 1.0 / (4 * result.x);
+            result.w = (m.m32 - m.m23) * temp;
+            result.y = (m.m12 + m.m21) * temp;
+            result.z = (m.m13 + m.m31) * temp;
+            break;
+        case 1:
+            result.y = 0.5 * MathHelper.sqrt(m.m22 - m.m11 - m.m33 + 1);
+            temp = 1.0 / (4 * result.y);
+            result.w = (m.m13 - m.m31) * temp;
+            result.x = (m.m12 + m.m21) * temp;
+            result.z = (m.m23 + m.m32) * temp;
+            break;
+        case 2:
+            result.z = 0.5 * MathHelper.sqrt(m.m33 - m.m11 - m.m22 + 1);
+            temp = 1.0 / (4 * result.z);
+            result.w = (m.m21 - m.m12) * temp;
+            result.x = (m.m13 + m.m31) * temp;
+            result.y = (m.m32 + m.m23) * temp;
+            break;
 		}
     }
     return result;
@@ -122,19 +116,16 @@ Quaternion.fromAxisAngle = function (axis, angle) {
 Quaternion.slerp = function (t, source, target) {
     var cos, angle, sin, invSin, a, b;
     
-    if (t === 0.0)
-    {
+    if (t === 0.0) {
         return source;
     }
-    if (t === 1.0)
-    {
+    if (t === 1.0) {
         return target;
     }
     
     cos = source.dot(target);
     angle = MathHelper.acos(cos);
-    if (MathHelper.abs(angle) >= MathHelper.zeroTolerance)
-    {
+    if (MathHelper.abs(angle) >= MathHelper.zeroTolerance) {
         sin = MathHelper.sin(angle);
         invSin = 1.0 / sin;
         a = MathHelper.sin((1.0 - t) * angle) * invSin;
@@ -191,8 +182,7 @@ Quaternion.prototype =
         var norm, invNorm;
         
         norm = this.w * this.w + this.x * this.x + this.y * this.y * this.z * this.z;
-        if (MathHelper.abs(norm) > MathHelper.zeroTolerance)
-        {
+        if (MathHelper.abs(norm) > MathHelper.zeroTolerance) {
             invNorm = 1.0 / norm;
             return new Quaternion(this.w * invNorm,
                                   -this.x * invNorm,
@@ -287,8 +277,7 @@ Quaternion.prototype =
         var lengthSquared, inverseLength;
         
         lengthSquared = this.x * this.x + this.y * this.y + this.z * this.z;
-        if (lengthSquared > MathHelper.zeroTolerance)
-        {
+        if (lengthSquared > MathHelper.zeroTolerance) {
             inverseLength = MathHelper.invSqrt(lengthSquared);
             return new Vector4(this.x * inverseLength, this.y * inverseLength, this.z * inverseLength, 2.0 * MathHelper.acos(this.w));
         }

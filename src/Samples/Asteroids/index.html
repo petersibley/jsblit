@@ -1,0 +1,32 @@
+<html>
+<head>
+<title>
+jsblit.com - Sprites Samples : Asteroids
+</title>
+</head>
+<body>
+This is an example of asteroids written using jsblit and 2D sprites.  To see the actual JavaScript code, click <a href="asteroids.js">here</a> The background image is from <a href="http://www.digitalblasphemy.com">www.digitalblasphemy.com</a>. To play the game, click on the game region.<br/><br />
+
+<h3>Controls:</h3>
+<b>&lt;</b> - rotate left<br/>
+<b>&gt;</b> - rotate right<br/>
+<b>R</b> - thrust<br/>
+<br/><br />
+
+<script src="../../../bin/jsblit-compiled.js" ></script>
+<script src="sprite.js" ></script>
+<script src="asteroids.js" ></script>
+
+<div id='gameContent' />
+<script>
+
+//asteroids is a global variable defined in asteroids.js
+var d = document.getElementById('gameContent');
+
+//The jsBlitWindow exposes a div tag in its platformData
+d.appendChild(asteroids.getJsBlitWindow().platformData);
+asteroids.getJsBlitWindow().platformData.focus();
+
+</script>
+</body>
+</html>

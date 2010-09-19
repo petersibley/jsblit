@@ -19,6 +19,44 @@ MathHelper.zeroTolerance = 0.000001;
 MathHelper.PI = 3.141592653589793238462643383279;
 
 /**
+* 180.0 divided by PI
+* @const
+* @type {number}
+*/
+MathHelper.oneEightyOverPI = 180.0 / MathHelper.PI;
+
+/**
+* PI divided by 180.0
+* @const
+* @type {number}
+*/
+MathHelper.piOverOneEighty = MathHelper.PI / 180.0;
+
+/**
+* Converts radians to degrees
+* @param {number} angle An angle in degrees
+* @return {number}
+*/
+MathHelper.degreesToRadians = function (angle) {
+    return angle * MathHelper.piOverOneEighty;
+};
+
+/**
+* Converts degrees to radians
+* @param {number} angle An angle in radians
+*/
+MathHelper.radiansToDegrees = function (angle) {
+    return angle * MathHelper.oneEightyOverPI; 
+};
+
+/**
+* Returns a random number in the range [0, 1]
+*/
+MathHelper.random = function () {
+    return Math.random();
+};
+
+/**
 * Returns the sin of the angle parameter
 * @param {number} angle in radians
 * @return {number}

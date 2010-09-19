@@ -19,6 +19,44 @@ MathHelper.zeroTolerance = 0.000001;
 MathHelper.PI = 3.141592653589793238462643383279;
 
 /**
+* 180.0 divided by PI
+* @const
+* @type {number}
+*/
+MathHelper.oneEightyOverPI = 180.0 / MathHelper.PI;
+
+/**
+* PI divided by 180.0
+* @const
+* @type {number}
+*/
+MathHelper.piOverOneEighty = MathHelper.PI / 180.0;
+
+/**
+* Converts radians to degrees
+* @param {number} angle An angle in degrees
+* @return {number}
+*/
+MathHelper.degreesToRadians = function (angle) {
+    return angle * MathHelper.piOverOneEighty;
+};
+
+/**
+* Converts degrees to radians
+* @param {number} angle An angle in radians
+*/
+MathHelper.radiansToDegrees = function (angle) {
+    return angle * MathHelper.oneEightyOverPI; 
+};
+
+/**
+* Returns a random number in the range [0, 1]
+*/
+MathHelper.random = function () {
+    return Math.random();
+};
+
+/**
 * Returns the sin of the angle parameter
 * @param {number} angle in radians
 * @return {number}
@@ -134,14 +172,12 @@ MathHelper.clamp = function (v, min, max) {
 * @param {number} x
 * @param {number} y
 */
-function Vector2(x, y)
-{
+function Vector2(x, y) {
     this.x = x;
     this.y = y;
 }
 
-Vector2.prototype =
-{
+Vector2.prototype = {
     /**
     * Calculates the dot product between the calling vector and parameter v
     * @param {Vector2} v input vector
@@ -248,15 +284,13 @@ Vector2.prototype =
 * @param {number} y
 * @param {number} z
 */
-function Vector3(x, y, z)
-{
+function Vector3(x, y, z) {
     this.x = x;
     this.y = y;
     this.z = z;
 }
 
-Vector3.prototype =
-{
+Vector3.prototype = {
     /**
     * Calculates the dot product between the calling vector and parameter v
     * @param {Vector3} v input vector
@@ -372,16 +406,14 @@ Vector3.prototype =
 * @param {number} z
 * @param {number} w
 */
-function Vector4(x, y, z, w)
-{
+function Vector4(x, y, z, w) {
     this.x = x;
     this.y = y;
     this.z = z;
     this.w = w;
 }
 
-Vector4.prototype =
-{
+Vector4.prototype = {
     /**
     * Calculates the dot product between the calling vector and parameter v
     * @param {Vector4} v input vector
@@ -747,8 +779,7 @@ Matrix4x4.prototype =
         k = this.m32 * this.m44 - this.m34 * this.m42;
         l = this.m33 * this.m44 - this.m34 * this.m43;
         determinant =  a * l - b * k + c * j + d * i - e * h + f * g;
-        if (MathHelper.abs(determinant) < MathHelper.zeroTolerance)
-        {
+        if (MathHelper.abs(determinant) < MathHelper.zeroTolerance) {
             return Matrix4x4.createIdentity();
         }
         
@@ -838,53 +869,47 @@ Quaternion.fromRotationMatrix = function (m) {
     
     result = new Quaternion(0, 0, 0, 0);
     trace = m.m11 + m.m22 + m.m33;
-    if (MathHelper.abs(trace) > MathHelper.zeroTolerance)
-    {
+    if (MathHelper.abs(trace) > MathHelper.zeroTolerance) {
         result.w = MathHelper.sqrt(trace + 1) * 0.5;
         temp = 1.0 / (4 * result.w);
         result.x = (m.m32 - m.m23) * temp;
         result.y = (m.m13 - m.m31) * temp;
         result.z = (m.m21 - m.m12) * temp;
     }
-    else
-    {
+    else {
         largestIndex = 0;
-        if (m.m22 > m.m11)
-        {
+        if (m.m22 > m.m11) {
             largestIndex = 1;
-            if (m.m33 > m.m22)
-            {
+            if (m.m33 > m.m22) {
                 largestIndex = 2;
             }
         }
-        else if (m.m33 > m.m11)
-        {
+        else if (m.m33 > m.m11) {
             largestIndex = 2;
         }
        
-	    switch (largestIndex)
-		{
-		case 0:
-			result.x = 0.5 * MathHelper.sqrt(m.m11 - m.m22 - m.m33 + 1);
-			temp = 1.0 / (4 * result.x);
-			result.w = (m.m32 - m.m23) * temp;
-			result.y = (m.m12 + m.m21) * temp;
-			result.z = (m.m13 + m.m31) * temp;
-			break;
-		case 1:
-			result.y = 0.5 * MathHelper.sqrt(m.m22 - m.m11 - m.m33 + 1);
-			temp = 1.0 / (4 * result.y);
-			result.w = (m.m13 - m.m31) * temp;
-			result.x = (m.m12 + m.m21) * temp;
-			result.z = (m.m23 + m.m32) * temp;
-			break;
-		case 2:
-			result.z = 0.5 * MathHelper.sqrt(m.m33 - m.m11 - m.m22 + 1);
-			temp = 1.0 / (4 * result.z);
-			result.w = (m.m21 - m.m12) * temp;
-			result.x = (m.m13 + m.m31) * temp;
-			result.y = (m.m32 + m.m23) * temp;
-			break;
+	    switch (largestIndex) {
+        case 0:
+            result.x = 0.5 * MathHelper.sqrt(m.m11 - m.m22 - m.m33 + 1);
+            temp = 1.0 / (4 * result.x);
+            result.w = (m.m32 - m.m23) * temp;
+            result.y = (m.m12 + m.m21) * temp;
+            result.z = (m.m13 + m.m31) * temp;
+            break;
+        case 1:
+            result.y = 0.5 * MathHelper.sqrt(m.m22 - m.m11 - m.m33 + 1);
+            temp = 1.0 / (4 * result.y);
+            result.w = (m.m13 - m.m31) * temp;
+            result.x = (m.m12 + m.m21) * temp;
+            result.z = (m.m23 + m.m32) * temp;
+            break;
+        case 2:
+            result.z = 0.5 * MathHelper.sqrt(m.m33 - m.m11 - m.m22 + 1);
+            temp = 1.0 / (4 * result.z);
+            result.w = (m.m21 - m.m12) * temp;
+            result.x = (m.m13 + m.m31) * temp;
+            result.y = (m.m32 + m.m23) * temp;
+            break;
 		}
     }
     return result;
@@ -913,19 +938,16 @@ Quaternion.fromAxisAngle = function (axis, angle) {
 Quaternion.slerp = function (t, source, target) {
     var cos, angle, sin, invSin, a, b;
     
-    if (t === 0.0)
-    {
+    if (t === 0.0) {
         return source;
     }
-    if (t === 1.0)
-    {
+    if (t === 1.0) {
         return target;
     }
     
     cos = source.dot(target);
     angle = MathHelper.acos(cos);
-    if (MathHelper.abs(angle) >= MathHelper.zeroTolerance)
-    {
+    if (MathHelper.abs(angle) >= MathHelper.zeroTolerance) {
         sin = MathHelper.sin(angle);
         invSin = 1.0 / sin;
         a = MathHelper.sin((1.0 - t) * angle) * invSin;
@@ -982,8 +1004,7 @@ Quaternion.prototype =
         var norm, invNorm;
         
         norm = this.w * this.w + this.x * this.x + this.y * this.y * this.z * this.z;
-        if (MathHelper.abs(norm) > MathHelper.zeroTolerance)
-        {
+        if (MathHelper.abs(norm) > MathHelper.zeroTolerance) {
             invNorm = 1.0 / norm;
             return new Quaternion(this.w * invNorm,
                                   -this.x * invNorm,
@@ -1078,8 +1099,7 @@ Quaternion.prototype =
         var lengthSquared, inverseLength;
         
         lengthSquared = this.x * this.x + this.y * this.y + this.z * this.z;
-        if (lengthSquared > MathHelper.zeroTolerance)
-        {
+        if (lengthSquared > MathHelper.zeroTolerance) {
             inverseLength = MathHelper.invSqrt(lengthSquared);
             return new Vector4(this.x * inverseLength, this.y * inverseLength, this.z * inverseLength, 2.0 * MathHelper.acos(this.w));
         }
@@ -1095,6 +1115,53 @@ Quaternion.prototype =
     }
 };
 /**
+* A user defined color
+* @param {number} r Red value with range [0, 255]
+* @param {number} g Green value with range [0, 255]
+* @param {number} b Blue value with range [0, 255]
+* @param {number} a Alpha value with range [0, 255]
+* @constructor
+*/
+function Color(r, g, b, a) {
+    /**
+    * The red component, with range [0, 255]
+    * @type number
+    */
+    this.r = r;
+    
+    /**
+    * The green component, with range [0, 255]
+    * @type number
+    */
+    this.g = g;
+    
+    /**
+    * The blue component, with range [0, 255]
+    * @type number
+    */
+    this.b = b;
+    
+    /**
+    * The alpha component, with range [0, 255]
+    * @type number
+    */
+    this.a = a;
+    
+    //TODO: abstract sl, webgl, canvas
+    this.formatString = 'rgba(' + this.r + ', ' + this.g + ', ' + this.b + ', ' + (this.a / 255) + ')';
+}
+
+/**
+* White color
+* @type Color
+*/
+Color.white = new Color(255, 255, 255, 255);
+
+/**
+* Black color
+* @type color
+*/
+Color.black = new Color(0, 0, 0, 255);/**
 * Provides common graphics helper function
 * @class
 */
@@ -1136,6 +1203,10 @@ GraphicsHelper.createLookAtRH = function (position, look, up) {
 /**
 * Creates a perspective projection matrix for use with column vectors.
 * The near and far planes are mapped to [-1, 1] to match opengl conventions
+* @param {number} verticalFov The vertical field of view
+* @param {number} aspectRatio The aspect ratio of the viewport
+* @param {number} near The distance to the near plane
+* @param {number} far The distance to the far plane
 * @return {Matrix4x4}
 */
 GraphicsHelper.createPerspective = function (verticalFov,
@@ -1152,16 +1223,23 @@ GraphicsHelper.createPerspective = function (verticalFov,
 * A Frame represents a translate and rotation of an orthonormal basis
 * @constructor
 */
-function Frame()
-{
-    this.Position = new Vector3(0, 0, 0);
-    this.Rotation = Quaternion.createIdentity();
+function Frame() {
+    /**
+    * The position of the frame
+    * @type Vector3
+    */
+    this.position = new Vector3(0, 0, 0);
+    
+    /**
+    * The rotation applied to the frame
+    * @type Quaternion
+    */
+    this.rotation = Quaternion.createIdentity();
 }/**
 * Represents a camera that applies perspective distortion to a scene
 * @constructor
 */
-function PerspectiveCamera()
-{
+function PerspectiveCamera() {
     this.viewport = null;
     this.position = new Vector3(0, 0, 0);
     this.up = new Vector3(0, 1, 0);
@@ -1307,8 +1385,7 @@ PerspectiveCamera.prototype = {
 * @param {number} farDistance The distance to the far plane
 * @constructor
 */
-function Viewport(width, height, nearDistance, farDistance)
-{
+function Viewport(width, height, nearDistance, farDistance) {
     this.width = width;
     this.height = height;
     this.aspectRatio = this.width / this.height;
@@ -1356,5 +1433,696 @@ Viewport.prototype = {
     */
     getFarDistance: function () {
         return this.farDistance;
+    }
+};
+/**
+* Enumeration of the various draw orders that can be applied when
+* drawing a batch of 2D sprites
+* @constructor
+*/
+function SpriteSortOrder() {
+}
+
+/**
+* Sprites will be drawn in the order the draw calls were made
+* @type number
+*/
+SpriteSortOrder.inOrder = 0;
+
+//BackToFront - sort by depth property
+//FrontToBack - sort by depth property
+//Texture - i.e. sort by texture
+
+/**
+* Specifies the different draw options that can be specified when
+* drawing a 2D sprite
+* @constructor
+*/
+function SpriteDrawOptions() {
+    /**
+    * The depth value, in the range [-1, 1].  Larger depths indicate
+    * the item will be drawn before items with smaller depths.
+    * @type number
+    */
+    this.depth = 0;
+    
+    /**
+    * Specifies a rectangle in the source texture to draw. If not
+    * specified it is assumed the entire texture should be used 
+    * as the source
+    * @type Rect2D
+    */
+    this.sourceRect = null;
+    
+    /**
+    * Specifies where the sprite will be draw in the 
+    * render target x,y, width, height
+    * @type Rect2D
+    */
+    this.destinationRect = null;
+    
+    /**
+    * Specifies the location where the top left of the image
+    * will be drawn from.  If the destinationRect property is
+    * set this value is ignored
+    * @type Vector2
+    */
+    this.position = new Vector2(0, 0);
+    
+    /**
+    * The x and y scaling factor to be applied to the sprite
+    * @type Vector2
+    */
+    this.scale = null;
+    
+    /**
+    * Specifies the rotation in radians.  A positive value will rotate
+    * the sprite in a clockwise direction. Tip: To convert degrees to
+    * radians use the MathHelper.degreesToRadians function.
+    */
+    this.rotation = null;
+    
+    /**
+    * The origin of the rotation relative to the render target
+    * @type Vector2
+    */
+    this.origin = new Vector2(0, 0);
+}/**
+* Defines a 2D rectangle
+* @param {number} x The x position of the top left of the rectangle
+* @param {number} y The y position of the top left of the rectangle
+* @param {number} width The width of the rectangle
+* @param {number} height The height of the rectangle
+* @constructor
+*/
+function Rect2D(x, y, width, height) {
+    /**
+    * The x position of the top left of the rectangle
+    * @type number
+    */
+    this.x = x;
+    
+    /**
+    * The y position of the top left of the rectangle
+    * @type number
+    */
+    this.y = y;
+    
+    /**
+    * The width of the rectangle
+    * @type number
+    */
+    this.width = width;
+    
+    /**
+    * The height of the rectangle
+    * @type number
+    */
+    this.height = height;
+}
+
+Rect2D.prototype = {
+};/**
+* An abstraction of the graphical hardware in a users computer
+* @param {JsBlitWindow} jsBlitWindow The window the content is displayed in
+* @constructor
+*/
+function GraphicsDevice(jsBlitWindow) {
+    
+    this.jsBlitWindow = jsBlitWindow;
+    this.renderTarget = null;
+    
+    //TODO: abstract away
+    this.renderContext2D = null;
+}
+
+GraphicsDevice.prototype = {
+    
+    /**
+    * Returns the current render target
+    * @return {RenderTarget}
+    */
+    getRenderTarget: function () {
+        return this.renderTarget;
+    },
+    
+    /**
+    * Sets the current render target
+    * @param {RenderTarget} renderTarget
+    */
+    setRenderTarget: function (renderTarget) {
+    
+        //TODO: Allow multiple calls
+        if (this.renderTarget !== null) {
+            throw 'Multiple setRenderTarget calls not supported';
+        }
+        
+        this.renderTarget = renderTarget;
+        this.renderContext2D = this.renderTarget.platformData.getContext('2d');
+        
+        //TODO: Abstract away
+        this.jsBlitWindow.platformData.appendChild(this.renderTarget.platformData);
+    },
+    
+    /**
+    * Clears the contents of the current render target with the specified color
+    * @param {Color} color
+    */
+    clear: function (color) {
+        
+        //TODO: abstract away canvas, SL, webgl
+        this.renderContext2D.fillStyle = color.formatString;
+        this.renderContext2D.fillRect(0, 0, this.renderTarget.width, this.renderTarget.height);
+    },
+    
+    drawSprites: function (restoreState, textures, drawOptions) {
+        
+        //TODO: Abstract away for SL, canvas, webgl
+        
+        var index, currentTexture, currentOptions, scale, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight, sRect, dRect, rotation, origin;
+        if (restoreState) {
+            this.renderContext2D.save();
+        }
+        
+        /*jslint plusplus:false */
+        for (index = 0; index < textures.length; ++index) {
+            currentTexture = textures[index];
+            currentOptions = drawOptions[index];
+            sRect = currentOptions.sourceRect;
+            if (sRect === null) {
+                sx = sy = 0;
+                sWidth = currentTexture.width;
+                sHeight = currentTexture.height;
+            }
+            else {
+                sx = sRect.x;
+                sy = sRect.y;
+                sWidth = sRect.width;
+                sHeight = sRect.height;
+            }
+
+            dRect = currentOptions.destinationRect;
+            if (dRect === null) {
+                dx = currentOptions.position.x;
+                dy = currentOptions.position.y;
+                dWidth = sWidth;
+                dHeight = sHeight;
+            }
+            else {
+                dx = dRect.x;
+                dy = dRect.y;
+                dWidth = dRect.width;
+                dHeight = dRect.height;
+            }
+            
+            //TODO: Performant?
+            this.renderContext2D.save();
+            
+            rotation = currentOptions.rotation;
+            if (rotation !== null) {
+                origin = currentOptions.origin;
+                this.renderContext2D.translate(origin.x, origin.y);
+                this.renderContext2D.rotate(rotation);
+                dx -= origin.x;
+                dy -= origin.y;
+            }
+            
+            scale = currentOptions.scale;
+            if (scale !== null) {
+                this.renderContext2D.scale(scale.x, scale.y);
+            }
+            
+            this.renderContext2D.drawImage(currentTexture.platformData,
+                                           sx, sy, sWidth, sHeight,
+                                           dx, dy, dWidth, dHeight);
+            
+            this.renderContext2D.restore();
+            //if(scale != null) {
+            //    this.renderContext2D.scale(1, 1);
+            //}
+            //
+            //if(rotation != null) {
+            //    this.renderContext2D.rotate(-rotation);
+            //    this.renderContext2D.translate(-origin.x, -origin.y);
+            //}
+        }
+        
+        if (restoreState) {
+            this.renderContext2D.restore();
+        }
+    }
+};/**
+* Represents a two dimensional texture
+* @param {number} width
+* @param {number} height
+* @constructor
+*/
+function Texture2D(width, height) {
+
+    /**
+    * The height of the texture
+    * @type number
+    */
+    this.height = height;
+    
+    /**
+    * The width of the texture
+    * @type number
+    */
+    this.width = width;
+    
+    //TODO: Remove with platform abstraction
+    this.platformData = null;
+}/**
+* A render target represents a surface that can be drawn onto
+* @param {number} width
+* @param {number} height
+* @constructor
+*/
+function RenderTarget(width, height) {
+
+    /**
+    * The width of the render target
+    * @type number
+    */
+    this.width = width;
+    
+    /**
+    * The height of the render target
+    * @type number
+    */
+    this.height = height;
+    
+    //TODO: Move this into a canvas specific implementation
+    //TODO: Need some kind of browser check code to know which ones support
+    //      canvas / webgl / silveright etc
+    
+    /*jslint browser:true */
+    this.platformData = document.createElement('Canvas');
+    this.platformData.width = this.width;
+    this.platformData.height = this.height;
+}/**
+* Used to draw sprites onto a render target
+* @param {GraphicsDevice} graphicsDevice
+* @constructor
+*/
+function SpriteBatch(graphicsDevice) {
+    this.sortOrder = SpriteSortOrder.inOrder;
+    this.restoreState = true;
+    this.graphicsDevice = graphicsDevice;
+    
+    //List of sprites and their draw commands
+    this.textures = [];
+    this.drawOptions = [];
+}
+
+SpriteBatch.prototype = {
+
+    /**
+    * Called before drawing any sprites to the render target
+    * @param {SpriteSortOrder} sortOrder
+    * @param {boolean} restoreState - if true then any state modified by the draw calls
+    *                  will be restored at the end of the draw calls
+    */
+    begin: function (sortOrder, restoreState) {
+        this.sortOrder = sortOrder;
+        this.restoreState = restoreState;
+        this.textures.length = 0;
+        this.drawOptions.length = 0;
+    },
+    
+    /**
+    * Draws a sprite into the render target with the specified draw options
+    * @param {Texture2D} texture The texture containing the sprite
+    * @param {SpriteDrawOptions} drawOptions The options to use to draw the sprite
+    */
+    draw: function (texture, drawOptions) {
+        this.textures.push(texture);
+        this.drawOptions.push(drawOptions);
+    },
+    
+    /**
+    * Signals the end of a batch or sprite rendering
+    */
+    end: function () {
+    
+        //TODO: Be smarter with sort order, depth sorting
+        
+        this.graphicsDevice.drawSprites(this.restoreState, this.textures, this.drawOptions);
+    }
+};/**
+* Represents a request for a texture load.
+* @param {string} uri The uri of the image source
+* @param {Object} token A user defined token that is returned in the TextureLoadResponse
+* @param {Object} loadCompletedDelegate An object that has a method that has the 
+*                 following signature void loadTextureCompleted(TextureLoadResponse response)
+* @constructor
+*/
+function TextureLoadRequest(uri, token, loadCompletedDelegate) {
+
+    /**
+    * URI of texture to load
+    * @type string
+    */
+    this.uri = uri;
+    
+    /**
+    * User defined token, will be returned in the TextureLoadResponse object
+    * @type Object
+    */
+    this.token = token;
+    
+    /**
+    * Delegate class that has a signature loadTextureCompleted(TextureLoadResponse response)
+    */
+    this.loadCompletedDelegate = loadCompletedDelegate;
+}/**
+* Represents the response from an async texture load request
+* @param {Texture2D} texture
+* @param {Object} token A user defined token passed into the TextureLoadRequest instance
+* @param {Object} error
+* @constructor
+*/
+function TextureLoadResponse(texture, token, error) {
+
+    /**
+    * The loaded image.  If an error has occurred this field is undefined
+    * @type Texture2D
+    */
+    this.texture = texture;
+    
+    /**
+    * A user defined token, passed into the TextureLoadRequest instance
+    * @type Object
+    */
+    this.token = token;
+    
+    /**
+    * If an error occurs during load this error field is populated, 
+    * otherwise it is set to null.  There are currently no fields
+    * available in this object, just check for it being non null
+    * @type Object
+    */
+    this.error = error;
+}
+/**
+* Represents the content loading system for app assets
+* @constructor
+*/
+function Content() {
+
+    //TODO: This should be abstrct, move into silverlight, webgl, canvas versions
+}
+
+Content.prototype = {
+
+    /**
+    * Loads a texture asyncronously from the content system at the specified location
+    * @param {TextureLoadRequest} request Request parameters
+    */
+    loadTextureAsync: function (request) {
+        
+        //TODO: Should be split in concrete implementations for different platforms        
+        //TODO: okay to create html elements like this, abstract away?
+        
+        /*jslint browser:true */
+        var img = document.createElement('Image');
+        
+        /** @ignore */
+        img.onload = function () {
+        
+            //Create a texture, associate underlying HTML image element (could also be SL / webgl texture etc)
+            var texture = new Texture2D(img.width, img.height);
+            texture.platformData = img;
+            
+            var response = new TextureLoadResponse(texture, request.token, null);
+            request.loadCompletedDelegate.loadTextureCompleted(response);
+        };
+        
+        /** @ignore */
+        img.onerror = function () {
+            request.loadCompletedDelegate.loadTextureCompleted(new TextureLoadResponse(null, request.token, {}));
+        };
+        
+        img.src = request.uri;
+    }
+};/**
+* Represents time within the context of a running application
+* @constructor
+*/
+function AppTime() {
+    this.multiplier = 1;
+    this.seconds = 0;
+    this.startTime = (new Date()).getTime();
+}
+
+AppTime.prototype = {
+
+    /**
+    * Allows a caller to speed up or slow down the app time, useful for debugging
+    * animation issues. For example specifying a value of 0.5 would slow down time by a half
+    * @param {number} multiplier
+    */
+    setMultiplier: function (multiplier) {
+        this.multiplier = multiplier;
+    },
+    
+    /**
+    * When called updates the AppTime instance to reflect
+    * the current time
+    */
+    update: function () {
+        var now = (new Date()).getTime();
+        this.seconds = (now - this.startTime) / 1000 * this.multiplier;
+    },
+    
+    /**
+    * Returns the current app time. This is a number that is monotonically increasing
+    * @return {number}
+    */
+    getSeconds: function () {
+        return this.seconds;
+    }
+};/**
+* Contains the current mouse state of the application
+* @constructor
+*/
+function MouseState() {
+}/**
+* Contains the current keyboard state of the application
+* @constructor
+*/
+function KeyboardState(keyCode) {
+
+    //TODO: Handle multiple keys, bit mask, how work in browser?
+    
+    /**
+    * The current key code, if no key is pressed this is null
+    * @type number
+    */
+    this.keyCode = keyCode;
+}//Globals needed for 'this' massaging with events
+var JsBlitWindowEvents = [];
+
+/** @ignore */
+function JsBlitWindowOnKeyDown(event) {
+    var key;
+    
+    /*jslint forin:false */
+    for (key in JsBlitWindowEvents) {
+    
+        //jslint really wants us to do this
+        if (true) {
+            JsBlitWindowEvents[key].onKeyDown(event);
+        }
+    }
+}
+
+/** @ignore */
+function JsBlitWindowOnKeyUp(event) {
+    var key;
+    
+    /*jslint forin:false */
+    for (key in JsBlitWindowEvents) {
+    
+        //jslint really wants this
+        if (true) {
+            JsBlitWindowEvents[key].onKeyUp(event);
+        }
+    }
+}
+
+/**
+* The JsBlitWindow class is responsible for capturing user
+* input for the JsBlitApplication
+* @param {string} id A unique id for the window
+* @param {number} width The width of the window
+* @param {number} height The height of the window
+* @constructor
+*/
+function JsBlitWindow(id, width, height) {
+
+    /**
+    * A unique id for the window
+    * @type {string}
+    */
+    this.id = id;
+    
+    /**
+    * The width of the window
+    * @type {number}
+    */
+    this.width = width;
+    
+    /**
+    * The height of the window
+    * @type {number}
+    */
+    this.height = height;
+    
+    //TODO: Abstract SL, canvas, webgl
+    this.platformData = document.createElement('div');
+    this.platformData.style.width = this.width;
+    this.platformData.style.height = this.height;
+    this.platformData.tabIndex = 0;
+    
+    //Abstract away for SL, canvas, webgl
+    //TODO: Is this a good way to do this?
+    JsBlitWindowEvents[this.id] = this;
+    this.platformData.onkeydown = JsBlitWindowOnKeyDown;    
+    this.platformData.onkeyup = JsBlitWindowOnKeyUp;
+    
+    this.currentKeyCode = null;
+}
+
+JsBlitWindow.prototype = {
+
+    /**
+    * @ignore
+    */
+    onKeyDown: function (event) {
+        this.currentKeyCode = event.which;
+    },
+    
+    /**
+    * @ignore
+    */
+    onKeyUp: function (event) {
+        this.currentKeyCode = null;
+    },
+    
+    /**
+    * Returns the current key code, if no key is pressed null is returned
+    * @return {number}
+    */
+    getKeyCode: function () {
+        return this.currentKeyCode;
+    }
+};//Some global variables needed for setInverval 'this' scope massaging
+var JsBlitAppGlobalInstances = [];
+
+/** @ignore */
+function JsBlitAppCallMainLoop(appId) {
+    JsBlitAppGlobalInstances[appId].mainLoop();
+}
+
+/**
+* Represents an app that renders jsblit content
+* @param {JsBlitWindow} jsBlitWindow The window the app will render into
+* @constructor
+*/
+function JsBlitApp(jsBlitWindow) {
+    this.appTime = new AppTime();
+    this.delegate = null;
+    this.jsBlitWindow = jsBlitWindow;
+    this.graphicsDevice = new GraphicsDevice(this.jsBlitWindow);
+    this.content = new Content();
+    this.frameRate = 10;
+    this.keyboardState = new KeyboardState(null);
+    this.mouseState = new MouseState();
+    this.globalInstance = JsBlitAppGlobalInstances;
+        
+    //Some jiggery pokery for setInterval 'this' scope resolution
+    this.globalInstance[this.jsBlitWindow.id] = this;
+}
+
+JsBlitApp.prototype = {
+
+    /**
+    * Returns the JsBlitWindow instance associated with the app
+    * @return {JsBlitWindow}
+    */
+    getWindow: function () {
+        return this.jsBlitWindow;
+    },
+    
+    /**
+    * Sets the maximum animation frame rate
+    * @param {number} frameRate For example 30 means 30 frames per second
+    */
+    setFrameRate: function (frameRate) {
+        this.frameRate = frameRate;
+    },
+    
+    /**
+    * When called signals the app to start rendering
+    */
+    startRendering: function () {
+    
+        //setInterval will set the wrong scope if we directly
+        //try to call this.mainLoop, so need to call with the
+        //correct scope.
+        /*jslint browser:true */
+        this.mainLoopId = setInterval('JsBlitAppCallMainLoop("' + this.jsBlitWindow.id + '");', 
+                                      1000 / this.frameRate);
+    },
+    
+    /**
+    * When called signals the app to stop rendering
+    */
+    stopRendering: function () {
+        /*jslint browser:true */
+        clearInterval(this.mainLoopId);
+    },
+    
+    /**
+    * Returns the graphics device associated with the app
+    * @return {GraphicsDevice}
+    */
+    getGraphicsDevice: function () {
+        return this.graphicsDevice;
+    },
+    
+    /**
+    * Sets the delegate that handles all of the render/update
+    * calls. The delegate must implement the following function signatures
+    * void update(GraphicsDevice, AppTime, MouseState, KeyboardState);
+    * void render(GraphicsDevice, AppTime);
+    * @param {Object} delegate
+    */
+    setDelegate: function (delegate) {
+        this.delegate = delegate;
+    },
+    
+    /**
+    * The main game loop of the app
+    * @ignore
+    */
+    mainLoop: function () {
+            
+        //Updates the current time
+        this.appTime.update();
+        
+        //At some point these could be in seperate threads or 
+        //call frequency, best to split them up
+        
+        //TODO: Mouse input
+        
+        this.keyboardState.keyCode = this.jsBlitWindow.getKeyCode();
+        this.delegate.update(this.graphicsDevice,
+                             this.appTime,
+                             this.mouseState,
+                             this.keyboardState);
+        this.delegate.render(this.graphicsDevice, this.appTime);
     }
 };
