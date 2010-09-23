@@ -1,0 +1,17 @@
+Build:
+- Open a terminal and type "make all" at the top level folder that contains the Makefile. This will:
+  - Run the Google Closure Compiler on the source to minify the code and find any errors/warnings
+  - Run jslint on the code to find any bad programming practices or mistakes
+  - Generate the documentation from the jsdoc comments
+  - Run the unit tests
+
+After running the command there should be:
+bin/jsblit.js
+bin/jsblit-compiled.js
+
+
+To modify code, after making a change run "make compile" and a new version of jsblit.js and jsblit-compiled.js will be generated. If you add a new JS file you will need to update the Makefile to reflect this change.
+
+
+Examples:
+ - There is an asteroid sample in src/samples/asteroids/index.html that shows how to use the 2D APIs.
