@@ -245,15 +245,8 @@ Asteroids.prototype = {
         for(spriteIndex = 0; spriteIndex<this.allSprites.length; ++spriteIndex){
             currentSprite = this.allSprites[spriteIndex];
             
-            //TODO: Reuse these, don't create every frame
-            drawOptions = new SpriteDrawOptions();
-            halfDimension = new Vector3(currentSprite.texture.width / 2, currentSprite.texture.height / 2, 0);
-            drawOptions.position = currentSprite.position.subtract(halfDimension);
-            drawOptions.rotation = currentSprite.totalRotation;
-            drawOptions.origin = currentSprite.position;
-            drawOptions.scale = currentSprite.scale;
-            
-            this.spriteBatch.draw(currentSprite.texture, drawOptions);  
+            //The sprites drawOptions field is updated in its update() method
+            this.spriteBatch.draw(currentSprite.texture, currentSprite.drawOptions);  
         }
         
         this.spriteBatch.end();

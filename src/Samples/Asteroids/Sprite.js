@@ -9,12 +9,23 @@ function Sprite() {
     this.texture = null;
     this.totalRotation = 0;
     this.scale = new Vector2(1, 1);
+    this.drawOptions = new SpriteDrawOptions();
+    this.halfDimension = new Vector3(0, 0, 0);
 }
 
 Sprite.prototype = {
 
+	setTexture: function (texture) {
+		this.halfDimension = new Vector3(this.texture.width / 2, this.texture.height / 2, 0);
+	},
+	
     update: function() {
         this.position = this.position.add(this.direction.multiplyScalar(this.speed));
+        
+        this.drawOptions.position = this.position.subtract(this.halfDimension);
+        this.drawOptions.rotation = this.totalRotation;
+        this.drawOptions.origin = this.position;
+        this.drawOptions.scale = this.scale;
     },
     
     addRotation: function (angle) {
