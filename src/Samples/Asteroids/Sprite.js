@@ -22,7 +22,9 @@ Sprite.prototype = {
 	
     update: function() {
         this.position = this.position.add(this.direction.multiplyScalar(this.speed));
-        
+    },
+    
+    updateDrawOptions: function () {
         this.drawOptions.position = this.position.subtract(this.halfDimension);
         this.drawOptions.rotation = this.totalRotation;
         this.drawOptions.origin = this.position;

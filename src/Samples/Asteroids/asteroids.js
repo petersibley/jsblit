@@ -208,6 +208,10 @@ Asteroids.prototype = {
             if(currentSprite.position.y < 0) {
                 currentSprite.position.y = rtHeight;
             }
+            
+            //Since the position can change after an update, here is the place
+            //where we can get the final draw values
+            currentSprite.updateDrawOptions();
         }
     },
     
