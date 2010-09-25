@@ -50,7 +50,7 @@ Asteroids.prototype = {
         num = 20;
         for(i=0; i<num; ++i) {
             sprite = new Sprite();
-            sprite.texture = this.asteroidTexture;
+            sprite.setTexture(this.asteroidTexture);
             sprite.addRotation(MathHelper.random() * 2 * MathHelper.PI);
             sprite.addVelocity(0.5 + MathHelper.random() * 10);
             sprite.scale = new Vector2(0.5, 0.5);
@@ -68,7 +68,7 @@ Asteroids.prototype = {
         var rt;
         
         this.rocketSprite = new Sprite();
-        this.rocketSprite.texture = this.rocketTexture;
+        this.rocketSprite.setTexture(this.rocketTexture);
         
         //Since the rocket image points upwards, set initial direction vector
         this.rocketSprite.direction = new Vector3(0,-1,0);

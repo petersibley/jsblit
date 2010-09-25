@@ -15,9 +15,10 @@ function Sprite() {
 
 Sprite.prototype = {
 
-	setTexture: function (texture) {
-		this.halfDimension = new Vector3(this.texture.width / 2, this.texture.height / 2, 0);
-	},
+    setTexture: function (texture) {
+        this.texture = texture;
+        this.halfDimension = new Vector3(this.texture.width / 2, this.texture.height / 2, 0);
+    },
 	
     update: function() {
         this.position = this.position.add(this.direction.multiplyScalar(this.speed));
