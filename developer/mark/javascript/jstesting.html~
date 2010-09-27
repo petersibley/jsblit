@@ -1,0 +1,31 @@
+<html>
+<head>
+<title>
+testing
+</title>
+</head>
+<body>
+
+<script>
+
+function MyClass(age)
+{
+    this.age = age;
+}
+
+function bar(x)
+{
+    x.age = 99;
+    x = null;
+}
+
+function foo(){
+	var y = new MyClass(20);
+	bar(y);
+alert(y.age);
+}
+
+foo();
+</script>
+</body>
+</html>

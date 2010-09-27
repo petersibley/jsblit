@@ -1449,8 +1449,19 @@ function SpriteSortOrder() {
 */
 SpriteSortOrder.inOrder = 0;
 
-//BackToFront - sort by depth property
-//FrontToBack - sort by depth property
+/**
+ * Sprites will be drawn in back to front order. Sprites with smaller
+ * depth values will be drawn before sprites with larger depth values
+*/
+SpriteSortOrder.backToFront = 1;
+
+/**
+* Sprites will be drawn in front to back order.  Sprites with larger
+* depth values will be drawn before sprites with smaller depth values
+*/
+SpriteSortOrder.frontToBack = 2;
+
+
 //Texture - i.e. sort by texture
 
 /**
@@ -1507,6 +1518,13 @@ function SpriteDrawOptions() {
     * @type Vector2
     */
     this.origin = new Vector2(0, 0);
+
+	/**
+	* Specifies the alpha value to apply to the sprite. A value of 0 represents fully
+    * transparent. A value of 1.0 represents a fully opaque sprite.  Defaults to 1.0
+	* @type number
+	*/
+	this.alpha = 1.0;
 }/**
 * Defines a 2D rectangle
 * @param {number} x The x position of the top left of the rectangle
@@ -1606,8 +1624,8 @@ GraphicsDevice.prototype = {
         
         /*jslint plusplus:false */
         for (index = 0; index < textures.length; ++index) {
-            currentTexture = textures[index];
             currentOptions = drawOptions[index];
+			currentTexture = textures[currentOptions.spriteBatchTextureIndex];
             sRect = currentOptions.sourceRect;
             if (sRect === null) {
                 sx = sy = 0;
@@ -1651,7 +1669,8 @@ GraphicsDevice.prototype = {
             if (scale !== null) {
                 this.renderContext2D.scale(scale.x, scale.y);
             }
-            
+
+			this.renderContext2D.globalAlpha = currentOptions.alpha;
             this.renderContext2D.drawImage(currentTexture.platformData,
                                            sx, sy, sWidth, sHeight,
                                            dx, dy, dWidth, dHeight);
@@ -1736,6 +1755,14 @@ function SpriteBatch(graphicsDevice) {
     this.drawOptions = [];
 }
 
+SpriteBatch.frontToBackSort = function (a, b) { 
+	return b.depth - a.depth;
+};
+
+SpriteBatch.backToFrontSort = function (a, b) { 
+	return a.depth - b.depth;
+};
+
 SpriteBatch.prototype = {
 
     /**
@@ -1754,11 +1781,20 @@ SpriteBatch.prototype = {
     /**
     * Draws a sprite into the render target with the specified draw options
     * @param {Texture2D} texture The texture containing the sprite
-    * @param {SpriteDrawOptions} drawOptions The options to use to draw the sprite
+    * @param {SpriteDrawOptions} drawOptions The options to use to draw the sprite. Note: Do
+    * not reuse drawOptions instances for multiple draw calls if you change properties of the
+    * drawOptions instance, since these instances are not copied by just referenced from the
+    * sprite batch class.  Sharing one drawOption instance across multiple draw calls is fine
+    * as long as all draw calls have the same values.
     */
     draw: function (texture, drawOptions) {
         this.textures.push(texture);
         this.drawOptions.push(drawOptions);
+
+		//Is this evil or acceptable?  Need an index into the textures
+		//so that if the drawOptions is sorted we know which texture 
+		//should be associated with it.  
+		drawOptions.spriteBatchTextureIndex = this.textures.length - 1;
     },
     
     /**
@@ -1766,8 +1802,15 @@ SpriteBatch.prototype = {
     */
     end: function () {
     
-        //TODO: Be smarter with sort order, depth sorting
-        
+        //TODO: Be smarter with texture sort
+
+        if (this.sortOrder === SpriteSortOrder.frontToBack) {
+            this.drawOptions.sort(SpriteBatch.frontToBackSort);
+        }
+        else if (this.sortOrder === SpriteSortOrder.backToFront) {
+            this.drawOptions.sort(SpriteBatch.backToFrontSort);
+        }
+
         this.graphicsDevice.drawSprites(this.restoreState, this.textures, this.drawOptions);
     }
 };/**

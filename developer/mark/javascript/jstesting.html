@@ -1,0 +1,51 @@
+<html>
+<head>
+<title>
+testing
+</title>
+</head>
+<body>
+
+<script>
+
+function MyClass(age)
+{
+    this.age = age;
+}
+
+function bar(x)
+{
+    x.age = 99;
+    x = null;
+}
+
+function foo(){
+
+	var i;
+	var numberOfItems = 10000;
+	var data = [];
+	for(i = 0; i<numberOfItems; ++i)
+	{
+		data.push(numberOfItems - i);
+	}
+
+	var start = (new Date()).getTime();
+	data.sort(function(a, b){
+		return a - b;
+	});
+	var end = (new Date()).getTime();
+
+	var output = '';
+	for(i=0; i<data.length; ++i)
+	{
+//		output += data[i] + ', ';
+	}
+	output += ' TIME:' + ((end - start) / 1000);
+
+	alert(output);
+}
+
+foo();
+</script>
+</body>
+</html>

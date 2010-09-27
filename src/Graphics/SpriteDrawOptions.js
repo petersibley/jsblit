@@ -52,4 +52,11 @@ function SpriteDrawOptions() {
     * @type Vector2
     */
     this.origin = new Vector2(0, 0);
+
+	/**
+	* Specifies the alpha value to apply to the sprite. A value of 0 represents fully
+    * transparent. A value of 1.0 represents a fully opaque sprite.  Defaults to 1.0
+	* @type number
+	*/
+	this.alpha = 1.0;
 }

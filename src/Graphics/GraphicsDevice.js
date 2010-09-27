@@ -62,8 +62,8 @@ GraphicsDevice.prototype = {
         
         /*jslint plusplus:false */
         for (index = 0; index < textures.length; ++index) {
-            currentTexture = textures[index];
             currentOptions = drawOptions[index];
+			currentTexture = textures[currentOptions.spriteBatchTextureIndex];
             sRect = currentOptions.sourceRect;
             if (sRect === null) {
                 sx = sy = 0;
@@ -107,7 +107,8 @@ GraphicsDevice.prototype = {
             if (scale !== null) {
                 this.renderContext2D.scale(scale.x, scale.y);
             }
-            
+
+			this.renderContext2D.globalAlpha = currentOptions.alpha;
             this.renderContext2D.drawImage(currentTexture.platformData,
                                            sx, sy, sWidth, sHeight,
                                            dx, dy, dWidth, dHeight);

@@ -15,6 +15,14 @@ function Sprite() {
 
 Sprite.prototype = {
 
+    setDepth: function (depth) {
+		this.drawOptions.depth = depth;
+	},
+
+	setAlpha: function (opacity) {
+		this.drawOptions.alpha = opacity;
+	},
+
     setTexture: function (texture) {
         this.texture = texture;
         this.halfDimension = new Vector3(this.texture.width / 2, this.texture.height / 2, 0);

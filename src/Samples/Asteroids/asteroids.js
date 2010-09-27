@@ -50,6 +50,7 @@ Asteroids.prototype = {
         num = 20;
         for(i=0; i<num; ++i) {
             sprite = new Sprite();
+			sprite.setAlpha(0.5);
             sprite.setTexture(this.asteroidTexture);
             sprite.addRotation(MathHelper.random() * 2 * MathHelper.PI);
             sprite.addVelocity(0.5 + MathHelper.random() * 10);
@@ -68,6 +69,10 @@ Asteroids.prototype = {
         var rt;
         
         this.rocketSprite = new Sprite();
+
+		//Asteroids have a depth of 0 so this will make the rocket always
+		//appear on top of the sprites
+		this.rocketSprite.setDepth(1);
         this.rocketSprite.setTexture(this.rocketTexture);
         
         //Since the rocket image points upwards, set initial direction vector
@@ -235,7 +240,7 @@ Asteroids.prototype = {
         //In our case we just have a bunch of sprites that we want to draw 
         //each frame, all calls must be between the begin and end calls
         
-        this.spriteBatch.begin(SpriteSortOrder.inOrder, true);
+        this.spriteBatch.begin(SpriteSortOrder.backToFront, true);
         
         //Examples of other properties we can set
         //drawOptions.sourceRect = new Rect2D(300, 400, 200, 200);
@@ -244,6 +249,7 @@ Asteroids.prototype = {
         //drawOptions.origin = new Vector2(this.backgroundTexture.width / 2, this.backgroundTexture.height / 2);
         
         drawOptions = new SpriteDrawOptions();
+		drawOptions.depth = -1;
         this.spriteBatch.draw(this.backgroundTexture, drawOptions);
         
         for(spriteIndex = 0; spriteIndex<this.allSprites.length; ++spriteIndex){

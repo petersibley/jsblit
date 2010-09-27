@@ -12,7 +12,18 @@ function SpriteSortOrder() {
 */
 SpriteSortOrder.inOrder = 0;
 
-//BackToFront - sort by depth property
-//FrontToBack - sort by depth property
+/**
+ * Sprites will be drawn in back to front order. Sprites with smaller
+ * depth values will be drawn before sprites with larger depth values
+*/
+SpriteSortOrder.backToFront = 1;
+
+/**
+* Sprites will be drawn in front to back order.  Sprites with larger
+* depth values will be drawn before sprites with smaller depth values
+*/
+SpriteSortOrder.frontToBack = 2;
+
+
 //Texture - i.e. sort by texture
 
