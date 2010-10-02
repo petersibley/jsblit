@@ -7,19 +7,7 @@ function SpriteBatch(graphicsDevice) {
     this.sortOrder = SpriteSortOrder.inOrder;
     this.restoreState = true;
     this.graphicsDevice = graphicsDevice;
-    
-    //List of sprites and their draw commands
-    this.textures = [];
-    this.drawOptions = [];
 }
-
-SpriteBatch.frontToBackSort = function (a, b) { 
-	return b.depth - a.depth;
-};
-
-SpriteBatch.backToFrontSort = function (a, b) { 
-	return a.depth - b.depth;
-};
 
 SpriteBatch.prototype = {
 
@@ -30,10 +18,6 @@ SpriteBatch.prototype = {
     *                  will be restored at the end of the draw calls
     */
     begin: function (sortOrder, restoreState) {
-        this.sortOrder = sortOrder;
-        this.restoreState = restoreState;
-        this.textures.length = 0;
-        this.drawOptions.length = 0;
     },
     
     /**
@@ -46,29 +30,11 @@ SpriteBatch.prototype = {
     * as long as all draw calls have the same values.
     */
     draw: function (texture, drawOptions) {
-        this.textures.push(texture);
-        this.drawOptions.push(drawOptions);
-
-		//Is this evil or acceptable?  Need an index into the textures
-		//so that if the drawOptions is sorted we know which texture 
-		//should be associated with it.  
-		drawOptions.spriteBatchTextureIndex = this.textures.length - 1;
     },
     
     /**
     * Signals the end of a batch or sprite rendering
     */
     end: function () {
-    
-        //TODO: Be smarter with texture sort
-
-        if (this.sortOrder === SpriteSortOrder.frontToBack) {
-            this.drawOptions.sort(SpriteBatch.frontToBackSort);
-        }
-        else if (this.sortOrder === SpriteSortOrder.backToFront) {
-            this.drawOptions.sort(SpriteBatch.backToFrontSort);
-        }
-
-        this.graphicsDevice.drawSprites(this.restoreState, this.textures, this.drawOptions);
     }
 };

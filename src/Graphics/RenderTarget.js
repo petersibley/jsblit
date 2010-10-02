@@ -17,13 +17,4 @@ function RenderTarget(width, height) {
     * @type number
     */
     this.height = height;
-    
-    //TODO: Move this into a canvas specific implementation
-    //TODO: Need some kind of browser check code to know which ones support
-    //      canvas / webgl / silveright etc
-    
-    /*jslint browser:true */
-    this.platformData = document.createElement('Canvas');
-    this.platformData.width = this.width;
-    this.platformData.height = this.height;
 }

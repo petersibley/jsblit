@@ -1,4 +1,23 @@
-Build:
+SETUP
+
+All notes below pertain to Mac OSX, we haven't got a PC version setup yet. (//TODO: Make a devsetup.sh script for all the tasks below)
+
+Silverlight Setup:
+The Silverlight version of asteroids must be run from a webserver so that it can load the textures, you will need to execute the following steps in order to run and do development by hosting the app from your local apache server:
+
+1. Edit /etc/apache2/users/<your_user_name>.conf to add the Silverlight MIME types, otherwise the XAP will not load, these are:
+ AddType application/xaml_xaml .xaml
+ AddType application/x-silverlight-app .xap
+ 
+2. Edit /etc/apache2/users/<your_user_name>.conf to allow Apache to follow symbolic links, by adding FollowSymLinks to the <Directory> Options line 
+3. Create a symbolic link that points to the root of the project source in your sites directory e.g. ln -s /Users/Mark/Code/jsblit jsblit
+4. Restart apache sudo /usr/sbin/apachectl -k restart
+
+You now should be able to run the Silverlight version of the app, by typing something like:  http://localhost/~mark/jsblit/src/samples/asteroids/index.html, this also means that now when you rebuild the code you can just refresh the browser page and get the latest version of the app.
+
+To edit the Silverlight C# code, install MonoDevelop http://monodevelop.com, you can then open the project file under src/Platform/silverlight/csharp/JsBlit.sln The project is setup to output JsBlit.xap to the project bin directory
+
+Build JavaScript:
 - Open a terminal and type "make all" at the top level folder that contains the Makefile. This will:
   - Run the Google Closure Compiler on the source to minify the code and find any errors/warnings
   - Run jslint on the code to find any bad programming practices or mistakes
@@ -8,7 +27,7 @@ Build:
 After running the command there should be:
 bin/jsblit.js
 bin/jsblit-compiled.js
-
+bin/JsBlit.xap (not built as part of the makefile but should be in the directory)
 
 To modify code, after making a change run "make compile" and a new version of jsblit.js and jsblit-compiled.js will be generated. If you add a new JS file you will need to update the Makefile to reflect this change.
 

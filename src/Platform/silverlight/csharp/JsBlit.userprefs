@@ -1,0 +1,37 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" ctype="Workspace" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="JsBlit/GraphicsDevice.cs" ctype="Workbench">
+    <Files>
+      <File FileName="../javascript/SpriteBatchSL.js" Line="148" Column="5" />
+      <File FileName="../../../Graphics/SpriteBatch.js" Line="41" Column="45" />
+      <File FileName="JsBlit/GraphicsDevice.cs" Line="81" Column="5" />
+      <File FileName="../javascript/GraphicsDeviceSL.js" Line="67" Column="3" />
+      <File FileName="../../../Samples/Asteroids/asteroids.js" Line="10" Column="85" />
+      <File FileName="../../htmlCanvas/GraphicsDeviceCV.js" Line="89" Column="1" />
+      <File FileName="../../../Graphics/SpriteDrawOptions.js" Line="48" Column="25" />
+      <File FileName="../../../Application/JsBlitWindow.js" Line="76" Column="5" />
+      <File FileName="../javascript/JsBlitWindowSL.js" Line="25" Column="47" />
+      <File FileName="../javascript/ContentSL.js" Line="24" Column="3" />
+      <File FileName="../../htmlCanvas/JsBlitWindowCV.js" Line="1" Column="1" />
+      <File FileName="JsBlit/Page.xaml.cs" Line="31" Column="50" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="JsBlit" expanded="True">
+            <Node name="References" expanded="True" />
+            <Node name="App.xaml" expanded="True" />
+            <Node name="GraphicsDevice.cs" selected="True" />
+            <Node name="Page.xaml" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/Mark/Code/3djs/3djs/src/Platform/silverlight/csharp/JsBlit/Content.cs" line="49" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches ctype="PinnedWatchStore" />
+</Properties>

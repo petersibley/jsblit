@@ -5,7 +5,8 @@ RHINOJAR=./tools/env-js/rhino/js.jar
 JSLINT=./tools/env-js/misc/jslint.js
 JSDOC=./tools/jsdoc_toolkit/2.3.2/
 DOCOUTDIR=./docs/
-SRC=./src/Math/MathHelper.js \
+SRC=./src/Common/Utils.js \
+    ./src/Math/MathHelper.js \
     ./src/Math/Vector2.js \
     ./src/Math/Vector3.js \
     ./src/Math/Vector4.js \
@@ -30,7 +31,16 @@ SRC=./src/Math/MathHelper.js \
     ./src/Application/MouseState.js \
     ./src/Application/KeyboardState.js \
     ./src/Application/JsBlitWindow.js \
-    ./src/Application/JsBlitApp.js 
+    ./src/Platform/htmlCanvas/ContentCV.js \
+    ./src/Platform/htmlCanvas/GraphicsDeviceCV.js \
+    ./src/Platform/htmlCanvas/RenderTargetCV.js \
+    ./src/Platform/htmlCanvas/SpriteBatchCV.js \
+    ./src/Platform/htmlCanvas/JsBlitWindowCV.js \
+    ./src/Platform/silverlight/javascript/JsBlitWindowSL.js \
+    ./src/Platform/silverlight/javascript/ContentSL.js \
+    ./src/Platform/silverlight/javascript/GraphicsDeviceSL.js \
+    ./src/Platform/silverlight/javascript/RenderTargetSL.js \
+    ./src/Platform/silverlight/javascript/SpriteBatchSL.js
  
 JAVA=java
 all:clean lint compile documentation testAll

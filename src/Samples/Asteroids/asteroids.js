@@ -3,44 +3,50 @@
 * the use the jsBlit 2D APIs and content management
 * @constructor
 */
-function Asteroids() {
-
-    //The window is used the capture all of the input events. Each window
-    //must be given a unique id
-    this.jsBlitWindow = new JsBlitWindow('window1', 830, 664);
-    
-    //The app contains the main game loop and creates all of the global
-    //objects such as a graphics device, content management etc. Each
-    //app instance requires a unique window to render in
-    this.app = new JsBlitApp(this.jsBlitWindow);
-    this.app.setFrameRate(30);
-    
-    //The JsBlitApp instance has several callbacks that need
-    //to be handled by a delegate, such as render and update
-    //methods.
-    this.app.delegate = this;
-    
-    //We must define a render target that we want to render into and set
-    //that as the active render target on the graphics device
-    var rt = new RenderTarget(830, 664);
-    this.app.getGraphicsDevice().setRenderTarget(rt);
-    
-    //A possible optimization is to put all these into one texture
-    //and then just render parts of the same texture
-    this.backgroundTexture = null;
-    this.rocketTexture = null;
-    this.asteroidTexture = null;
-    
-    //The sprite batch instance is used to render all of the game sprite
-    //to the render target
-    this.spriteBatch = new SpriteBatch(this.app.getGraphicsDevice());
-    
-    this.rocketSprite = null;
-    this.allSprites = new Array();
+function Asteroids(useSilverlight, silverlightRuntimePath) {
+	this.useSilverlight = useSilverlight;
+	this.silverlightRuntimePath = silverlightRuntimePath;
 }
 
 Asteroids.prototype = {
 
+	beginGame: function() {
+		
+		//We can easily just create different runtimes for the applications, with just
+		//a one line change.  Hopefully soon there will be a flash and webgl version.
+	    if(this.useSilverlight) {
+	    	this.jsBlitWindow = new JsBlitWindowSL('window1', 830, 664, this, this.silverlightRuntimePath);
+	    }
+	    else {
+	    	this.jsBlitWindow = new JsBlitWindowCV('window1', 830, 664, this);
+	    }
+	    this.jsBlitWindow.setFrameRate(30);
+	},
+	
+	//TODO: Comment
+	onLoaded: function (jsBlitWindow) {
+
+		//We must define a render target that we want to render into and set
+	    //that as the active render target on the graphics device
+	    var rt = this.jsBlitWindow.getGraphicsDevice().createRenderTarget(830, 664);
+	    this.jsBlitWindow.getGraphicsDevice().setRenderTarget(rt);
+
+	    //A possible optimization is to put all these into one texture
+	    //and then just render parts of the same texture
+	    this.backgroundTexture = null;
+	    this.rocketTexture = null;
+	    this.asteroidTexture = null;
+	    
+	    //The sprite batch instance is used to render all of the game sprite
+	    //to the render target
+	    this.spriteBatch = this.jsBlitWindow.getGraphicsDevice().createSpriteBatch();
+	    
+	    this.rocketSprite = null;
+	    this.allSprites = new Array(); 
+
+		this.loadContent();
+	},
+	
     /**
     * Creates the asteroid sprites
     */
@@ -56,7 +62,7 @@ Asteroids.prototype = {
             sprite.addVelocity(0.5 + MathHelper.random() * 10);
             sprite.scale = new Vector2(0.5, 0.5);
             
-            var rt = this.app.getGraphicsDevice().getRenderTarget();
+            var rt = this.jsBlitWindow.getGraphicsDevice().getRenderTarget();
             sprite.position = new Vector3(MathHelper.random() * rt.width, MathHelper.random() * rt.height, 0);
             this.allSprites.push(sprite);
         }
@@ -78,7 +84,7 @@ Asteroids.prototype = {
         //Since the rocket image points upwards, set initial direction vector
         this.rocketSprite.direction = new Vector3(0,-1,0);
         
-        rt = this.app.getGraphicsDevice().getRenderTarget();
+        rt = this.jsBlitWindow.getGraphicsDevice().getRenderTarget();
         this.rocketSprite.position = new Vector3(rt.width / 2, rt.height / 2,0);
         this.allSprites.push(this.rocketSprite);
     },
@@ -89,15 +95,15 @@ Asteroids.prototype = {
     loadContent: function () {
     
         //Load all of the sprite textures need in the game
-        this.app.content.loadTextureAsync(new TextureLoadRequest('./background830x664.jpg',
+        this.jsBlitWindow.content.loadTextureAsync(new TextureLoadRequest('http://www.markdawson.org/jsblit/src/Samples/Asteroids/background830x664.jpg',
                                                                  'background',
                                                                  this));
                                                                
-        this.app.content.loadTextureAsync(new TextureLoadRequest('./asteroid200x200.png',
+        this.jsBlitWindow.content.loadTextureAsync(new TextureLoadRequest('http://www.markdawson.org/jsblit/src/Samples/Asteroids/asteroid200x200.png',
                                                                  'asteroid',
                                                                  this));
                                                                
-        this.app.content.loadTextureAsync(new TextureLoadRequest('./rocket.png',
+        this.jsBlitWindow.content.loadTextureAsync(new TextureLoadRequest('http://www.markdawson.org/jsblit/src/Samples/Asteroids/rocket.png',
                                                                  'rocket',
                                                                  this));
     },
@@ -134,7 +140,7 @@ Asteroids.prototype = {
            this.rocketTexture != null) {
             this.createRocket();
             this.createAsteroids();
-            this.app.startRendering(); 
+            this.jsBlitWindow.startRendering(); 
         }
     },
     
@@ -164,15 +170,20 @@ Asteroids.prototype = {
         
         velocityPressed = false;
         
-        //TODO: Should be a bit mask of key codes
         if(keyboardState.keyCode != null) {
             switch(keyboardState.keyCode) {
-                case 188:
+            
+            //TODO: Will unify the keys in the actual framework so the user only has to
+            //      program against one enum
+            
+                case 188:  // PC
+                case 43:   // Mac in SL
                     //<
                     this.rocketSprite.addRotation(MathHelper.degreesToRadians(-10));
                     break;
                     
-                case 190:
+                case 190:  //PC
+                case 47:   //Mac in SL
                     //>
                     this.rocketSprite.addRotation(MathHelper.degreesToRadians(10));
                     break;
@@ -181,7 +192,8 @@ Asteroids.prototype = {
                     //f
                     break;
                     
-                case 82:
+                case 82:  // browser
+                case 15:  // Silverlight, Mac
                     //r
                     velocityPressed = true;
                     this.rocketSprite.addVelocity(0.5);
@@ -202,15 +214,13 @@ Asteroids.prototype = {
             currentSprite.update();
             
             if(currentSprite.position.x > rtWidth) {
-                currentSprite.position.x = 0;
-            }
-            if(currentSprite.position.x < 0) {
+                currentSprite.position.x = -currentSprite.width;
+            } else if(currentSprite.position.x < -currentSprite.width) {
                 currentSprite.position.x = rtWidth;
             }
             if(currentSprite.position.y > rtHeight) {
-                currentSprite.position.y = 0;
-            }
-            if(currentSprite.position.y < 0) {
+                currentSprite.position.y = -currentSprite.height;
+            } else if(currentSprite.position.y < -currentSprite.height) {
                 currentSprite.position.y = rtHeight;
             }
             
@@ -235,7 +245,9 @@ Asteroids.prototype = {
         //Clear the render targe completely, since we are rendering a background
         //image over the entire render target we don't have to do this but it is
         //here for completeness
-        //graphicsDevice.clear(Color.white);
+        
+        //TODO: Comment out
+        //graphicsDevice.clear(Color.green);
         
         //In our case we just have a bunch of sprites that we want to draw 
         //each frame, all calls must be between the begin and end calls
@@ -262,6 +274,3 @@ Asteroids.prototype = {
         this.spriteBatch.end();
     }
 };
-
-var asteroids = new Asteroids();
-asteroids.loadContent();

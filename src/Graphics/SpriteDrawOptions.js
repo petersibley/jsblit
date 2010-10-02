@@ -38,14 +38,14 @@ function SpriteDrawOptions() {
     * The x and y scaling factor to be applied to the sprite
     * @type Vector2
     */
-    this.scale = null;
+    this.scale = new Vector2(1, 1);
     
     /**
     * Specifies the rotation in radians.  A positive value will rotate
     * the sprite in a clockwise direction. Tip: To convert degrees to
     * radians use the MathHelper.degreesToRadians function.
     */
-    this.rotation = null;
+    this.rotation = 0.0;
     
     /**
     * The origin of the rotation relative to the render target

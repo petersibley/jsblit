@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
 		
-		<title>JsDoc Reference - JsBlitApp</title>
+		<title>JsDoc Reference - Utils</title>
 
 		<style type="text/css">
 			/* default.css */
@@ -203,8 +203,6 @@ ul.inheritsList
 	
 	<li><a href="../symbols/GraphicsHelper.html">GraphicsHelper</a></li>
 	
-	<li><a href="../symbols/JsBlitApp.html">JsBlitApp</a></li>
-	
 	<li><a href="../symbols/JsBlitWindow.html">JsBlitWindow</a></li>
 	
 	<li><a href="../symbols/KeyboardState.html">KeyboardState</a></li>
@@ -235,6 +233,8 @@ ul.inheritsList
 	
 	<li><a href="../symbols/TextureLoadResponse.html">TextureLoadResponse</a></li>
 	
+	<li><a href="../symbols/Utils.html">Utils</a></li>
+	
 	<li><a href="../symbols/Vector2.html">Vector2</a></li>
 	
 	<li><a href="../symbols/Vector3.html">Vector3</a></li>
@@ -252,7 +252,7 @@ ul.inheritsList
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Class JsBlitApp
+				Class Utils
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -269,7 +269,7 @@ ul.inheritsList
 
 <!-- ============================== constructor summary ==================== -->			
 			
-			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class JsBlitApp.">
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class Utils.">
 				<caption>Class Summary</caption>
 				<thead>
 					<tr>
@@ -282,9 +282,9 @@ ul.inheritsList
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/JsBlitApp.html#constructor">JsBlitApp</a></b>(jsBlitWindow)
+								<b><a href="../symbols/Utils.html#constructor">Utils</a></b>()
 							</div>
-							<div class="description">Represents an app that renders jsblit content</div>
+							<div class="description">A utility class for common jsblit functionality</div>
 						</td>
 					</tr>
 				</tbody>
@@ -298,7 +298,7 @@ ul.inheritsList
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class JsBlitApp.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class Utils.">
 					<caption>Method Summary</caption>
 					<thead>
 						<tr>
@@ -309,57 +309,11 @@ ul.inheritsList
 					<tbody>
 					
 						<tr>
-							<td class="attributes">&nbsp;</td>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/JsBlitApp.html#getGraphicsDevice">getGraphicsDevice</a></b>()
+								<div class="fixedFont">Utils.<b><a href="../symbols/Utils.html#.extend">extend</a></b>(derived, base)
 								</div>
-								<div class="description">Returns the graphics device associated with the app</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/JsBlitApp.html#getWindow">getWindow</a></b>()
-								</div>
-								<div class="description">Returns the JsBlitWindow instance associated with the app</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/JsBlitApp.html#setDelegate">setDelegate</a></b>(delegate)
-								</div>
-								<div class="description">Sets the delegate that handles all of the render/update
-calls.</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/JsBlitApp.html#setFrameRate">setFrameRate</a></b>(frameRate)
-								</div>
-								<div class="description">Sets the maximum animation frame rate</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/JsBlitApp.html#startRendering">startRendering</a></b>()
-								</div>
-								<div class="description">When called signals the app to start rendering</div>
-							</td>
-						</tr>
-					
-						<tr>
-							<td class="attributes">&nbsp;</td>
-							<td class="nameDescription">
-								<div class="fixedFont"><b><a href="../symbols/JsBlitApp.html#stopRendering">stopRendering</a></b>()
-								</div>
-								<div class="description">When called signals the app to stop rendering</div>
+								<div class="description">Applys prototype inheritance to the derived class</div>
 							</td>
 						</tr>
 					
@@ -380,28 +334,17 @@ calls.</div>
 				</div>
 				
 				<div class="fixedFont">
-						<b>JsBlitApp</b>(jsBlitWindow)
+						<b>Utils</b>()
 				</div>
 				
 				<div class="description">
-					Represents an app that renders jsblit content
+					A utility class for common jsblit functionality
 					
 				</div>
 				
 				
 				
 				
-					
-						<dl class="detailList">
-						<dt class="heading">Parameters:</dt>
-						
-							<dt>
-								<span class="light fixedFont">{<a href="../symbols/JsBlitWindow.html">JsBlitWindow</a>}</span>  <b>jsBlitWindow</b>
-								
-							</dt>
-								<dd>The window the app will render into</dd>
-						
-						</dl>
 					
 					
 					
@@ -422,82 +365,15 @@ calls.</div>
 					Method Detail
 				</div>
 				
-					<a name="getGraphicsDevice"> </a>
-					<div class="fixedFont">
-					
-					<span class="light">{<a href="../symbols/GraphicsDevice.html">GraphicsDevice</a>}</span>
-					<b>getGraphicsDevice</b>()
-					
-					</div>
-					<div class="description">
-						Returns the graphics device associated with the app
-						
-						
-					</div>
+					<a name=".extend"> </a>
+					<div class="fixedFont">&lt;static&gt; 
 					
 					
-					
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{<a href="../symbols/GraphicsDevice.html">GraphicsDevice</a>}</span> </dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name="getWindow"> </a>
-					<div class="fixedFont">
-					
-					<span class="light">{<a href="../symbols/JsBlitWindow.html">JsBlitWindow</a>}</span>
-					<b>getWindow</b>()
+					<span class="light">Utils.</span><b>extend</b>(derived, base)
 					
 					</div>
 					<div class="description">
-						Returns the JsBlitWindow instance associated with the app
-						
-						
-					</div>
-					
-					
-					
-						
-						
-						
-						
-						
-							<dl class="detailList">
-							<dt class="heading">Returns:</dt>
-							
-								<dd><span class="light fixedFont">{<a href="../symbols/JsBlitWindow.html">JsBlitWindow</a>}</span> </dd>
-							
-							</dl>
-						
-						
-						
-
-					<hr />
-				
-					<a name="setDelegate"> </a>
-					<div class="fixedFont">
-					
-					
-					<b>setDelegate</b>(delegate)
-					
-					</div>
-					<div class="description">
-						Sets the delegate that handles all of the render/update
-calls. The delegate must implement the following function signatures
-void update(GraphicsDevice, AppTime, MouseState, KeyboardState);
-void render(GraphicsDevice, AppTime);
+						Applys prototype inheritance to the derived class
 						
 						
 					</div>
@@ -509,98 +385,18 @@ void render(GraphicsDevice, AppTime);
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<span class="light fixedFont">{Object}</span> <b>delegate</b>
+									<span class="light fixedFont">{Object}</span> <b>derived</b>
 									
 								</dt>
-								<dd></dd>
-							
-							</dl>
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="setFrameRate"> </a>
-					<div class="fixedFont">
-					
-					
-					<b>setFrameRate</b>(frameRate)
-					
-					</div>
-					<div class="description">
-						Sets the maximum animation frame rate
-						
-						
-					</div>
-					
-					
-					
-						
-							<dl class="detailList">
-							<dt class="heading">Parameters:</dt>
+								<dd>The derived classes constructor</dd>
 							
 								<dt>
-									<span class="light fixedFont">{number}</span> <b>frameRate</b>
+									<span class="light fixedFont">{Object}</span> <b>base</b>
 									
 								</dt>
-								<dd>For example 30 means 30 frames per second</dd>
+								<dd>The base classes constructor</dd>
 							
 							</dl>
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="startRendering"> </a>
-					<div class="fixedFont">
-					
-					
-					<b>startRendering</b>()
-					
-					</div>
-					<div class="description">
-						When called signals the app to start rendering
-						
-						
-					</div>
-					
-					
-					
-						
-						
-						
-						
-						
-						
-						
-
-					<hr />
-				
-					<a name="stopRendering"> </a>
-					<div class="fixedFont">
-					
-					
-					<b>stopRendering</b>()
-					
-					</div>
-					<div class="description">
-						When called signals the app to stop rendering
-						
-						
-					</div>
-					
-					
-					
 						
 						
 						
@@ -623,7 +419,7 @@ void render(GraphicsDevice, AppTime);
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.3.2 on Sun Sep 26 2010 18:20:53 GMT-0700 (PDT)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.3.2 on Sat Oct 02 2010 15:02:19 GMT-0700 (PDT)
 		</div>
 	</body>
 </html>

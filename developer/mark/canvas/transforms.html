@@ -1,0 +1,31 @@
+<html>
+<head>
+</head>
+
+<body>
+<canvas id="myCanvas" width="3000" height="2000"></canvas>
+
+<script type="text/javascript">
+
+function foo()
+{
+    var canvas=document.getElementById('myCanvas');
+    var ctx=canvas.getContext('2d');
+
+//Rotate around the center    
+//	ctx.fillStyle = 'rgba(0,255,0,1)';
+//  ctx.translate(200, 200);
+//	ctx.rotate(45 * Math.PI/180);
+//	ctx.fillRect(-200, -200, 400, 400);
+	
+	ctx.fillStyle = 'rgba(0,255,0,1)';
+	ctx.scale(3,1);
+	ctx.translate(100,0);
+    ctx.fillRect(0,0,100,100);
+};
+foo();
+
+</script>
+
+</body>
+</html>

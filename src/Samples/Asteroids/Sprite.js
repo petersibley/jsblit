@@ -25,7 +25,10 @@ Sprite.prototype = {
 
     setTexture: function (texture) {
         this.texture = texture;
+    	this.width = this.texture.width;
+    	this.height = this.texture.height;
         this.halfDimension = new Vector3(this.texture.width / 2, this.texture.height / 2, 0);
+        this.drawOptions.origin = this.halfDimension;
     },
 	
     update: function() {
@@ -33,9 +36,8 @@ Sprite.prototype = {
     },
     
     updateDrawOptions: function () {
-        this.drawOptions.position = this.position.subtract(this.halfDimension);
+        this.drawOptions.position = this.position;
         this.drawOptions.rotation = this.totalRotation;
-        this.drawOptions.origin = this.position;
         this.drawOptions.scale = this.scale;
     },
     

@@ -46,3 +46,22 @@ Color.white = new Color(255, 255, 255, 255);
 * @type color
 */
 Color.black = new Color(0, 0, 0, 255);
+
+/**
+* Red color
+* @type color
+*/
+Color.red = new Color(255, 0, 0, 255);
+
+/**
+* Green color
+* @type color
+*/
+Color.green = new Color(0, 255, 0, 255);
+
+/**
+* Blue color
+* @type color
+*/
+Color.blue = new Color(0, 0, 255, 255);
+

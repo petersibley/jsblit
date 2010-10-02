@@ -1,0 +1,46 @@
+<html>
+<head>
+<title>
+</title>
+</head>
+<body>
+
+<script>
+
+function MyBase(age) {
+	this.age = age;
+}
+
+MyBase.prototype = {
+	printAge: function () {
+		alert('MyBase::' + this.age);
+	}
+};
+
+function MyDerived(age) {
+	MyBase.call(this, age);
+}
+
+MyDerived.prototype = new MyBase();
+MyDerived.prototype.constructor = MyDerived;
+
+MyDerived.prototype.yo = function () {
+	alert('yo');
+}
+
+MyDerived.prototype.printAge = function () {
+	alert('MyDerived::' + this.age);
+}
+
+
+function foo() {
+
+	var d = new MyDerived(99);
+	d.yo();
+	d.printAge();
+}
+
+foo();
+</script />
+</body>
+</html>
