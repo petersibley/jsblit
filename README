@@ -6,7 +6,7 @@ Silverlight Setup:
 The Silverlight version of asteroids must be run from a webserver so that it can load the textures, you will need to execute the following steps in order to run and do development by hosting the app from your local apache server:
 
 1. Edit /etc/apache2/users/<your_user_name>.conf to add the Silverlight MIME types, otherwise the XAP will not load, these are:
- AddType application/xaml_xaml .xaml
+ AddType application/xaml+xml .xaml
  AddType application/x-silverlight-app .xap
  
 2. Edit /etc/apache2/users/<your_user_name>.conf to allow Apache to follow symbolic links, by adding FollowSymLinks to the <Directory> Options line 
